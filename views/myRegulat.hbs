@@ -1,0 +1,199 @@
+<section class="myRegulat">
+ <div class="wrapper myRegulat__wrapper">
+  <div class="myRegulat-container myRegulat__container">
+   <div class="myRegulat-container__item myRegulat-container__item_mr">
+    <div class="myRegulat-container__personalCard">
+     <div class="myRegulat-container__block">
+      <div class="myRegulat-container__avatar"><img
+        src="/style/img/png-clipart-indian-elephant-drawing-animal-locomotion-blue-mammal.png" alt=""
+        class="myRegulat-container__img"></div>
+     </div>
+     <div class="myRegulat-container__personalData">
+      <span class="myRegulat-container__name">Иванов Иван Иванович</span>
+      <span class="myRegulat-container__work">(место работы)</span>
+      <span class="myRegulat-container__position">(должность)</span>
+     </div>
+     <div class="myRegulat-container__createRegulat myRegulat-container-createRegulat">
+      <div class="myRegulat-container-createRegulat__item">
+       <span class="myRegulat-container-createRegulat__title">Создано регламентов</span><span
+        class="myRegulat-container-createRegulat__qty">7</span>
+      </div>
+      <div class="myRegulat-container-createRegulat__item">
+       <span class="myRegulat-container-createRegulat__title">Согласованно регламентов</span><span
+        class="myRegulat-container-createRegulat__qty">7</span>
+      </div>
+      <div class="myRegulat-container-createRegulat__item">
+       <span class="myRegulat-container-createRegulat__title">Регламенты на согласование</span><span
+        class="myRegulat-container-createRegulat__qty">7</span>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="myRegulat-container__item myRegulat-container__item_right">
+    <form class="search-form myRegulat-container__form" role="search" method="get" id="searchform" action="#">
+     <input class="search-form__input" type="text" value="" name="s" id="s" placeholder="Найти регламент" />
+     <button type="submit" id="searchsubmit" class="search-form__searchsubmit">
+      <svg xmlns="http://www.w3.org/2000/svg" width="19.856" height="20.848" viewBox="0 0 19.856 20.848">
+       <path
+        d="M91.119,310.567l-4.713-4.713a8.8,8.8,0,0,0,2.51-6.147,8.708,8.708,0,1,0-8.708,8.708,8.983,8.983,0,0,0,5.02-1.588l4.815,4.815a.877.877,0,0,0,1.127,0A.792.792,0,0,0,91.119,310.567ZM73.037,299.708a7.171,7.171,0,1,1,7.171,7.171A7.192,7.192,0,0,1,73.037,299.708Z"
+        transform="translate(-71.5 -291)" fill="#414544" />
+      </svg>
+     </button>
+    </form>
+    <div class="myRegulat-container-list myRegulat-container__list">
+     <div class="myRegulat-container-list__header">
+      <div class="section-header">
+       <h2 class="section-header__title myRegulat-container-list__title">{{title}}</h2>
+      </div>
+      <div class="myRegulat-container-list__create"><a href="/addRegulat" class="myRegulat-container-list__link">Создать
+        <i class="myRegulat-container-list__addIcon"></i></a>
+      </div>
+     </div>
+     <div class="myRegulat-container-list__block">
+      <div class="myRegulat-container-list__container">
+       <div class="myRegulat-container-list__total-regul">У вас
+        <span class="myRegulat-container-list__total-qty">10</span> созданных регламента
+       </div>
+       <ul class="myRegulat-container-list__regulat">
+        <li class="myRegulat-container-list__item myRegulat-container-list-item">
+         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
+          Наименование регламента</a>
+         <div class="myRegulat-container-list-item__options">
+          <div class="myRegulat-container-list-item__vers">Версия <span
+            class="myRegulat-container-list-item__vers-qty">1</span></div><span
+           class="myRegulat-container-list-item__status">Черновик</span>
+          <div class="myRegulat-container-list-item__mode">Режим: <span
+            class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
+           class="myRegulat-container-list-item__file"></span>
+         </div>
+        </li>
+        {{!--<li class="myRegulat-container-list__item myRegulat-container-list-item">
+         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
+          Наименование регламента</a>
+         <div class="myRegulat-container-list-item__options">
+          <div class="myRegulat-container-list-item__vers">Версия <span
+            class="myRegulat-container-list-item__vers-qty">1</span></div><span
+           class="myRegulat-container-list-item__status">Черновик</span>
+          <div class="myRegulat-container-list-item__mode">Режим: <span
+            class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
+           class="myRegulat-container-list-item__file"></span>
+         </div>
+        </li>
+        <li class="myRegulat-container-list__item myRegulat-container-list-item">
+         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
+          Наименование регламента</a>
+         <div class="myRegulat-container-list-item__options">
+          <div class="myRegulat-container-list-item__vers">Версия <span
+            class="myRegulat-container-list-item__vers-qty">1</span></div><span
+           class="myRegulat-container-list-item__status">Черновик</span>
+          <div class="myRegulat-container-list-item__mode">Режим: <span
+            class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
+           class="myRegulat-container-list-item__file"></span>
+         </div>
+        </li>
+        <li class="myRegulat-container-list__item myRegulat-container-list-item">
+         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
+          Наименование регламента</a>
+         <div class="myRegulat-container-list-item__options">
+          <div class="myRegulat-container-list-item__vers">Версия <span
+            class="myRegulat-container-list-item__vers-qty">1</span></div><span
+           class="myRegulat-container-list-item__status">Черновик</span>
+          <div class="myRegulat-container-list-item__mode">Режим: <span
+            class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
+           class="myRegulat-container-list-item__file"></span>
+         </div>
+        </li>
+        <li class="myRegulat-container-list__item myRegulat-container-list-item">
+         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
+          Наименование регламента</a>
+         <div class="myRegulat-container-list-item__options">
+          <div class="myRegulat-container-list-item__vers">Версия <span
+            class="myRegulat-container-list-item__vers-qty">1</span></div><span
+           class="myRegulat-container-list-item__status">Черновик</span>
+          <div class="myRegulat-container-list-item__mode">Режим: <span
+            class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
+           class="myRegulat-container-list-item__file"></span>
+         </div>
+        </li>
+        <li class="myRegulat-container-list__item myRegulat-container-list-item">
+         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
+          Наименование регламента</a>
+         <div class="myRegulat-container-list-item__options">
+          <div class="myRegulat-container-list-item__vers">Версия <span
+            class="myRegulat-container-list-item__vers-qty">1</span></div><span
+           class="myRegulat-container-list-item__status">Черновик</span>
+          <div class="myRegulat-container-list-item__mode">Режим: <span
+            class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
+           class="myRegulat-container-list-item__file"></span>
+         </div>
+        </li>
+        <li class="myRegulat-container-list__item myRegulat-container-list-item">
+         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
+          Наименование регламента</a>
+         <div class="myRegulat-container-list-item__options">
+          <div class="myRegulat-container-list-item__vers">Версия <span
+            class="myRegulat-container-list-item__vers-qty">1</span></div><span
+           class="myRegulat-container-list-item__status">Черновик</span>
+          <div class="myRegulat-container-list-item__mode">Режим: <span
+            class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
+           class="myRegulat-container-list-item__file"></span>
+         </div>
+        </li>
+        <li class="myRegulat-container-list__item myRegulat-container-list-item">
+         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
+          Наименование регламента</a>
+         <div class="myRegulat-container-list-item__options">
+          <div class="myRegulat-container-list-item__vers">Версия <span
+            class="myRegulat-container-list-item__vers-qty">1</span></div><span
+           class="myRegulat-container-list-item__status">Черновик</span>
+          <div class="myRegulat-container-list-item__mode">Режим: <span
+            class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
+           class="myRegulat-container-list-item__file"></span>
+         </div>
+        </li>
+        <li class="myRegulat-container-list__item myRegulat-container-list-item">
+         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
+          Наименование регламента</a>
+         <div class="myRegulat-container-list-item__options">
+          <div class="myRegulat-container-list-item__vers">Версия <span
+            class="myRegulat-container-list-item__vers-qty">1</span></div><span
+           class="myRegulat-container-list-item__status">Черновик</span>
+          <div class="myRegulat-container-list-item__mode">Режим: <span
+            class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
+           class="myRegulat-container-list-item__file"></span>
+         </div>
+        </li>--}}
+       </ul>
+      </div>
+     </div>
+    </div>
+    <div class="myRegulat-container-list">
+     <div class="section-header">
+      <h2 class="section-header__title myRegulat-container-list__title">Мои регламенты</h2>
+     </div>
+     <div class="myRegulat-container-list__block myRegulat-container-list__block_brsNone">
+      <div class="myRegulat-container-list__container">
+       <ul class="myRegulat-container-list__regulat">
+        <li class="myRegulat-container-list-item myRegulat-container-list__item_borderNone">
+         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
+          Наименование регламента</a>
+         <span class="myRegulat-container-list-item__status myRegulat-container-list-item__status_reg">Черновик</span>
+        </li>
+        <li class="myRegulat-container-list-item myRegulat-container-list__item_borderNone">
+         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
+          Наименование регламента</a>
+         <span class="myRegulat-container-list-item__status myRegulat-container-list-item__status_reg">Черновик</span>
+        </li>
+        <li class="myRegulat-container-list-item myRegulat-container-list__item_borderNone">
+         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
+          Наименование регламента</a>
+         <span class="myRegulat-container-list-item__status myRegulat-container-list-item__status_reg">Черновик</span>
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
