@@ -1,6 +1,6 @@
 const Router = require('express')
 const router = Router();
-const Regulat = require('../models/regulat');
+const Regulat = require('../models/regulat.model');
 
 router.get('/', async (req, res) => {
  res.render('addRegulat', {
@@ -28,7 +28,7 @@ router.put('/headerContent', async (req, res) => {
 
 })
 router.put('/textBody_1', async (req, res) => {
- 
+
  try{
   const regulatBase = await Regulat.findById(req.body.subRegulat.id)
   const regHeadDOC = regulatBase.regDocument.headDOC
@@ -46,7 +46,7 @@ router.put('/textBody_1', async (req, res) => {
     }
    }
   }
-   
+
   res.status(200).json(regulat)
   //await regulat.save();
  } catch(e){
