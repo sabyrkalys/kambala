@@ -10,9 +10,9 @@ title: {
  type: String,
  required: true
 },
-data: {
- type: new Data.now,
- required: true
+date: {
+  type : Date,
+  default : Date.Now
 },
 status: String,
 regDocument: {

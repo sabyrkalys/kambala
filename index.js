@@ -36,11 +36,8 @@ const PORT = process.env.PORT || 3000;
 
 async function start() {
  try {
-<<<<<<< HEAD
   const password = '';
-  const url = `mongodb+srv://kalys78:${password}@cluster0.gwcvi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
-=======
->>>>>>> e764def55f38a4e84227cee7ef3b3ce214d40fdf
+  const url = `mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false`
   await mongoose.connect(url, {
    useNewUrlParser: true,
   });
