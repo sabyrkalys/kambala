@@ -3,7 +3,7 @@ global.TextDecoder = require("util").TextDecoder;
 const express = require('express')
 const path = require('path');
 const handlebars = require('express-handlebars')
-//const mongoose = require('mongoose')
+const mongoose = require('mongoose')
 const app = express()
 const MyRegulatRoutes = require('./routes/scriptMyRegulat')
 const accountRoutes = require('./routes/account')
@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({
  extended: true
 }))
+app.use(express.json())
 
 app.use('/', MyRegulatRoutes)
 app.use('/addRegulat', addRegulatRoutes)
@@ -35,7 +36,7 @@ const PORT = process.env.PORT || 3000;
 
 async function start() {
  try {
-  const password = '78Ilohat';
+  const password = '';
   const url = `mongodb+srv://kalys78:${password}@cluster0.gwcvi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
   await mongoose.connect(url, {
    useNewUrlParser: true,

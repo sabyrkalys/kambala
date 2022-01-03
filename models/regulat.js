@@ -1,6 +1,11 @@
 const {Schema, model} = require('mongoose')
 
 const regulatSchema = new Schema ({
+ autherId:{
+  type: Schema.Types.ObjectId,
+  ref: 'User',
+  required:true
+ },
 title: {
  type: String,
  required: true
@@ -10,8 +15,7 @@ data: {
  required: true
 },
 status: String,
-regDocument: [
- {
+regDocument: {
   headDOC:{
    headerTitle: {
     type:String,
@@ -26,16 +30,46 @@ regDocument: [
     required:true
    }
   },
-  subRegulat: {
+  subRegulat_1: {
    items: [
     {
-     nameOrgan:{
+     nameOrgan1:{
       type:String
      },
-     nameService:{
+     nameService1:{
       type:String
      },
-     nameService:{
+     nameOrgan2:{
+      type:String
+     },
+     nameService2:{
+      type:String
+     },
+    }
+   ]
+  },
+  subRegulat_2_2_1: {
+   items: [
+    {
+     nameOrgan1:{
+      type:String
+     }
+    }
+   ]
+  },
+  subRegulat_2_2_2: {
+   items: [
+    {
+     nameOrgan1:{
+      type:String
+     }
+    }
+   ]
+  },
+  subRegulat_2_3: {
+   items: [
+    {
+     nameOrgan1:{
       type:String
      }
     }
@@ -43,7 +77,6 @@ regDocument: [
   }
 
  }
-]
 
 })
 module.exports = model('Regulat', regulatSchema)

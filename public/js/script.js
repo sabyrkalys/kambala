@@ -7,18 +7,70 @@ function clickAccardion(e){
  e.preventDefault();
  const target = e.target;
 const isAссardion = target.classList.contains('accardion-triger');
+const isButtontSave = target.classList.contains('constRegulat-form-blockBtn__btn_save');
  if(isAссardion){
   accordion(target);
+ } else if(isButtontSave){
+  saveDate(target);
  }
+}
+function saveDate(target) {
+ const triger = target;
+ const item = (triger.parentNode).parentNode;
+ const constRegulat = document.querySelector('.constRegulat');
+ if(item.querySelector('#headerText')){
+  const headerText = item.querySelector('#headerText');
+  const nameOrg = item.querySelector('#nameOrg');
+  const nameService = item.querySelector('#nameService');
+  const DOC = {
+   headDOC: {
+    headerTitle: headerText.value,
+   deliveryDoc: nameOrg.value,
+   servicy: nameService.value
+  },
+  }
+ fetch('/addRegulat/headerContent', {
+ method: 'put',
+ headers: {
+  'Content-Type': 'application/json'
+ },
+ body: JSON.stringify(DOC)
+ }).then(res => res.json()).then(regul => {
+  //regul.regDocument.length
+  constRegulat.setAttribute('data-id', regul._id)
+ })
+}
+
+if(item.querySelector('#nameOrgan1')){
+ const nameOrgan1 = item.querySelector('#nameOrgan1').value;
+ const nameOrgan2 = item.querySelector('#nameOrgan2').value;
+ const nameService1 = item.querySelector('#nameService1').value;
+ const nameService2 = item.querySelector('#nameService2').value;
+ console.log(constRegulat.dataset.id);
+ const subRegulat = {
+   id: constRegulat.dataset.id,
+   nameOrgan1: nameOrgan1,
+   nameService1: nameService1,
+   nameOrgan2: nameOrgan2,
+   nameService2: nameService2
+ }
+fetch('/addRegulat/textBody_1', {
+method: 'put',
+headers: {
+ 'Content-Type': 'application/json'
+},
+body: JSON.stringify({subRegulat})
+}).then(res => console.log(res.json()))
+}
+
 }
 
 function accordion(target){
  const triger = target;
  const item = (triger.parentNode).parentNode;
-const content = item.querySelector('.accardion-content');
-const accordeon = item.parentNode;
+ const content = item.querySelector('.accardion-content');
+ const accordeon = item.parentNode;
 	const trigerList = accordeon.querySelectorAll('.accardion-triger');
- console.log('trigerList: ', trigerList);
  const isActive = triger.classList.contains('active');
 
  if(isActive) {

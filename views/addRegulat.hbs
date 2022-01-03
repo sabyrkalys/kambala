@@ -82,12 +82,13 @@
   </div>
   <div class="accardion myRegulat-container myRegulat-container--column">
 
-   <form action="#" name="constRegulatForm" class="accardion-item constRegulat__form constRegulat-form">
+   <form action="/addRegulat/headerContent" method="PUT" name="constRegulatForm"
+    class="accardion-item constRegulat__form constRegulat-form">
     <div class="accardion-content constRegulat__headerDoc">
      <div class="constRegulat__container">
       <div class="constRegulat-form-headerDoc constRegulat-form__headerDoc">
 
-       <label for="#" class="constRegulat-form-headerDoc__title">Шапка документа</label>
+       <label for="headerText" class="constRegulat-form-headerDoc__title">Шапка документа</label>
        <div class="constRegulat-form-headerDoc__area">
         <div class="constRegulat-form-headerDoc__container">
          <textarea name="headerText" id="headerText" cols="30" rows="10"
@@ -98,18 +99,19 @@
       </div>
       <div class="constRegulat-form-headerDoc">
 
-       <label for="#"
+       <label for="nameOrg"
         class="constRegulat-form-headerDoc__title constRegulat-form-headerDoc__title_center">АДМИНИСТРАТИВНЫЙ
         РЕГЛАМЕНТ</label>
        <div class="constRegulat-form-headerDoc__area constRegulat-form-headerDoc__area_antherHeight">
         <div class="constRegulat-form-headerDoc__container constRegulat-form-headerDoc__container_adminReg">
          <div class="constRegulat-form-headerDoc__string constRegulat-form-headerDoc-string">
-          <span class="constRegulat-form-headerDoc-string__title">предоставления</span><input type="text"
-           placeholder="(наименование  органа)" class="constRegulat-form-headerDoc-string__input name-org">
+          <span class="constRegulat-form-headerDoc-string__title">предоставления</span><input type="text" name="nameOrg"
+           id="nameOrg" placeholder="(наименование  органа)" class="constRegulat-form-headerDoc-string__input name-org">
          </div>
          <div class="constRegulat-form-headerDoc__string constRegulat-form-headerDoc-string">
-          <span class="constRegulat-form-headerDoc-string__title">услуги</span><input type="text"
-           placeholder="(наименование услуги)" class="constRegulat-form-headerDoc-string__input name-service">
+          <span class="constRegulat-form-headerDoc-string__title">услуги</span><input type="text" name="nameService"
+           id="nameService" placeholder="(наименование услуги)"
+           class="constRegulat-form-headerDoc-string__input name-service">
          </div>
         </div>
        </div>
@@ -117,15 +119,16 @@
      </div>
     </div>
     <div class="constRegulat-form__blockBtn constRegulat-form__blockBtn_mt3 constRegulat-form-blockBtn"><button
-      class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_save"
-      type="submit">Сохранить</button><button name="#constRegulatForm"
+      class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_save" type="submit"
+      formaction="/addRegulat/headerContent">Сохранить</button><button name="#constRegulatForm"
       class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_tab accardion-triger">Свернуть</button>
     </div>
    </form>
    <div class="section-header section-header--mt7">
     <h2 class="section-header__title section-header__title_font700">Основной текст</h2>
    </div>
-   <form action="#" class="accardion-item constRegulat__form constRegulat-form constRegulat__form_mb100">
+   <form action="/addRegulat/textBody_1" method="PUT"
+    class="accardion-item constRegulat__form constRegulat-form constRegulat__form_mb100">
     <div class="accardion-content constRegulat__headerDoc">
      <div class="constRegulat__container">
       <div class="section-header">
@@ -144,22 +147,22 @@
              class="constRegulat-form-headerDoc-string__title constRegulat-form-headerDoc-string__title_font400"><span
               class="constRegulat-form-headerDoc-string__paragraph">1.1.1.</span> Административный регламент
              предоставления администрацией
-            </span><input type="text" placeholder="(наименование  органа)" class="constRegulat-form-headerDoc-string__input
+            </span><input type="text" placeholder="(наименование  органа)" name="nameOrgan1" id="nameOrgan1" class="constRegulat-form-headerDoc-string__input
         constRegulat-form-headerDoc-string__input_width40 name-org">
            </div>
            <div class="constRegulat-form-headerDoc-string constRegulat-form-headerDoc-string--db">
             <span
              class="constRegulat-form-headerDoc-string__title constRegulat-form-headerDoc-string__title_font400">услуги</span><input
-             type="text" placeholder="(наименование услуги)"
+             type="text" placeholder="(наименование услуги)" name="nameService1" id="nameService1"
              class="constRegulat-form-headerDoc-string__input name-service constRegulat-form-headerDoc-string__input_width93">
             <span class="constRegulat-form-headerDoc-string__title constRegulat-form-headerDoc-string__title_font400">
              (далее соответственно - услуга, Регламент) определяет стандарт, сроки и последовательность выполнения
              административных процедур (действий) по предоставлению администрацией</span><input type="text"
-             placeholder="(наименование органа)"
+             name="nameOrgan2" id="nameOrgan2" placeholder="(наименование органа)"
              class="constRegulat-form-headerDoc-string__input constRegulat-form-headerDoc-string__input_width42 name-service">
             <span
              class="constRegulat-form-headerDoc-string__title constRegulat-form-headerDoc-string__title_font400">услуги</span><input
-             type="text" placeholder="(наименование услуги)"
+             type="text" placeholder="(наименование услуги)" name="nameService2" id="nameService2"
              class="constRegulat-form-headerDoc-string__input name-service constRegulat-form-headerDoc-string__input_width93">
            </div>
           </div>
@@ -254,7 +257,8 @@
      </div>
     </div>
     <div class="constRegulat-form__blockBtn constRegulat-form__blockBtn_mt3 constRegulat-form-blockBtn"><button
-      class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_save" type="submit">Сохранить
+      class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_save" type="submit"
+      formaction="/addRegulat/textBody_1">Сохранить
       раздел</button><button
       class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_tab accardion-triger">Свернуть
       раздел</button></div>
