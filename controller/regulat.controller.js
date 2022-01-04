@@ -11,49 +11,133 @@ exports.index = (request, response) => {
 
 
 exports.setDocumentHeader = async function (req, res) {
-  if (req.query.action !== 'create' || req.query.action !== 'edit') {
-    res.status(400);
-  }
+  if (req.query.action === 'create' || req.query.action === 'edit') {
+    try {
+      const result = await regulatModel.setDocumentHeader(req);
 
-  try {
-    const result = await regulatModel.setDocumentHeader(req);
+      if (!result) {
+        return res.status(404).send();
+      }
+      else {
+        return res.status(200).send({result})
+      }
 
-    if (!result) {
-      res.status(404);
+    } catch (e) {
+      console.log(e);
+      res.status(500).send()
     }
-    else {
-      res.status(200).send({result})
-    }
-
-  } catch (e) {
-    console.log(e);
-    res.status(500).send()
   }
-
+  else {
+    return res.status(400).send();
+  }
 }
 
-// exports.setDocumentBody_1 = function (request, response) {
-  // try{
-  //  const regulatBase = await Regulat.findById(req.body.subRegulat.id)
-  //  const regHeadDOC = regulatBase.regDocument.headDOC
-  //  console.log('regHeadDOC: ', regHeadDOC);
-  //  const regulat = {
-  //   regDocument:{
-  //    headDOC:regHeadDOC,
-  //    subRegulat: {
-  //     items:[{
-  //      nameOrgan1:req.body.subRegulat.nameOrgan1,
-  //      nameService1:req.body.subRegulat.nameService1,
-  //      nameOrgan2:req.body.subRegulat.nameOrgan2,
-  //      nameService2:req.body.subRegulat.nameService2,
-  //     }]
-  //    }
-  //   }
-  //  }
-  //
-  //  res.status(200).json(regulat)
-  //  //await regulat.save();
-  // } catch(e){
-  //  console.log(e);
-  // }
-// }
+exports.setDocumentBody_1 = async (req, res) => {
+  if (req.query.action === 'create' || req.query.action === 'edit') {
+    try {
+      const result = await regulatModel.setDocumentBody_1(req);
+      console.log(result);
+      if (!result) {
+        return res.status(404).send();
+      }
+      else {
+        return res.status(200).send({result});
+      }
+
+    } catch (e) {
+      console.log(e);
+      res.status(500).send();
+    }
+  }
+  else {
+    return res.status(400).send();
+  }
+}
+
+exports.setDocumentBody_2 = async (req, res) => {
+  if (req.query.action === 'create' || req.query.action === 'edit') {
+    try {
+      const result = await regulatModel.setDocumentBody_2(req);
+      console.log(result);
+      if (!result) {
+        return res.status(404).send();
+      }
+      else {
+        return res.status(200).send({result});
+      }
+
+    } catch (e) {
+      console.log(e);
+      res.status(500).send();
+    }
+  }
+  else {
+    return res.status(400).send();
+  }
+}
+
+exports.setDocumentBody_3 = async (req, res) => {
+  if (req.query.action === 'create' || req.query.action === 'edit') {
+    try {
+      const result = await regulatModel.setDocumentBody_3(req);
+      console.log(result);
+      if (!result) {
+        return res.status(404).send();
+      }
+      else {
+        return res.status(200).send({result});
+      }
+
+    } catch (e) {
+      console.log(e);
+      res.status(500).send();
+    }
+  }
+  else {
+    return res.status(400).send();
+  }
+}
+
+exports.setDocumentBody_4 = async (req, res) => {
+  if (req.query.action === 'create' || req.query.action === 'edit') {
+    try {
+      const result = await regulatModel.setDocumentBody_4(req);
+      console.log(result);
+      if (!result) {
+        return res.status(404).send();
+      }
+      else {
+        return res.status(200).send({result});
+      }
+
+    } catch (e) {
+      console.log(e);
+      res.status(500).send();
+    }
+  }
+  else {
+    return res.status(400).send();
+  }
+}
+
+exports.setDocumentBody_5 = async (req, res) => {
+  if (req.query.action === 'create' || req.query.action === 'edit') {
+    try {
+      const result = await regulatModel.setDocumentBody_5(req);
+      console.log(result);
+      if (!result) {
+        return res.status(404).send();
+      }
+      else {
+        return res.status(200).send({result});
+      }
+
+    } catch (e) {
+      console.log(e);
+      res.status(500).send();
+    }
+  }
+  else {
+    return res.status(400).send();
+  }
+}
