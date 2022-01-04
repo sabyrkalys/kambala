@@ -11,10 +11,32 @@ exports.index = (request, response) => {
 
 
 exports.setDocumentHeader = async function (req, res) {
-  if (req.query.action === 'create' || req.query.action === 'edit') {
+  if (req.query.action === 'create') {
     try {
       const result = await regulatModel.setDocumentHeader(req);
 
+      if (!result) {
+        return res.status(404).send();
+      }
+      else {
+        return res.status(200).send({result})
+      }
+
+    } catch (e) {
+      console.log(e);
+      res.status(500).send()
+    }
+  }
+  else {
+    return res.status(400).send();
+  }
+}
+
+exports.updateDocumentHeader = async function (req, res) {
+  if (req.query.action === 'edit') {
+    try {
+      const result = await regulatModel.updateDocumentHeader(req);
+      console.log(result);
       if (!result) {
         return res.status(404).send();
       }
