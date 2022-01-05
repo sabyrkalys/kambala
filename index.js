@@ -8,7 +8,7 @@ const app = express()
 const MyRegulatRoutes = require('./routes/scriptMyRegulat')
 const accountRoutes = require('./routes/account')
 const addRegulatRoutes = require('./routes/addRegulat')
-
+const {url} = require('./password')
 
 const hbs = handlebars.create({
  defaultLayout: 'main',
@@ -36,11 +36,6 @@ const PORT = process.env.PORT || 3000;
 
 async function start() {
  try {
-<<<<<<< HEAD
-  const password = '';
-  const url = `mongodb+srv://kalys78:${password}@cluster0.gwcvi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
-=======
->>>>>>> e764def55f38a4e84227cee7ef3b3ce214d40fdf
   await mongoose.connect(url, {
    useNewUrlParser: true,
   });
