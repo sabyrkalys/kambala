@@ -265,3 +265,39 @@ exports.setDocumentBody_5 = async (req) => {
 
   return await Regulat.findOneAndUpdate(filter,update, option);
 }
+
+
+exports.saveDocument = async (req) => {
+  const action = req.query.action;
+  const docId = req.params.docId;
+  const docLink = "/document-link/view/" + docId;
+
+  const filter = {
+    _id: docId
+  }
+
+  if (action === 'create') {
+
+    update = {
+      $set:{
+        status: 1,
+        documentLink: docLink,
+      }
+    }
+
+  }
+  
+  // else if (action === 'edit') {
+  //
+  //   update = {
+  //
+  //   }
+  //
+  // }
+
+  const option = {
+    new: true
+  }
+
+  return await Regulat.findOneAndUpdate(filter,update, option);
+}

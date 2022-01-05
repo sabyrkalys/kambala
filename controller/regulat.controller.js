@@ -184,3 +184,25 @@ exports.setDocumentBody_5 = async (req, res) => {
     return res.status(400).send();
   }
 }
+
+exports.saveDocument = async (req, res) => {
+  if (req.query.action === 'create' || req.query.action === 'edit') {
+    try {
+      const result = await regulatModel.saveDocument(req);
+      console.log(result);
+      if (!result) {
+        return res.status(404).send();
+      }
+      else {
+        return res.status(200).send({result});
+      }
+
+    } catch (e) {
+      console.log(e);
+      res.status(500).send();
+    }
+  }
+  else {
+    return res.status(400).send();
+  }
+}
