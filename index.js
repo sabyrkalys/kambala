@@ -10,7 +10,7 @@ const accountRoutes = require('./routes/account')
 const addRegulatRoutes = require('./routes/addRegulat')
 const commentRegulates = require('./routes/commentRegulat')
 const viewRegulates = require('./routes/viewRegulat')
-const {url} = require('./password')
+// const {url} = require('./password')
 
 const hbs = handlebars.create({
  defaultLayout: 'main',
