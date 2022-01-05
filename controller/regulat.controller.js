@@ -6,12 +6,15 @@ exports.index = async (req, res) => {
     const docId = req.params.docId;
     try {
       const result = await regulatModel.index(docId);
-
       if (!result) {
         return res.status(404).send();
       }
       else {
-        return res.status(200).send({result})
+        res.render('addRegulat', {
+         title: 'Создать регламент',
+         isAddRegulat: true,
+         documentData: result,
+        })
       }
     } catch (e) {
       console.log(e);
@@ -19,7 +22,7 @@ exports.index = async (req, res) => {
     }
   }
   else {
-    response.render('addRegulat', {
+    res.render('addRegulat', {
      title: 'Создать регламент',
      isAddRegulat: true
     })
