@@ -1,12 +1,30 @@
 const regulatModel = require('../models/regulat.model.js');
 
 
-exports.index = (request, response) => {
-  const action = 'create';
-  response.render('addRegulat', {
-   title: 'Создать регламент',
-   isAddRegulat: true
-  })
+exports.index = async (req, res) => {
+  if (req.params.docId) {
+    const docId = req.params.docId;
+    try {
+      const result = await regulatModel.index(docId);
+
+      if (!result) {
+        return res.status(404).send();
+      }
+      else {
+        return res.status(200).send({result})
+      }
+    } catch (e) {
+      console.log(e);
+      res.status(500).send();
+    }
+  }
+  else {
+    response.render('addRegulat', {
+     title: 'Создать регламент',
+     isAddRegulat: true
+    })
+  }
+
 };
 
 

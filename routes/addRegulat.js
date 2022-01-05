@@ -4,6 +4,7 @@ const Regulat = require('../models/regulat.model');
 const regulatController = require('../controller/regulat.controller')
 
 router.get('/', regulatController.index);
+router.get('/:docId', regulatController.index);
 router.post('/setDocumentHeader', regulatController.setDocumentHeader);
 router.put('/updateDocumentHeader/:docId', regulatController.updateDocumentHeader);
 router.put('/setDocumentBody_1/:docId', regulatController.setDocumentBody_1);

@@ -1,9 +1,8 @@
 const Regulat = require('../schemas/regulat.schema.js');
 
-exports.index = async () => {
-
+exports.index = async (docId) => {
+  return await Regulat.findById(docId)
 }
-
 
 exports.setDocumentHeader = async (req) => {
   const regulat = new Regulat({
