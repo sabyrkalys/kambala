@@ -1,20 +1,20 @@
 const {Schema, model} = require('mongoose')
 
 const regulatSchema = new Schema ({
- autherId:{
-  type: Schema.Types.ObjectId,
-  ref: 'User',
-  required:true
- },
-title: {
- type: String,
- required: true
-},
-data: {
- type: new Data.now,
- required: true
-},
-status: String,
+// autherId:{
+//  type: Schema.Types.ObjectId,
+//  ref: 'User',
+//  required:true
+// },
+//title: {
+// type: String,
+// required: true
+//},
+//data: {
+// type: new Data.now,
+// required: true
+//},
+//status: String,
 regDocument: {
   headDOC:{
    headerTitle: {
@@ -48,33 +48,33 @@ regDocument: {
     }
    ]
   },
-  subRegulat_2_2_1: {
-   items: [
-    {
-     nameOrgan1:{
-      type:String
-     }
-    }
-   ]
-  },
-  subRegulat_2_2_2: {
-   items: [
-    {
-     nameOrgan1:{
-      type:String
-     }
-    }
-   ]
-  },
-  subRegulat_2_3: {
-   items: [
-    {
-     nameOrgan1:{
-      type:String
-     }
-    }
-   ]
-  }
+  //subRegulat_2_2_1: {
+  // items: [
+  //  {
+  //   nameOrgan1:{
+  //    type:String
+  //   }
+  //  }
+  // ]
+  //},
+  //subRegulat_2_2_2: {
+  // items: [
+  //  {
+  //   nameOrgan1:{
+  //    type:String
+  //   }
+  //  }
+  // ]
+  //},
+  //subRegulat_2_3: {
+  // items: [
+  //  {
+  //   nameOrgan1:{
+  //    type:String
+  //   }
+  //  }
+  // ]
+  //}
 
  }
 

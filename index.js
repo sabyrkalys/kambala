@@ -8,6 +8,8 @@ const app = express()
 const MyRegulatRoutes = require('./routes/scriptMyRegulat')
 const accountRoutes = require('./routes/account')
 const addRegulatRoutes = require('./routes/addRegulat')
+const commentRegulates = require('./routes/commentRegulat')
+const viewRegulates = require('./routes/viewRegulat')
 const {url} = require('./password')
 
 const hbs = handlebars.create({
@@ -29,6 +31,8 @@ app.use(express.json())
 app.use('/', MyRegulatRoutes)
 app.use('/addRegulat', addRegulatRoutes)
 app.use('/account', accountRoutes)
+app.use('/commentRegulat', commentRegulates)
+app.use('/viewRegulat', viewRegulates)
 
 
 const PORT = process.env.PORT || 3000;
