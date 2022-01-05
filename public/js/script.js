@@ -137,18 +137,19 @@ if(howtriger.closest('.oneP')){
  li.innerHTML = `<div class="constRegulat-form-headerDoc__area constRegulat-form-headerDoc__area_antherHeight">
  <div class="constRegulat-form-headerDoc__container constRegulat-form-headerDoc__container_adminReg">
    <div class="constRegulat-form-headerDoc-string constRegulat-form-headerDoc-string--db">
-    <span class="constRegulat-form-headerDoc-string__title constRegulat-form-headerDoc-string__title_font400"><span class="constRegulat-form-headerDoc-string__paragraph"></span> Заявителями на получение муниципальной услуги являются либо их уполномоченные представители, выступающие от их имени, обратившиеся с заявлением о предоставлении муниципальной услуги (далее - Заявители).
-    </span>
+    <span class="constRegulat-form-headerDoc-string__title constRegulat-form-headerDoc-string__title_font400"><span class="constRegulat-form-headerDoc-string__paragraph">2.2.1.</span> </span><input type="text" class="constRegulat-form-headerDoc-string__input
+    constRegulat-form-headerDoc-string__input_width33 name-org"><input type="text" class="constRegulat-form-headerDoc-string__input name-org">
    </div>
  </div> 
 </div>
 <div class="constRegulat-form__blockBtn constRegulat-form-blockBtn constRegulat-form__blockBtn_mt2"><button class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_addPoint" type="submit">Добавить подпункт</button><button class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_removePoint">Удалить пункт</button></div>`;
 } else if(howtriger.closest('.one-threeP')){
  li.classList.add('one-threeP');
- li.innerHTML = `   <div class="constRegulat-form-headerDoc__area constRegulat-form-headerDoc__area_antherHeight">
+ li.innerHTML = `<div class="constRegulat-form-headerDoc__area constRegulat-form-headerDoc__area_antherHeight">
  <div class="constRegulat-form-headerDoc__container constRegulat-form-headerDoc__container_adminReg">
    <div class="constRegulat-form-headerDoc-string constRegulat-form-headerDoc-string--db">
-    <span class="constRegulat-form-headerDoc-string__title constRegulat-form-headerDoc-string__title_font400"><span class="constRegulat-form-headerDoc-string__paragraph"></span>  Порядок получения информации Заявителями по вопросам предоставления  услуги и услуг, которые являются необходимыми и обязательными для предоставления  услуги, сведений о ходе предоставления указанных услуг, в том числе на официальном сайте, а также в федеральной государственной информационной системе "Единый портал государственных и муниципальных услуг (функций)" (www.gosuslugi.ru) (далее – Единый портал) и на Портале государственных и муниципальных услуг (функций)  (www.pgu..ru) (далее – Региональный портал).</span>
+    <span class="constRegulat-form-headerDoc-string__title constRegulat-form-headerDoc-string__title_font400"><span class="constRegulat-form-headerDoc-string__paragraph">2.2.1.</span> </span><input type="text" class="constRegulat-form-headerDoc-string__input
+    constRegulat-form-headerDoc-string__input_width33 name-org"><input type="text" class="constRegulat-form-headerDoc-string__input name-org">
    </div>
  </div> 
 </div>
@@ -158,7 +159,8 @@ if(howtriger.closest('.oneP')){
  li.innerHTML = `   <div class="constRegulat-form-headerDoc__area constRegulat-form-headerDoc__area_antherHeight">
  <div class="constRegulat-form-headerDoc__container constRegulat-form-headerDoc__container_adminReg">
    <div class="constRegulat-form-headerDoc-string constRegulat-form-headerDoc-string--db">
-    <span class="constRegulat-form-headerDoc-string__title constRegulat-form-headerDoc-string__title_font400"><span class="constRegulat-form-headerDoc-string__paragraph"></span>  Порядок, форма, место размещения и способы получения справочной информации, в том числе на стендах в местах предоставления муниципальной услуги и услуг, которые являются необходимыми и обязательными для предоставления муниципальной услуги, и в государственном автономном учреждении "Многофункциональный центр предоставления государственных и муниципальных услуг" (далее – МФЦ).</span>
+    <span class="constRegulat-form-headerDoc-string__title constRegulat-form-headerDoc-string__title_font400"><span class="constRegulat-form-headerDoc-string__paragraph">2.2.1.</span> </span><input type="text" class="constRegulat-form-headerDoc-string__input
+    constRegulat-form-headerDoc-string__input_width33 name-org"><input type="text" class="constRegulat-form-headerDoc-string__input name-org">
    </div>
  </div> 
 </div>
