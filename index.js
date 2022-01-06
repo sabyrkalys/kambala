@@ -1,5 +1,7 @@
 global.TextEncoder = require("util").TextEncoder;
 global.TextDecoder = require("util").TextDecoder;
+require('dotenv').config()
+
 const express = require('express')
 const path = require('path');
 const handlebars = require('express-handlebars')

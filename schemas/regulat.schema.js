@@ -6,7 +6,7 @@ const regulatSchema = new Schema ({
  dateСreate: { type : Date, default: Date.now, required: true },
  status: { type: Number, default: 0, required: true },
  step: { type: Number, default: 0, required: true },
- documentLink: { type: String },
+ viewToken: { type: Schema.Types.ObjectId },
  versions: [{
    version: { type: Number, default: 1, required: true },
    dateUpdate: { type: Date, default: Date.now, required: true }
