@@ -1,4 +1,7 @@
 const Regulat = require('../schemas/regulat.schema.js');
+const MailService = require('../classes/mailService');
+const mongoose = require('mongoose');
+const mailService = new MailService(process.env.GMAIL_USER,process.env.GMAIL_PASSWORD)
 
 exports.index = async (docId) => {
   return await Regulat.findById(docId)
@@ -270,7 +273,7 @@ exports.setDocumentBody_5 = async (req) => {
 exports.saveDocument = async (req) => {
   const action = req.query.action;
   const docId = req.params.docId;
-  const docLink = "/document-link/view/" + docId;
+  const viewToken = new mongoose.Types.ObjectId();
 
   const filter = {
     _id: docId
@@ -281,12 +284,12 @@ exports.saveDocument = async (req) => {
     update = {
       $set:{
         status: 1,
-        documentLink: docLink,
+        viewToken: viewToken,
       }
     }
 
   }
-  
+
   // else if (action === 'edit') {
   //
   //   update = {
@@ -300,4 +303,15 @@ exports.saveDocument = async (req) => {
   }
 
   return await Regulat.findOneAndUpdate(filter,update, option);
+}
+
+
+exports.sendDocument = async (req) => {
+  const docId = req.body.docId;
+  const emailArray = req.body.emailArray;
+  const result = await Regulat.findById(docId);
+  const documentLink = req.headers.host + `/commentRegulat?viewToken=${result.viewToken}`;
+  const mailInfo = await mailService.sendDocument(emailArray,documentLink);
+
+  return mailInfo;
 }

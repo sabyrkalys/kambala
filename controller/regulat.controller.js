@@ -206,3 +206,19 @@ exports.saveDocument = async (req, res) => {
     return res.status(400).send();
   }
 }
+
+exports.sendDocument = async (req, res) => {
+    try {
+      const result = await regulatModel.sendDocument(req);
+      if (!result) {
+        return res.status(500).send();
+      }
+      else {
+        return res.status(200).send({result});
+      }
+
+    } catch (e) {
+      console.log(e);
+      res.status(500).send();
+    }
+}

@@ -12,6 +12,6 @@ router.put('/setDocumentBody_3/:docId', regulatController.setDocumentBody_3);
 router.put('/setDocumentBody_4/:docId', regulatController.setDocumentBody_4);
 router.put('/setDocumentBody_5/:docId', regulatController.setDocumentBody_5);
 router.put('/saveDocument/:docId', regulatController.saveDocument);
-
+router.post('/sendDocument', regulatController.sendDocument);
 
 module.exports = router;
