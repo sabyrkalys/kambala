@@ -7,6 +7,11 @@ const regulatSchema = new Schema ({
  status: { type: Number, default: 0, required: true },
  step: { type: Number, default: 0, required: true },
  viewToken: { type: Schema.Types.ObjectId },
+ comments: [{
+   ip: { type: String, required: true },
+   selectedString: { type: String, required: true },
+   comment: { type: String, required: true },
+ }],
  versions: [{
    version: { type: Number, default: 1, required: true },
    dateUpdate: { type: Date, default: Date.now, required: true }

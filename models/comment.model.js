@@ -5,8 +5,8 @@ exports.index = async (viewToken) => {
 }
 
 exports.setComment = async (req) => {
-
-
+  // const ipAdress = '';
+  // console.log(req);
 }
 
 exports.saveDocumnet = async (req) => {
