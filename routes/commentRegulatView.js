@@ -3,7 +3,7 @@ const router = Router();
 const commentController = require('../controller/comment.controller');
 
 router.get('/', commentController.index);
-router.put('setComment', commentController.setComment);
+router.put('/setComment/:viewToken', commentController.setComment);
 
 
 

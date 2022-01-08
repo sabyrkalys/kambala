@@ -3,7 +3,7 @@ const router = Router();
 const commentController = require('../controller/comment.controller');
 
 router.get('/:docId', commentController.index);
-router.put('saveDocumnet', commentController.saveDocument);
+router.put('/saveDocumnet/:docId', commentController.saveDocument);
 
 
 

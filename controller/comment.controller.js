@@ -26,26 +26,18 @@ exports.index = async (req, res) => {
 }
 
 exports.setComment = async (req, res) => {
-  console.log('work');
-  // const result = await commentModel.setComment(req);
-
-  // if (req.query.viewToken) {
-  //   try {
-      // const result = await commentModel.setComment(req);
-  //     if (!result) {
-  //       return res.status(404).send();
-  //     }
-  //     else {
-  //       return res.status(200).send({result})
-  //     }
-  //   } catch (e) {
-  //     console.log(e);
-  //     return res.status(500).send();
-  //   }
-  // }
-  // else {
-  //   return res.status(404).send();
-  // }
+  try {
+    const result = await commentModel.setComment(req);
+    if (!result) {
+      return res.status(404).send();
+    }
+    else {
+      return res.status(200).send({result})
+    }
+  } catch (e) {
+    console.log(e);
+    return res.status(500).send();
+  }
 }
 
 

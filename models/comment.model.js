@@ -5,8 +5,74 @@ exports.index = async (viewToken) => {
 }
 
 exports.setComment = async (req) => {
-  // const ipAdress = '';
-  // console.log(req);
+  const viewToken = req.params.viewToken;
+  const ipAdress = req.ip;
+
+  let checkIp = async () => {
+    let res = await Regulat.findOne({viewToken: viewToken},{'commentsUsers': { "$elemMatch": { "ip": ipAdress } }});
+    if (!res.commentsUsers.length || !res.commentsUsers[0].ip) {
+      return false
+    }
+    else {
+      return true;
+    }
+  }
+
+  let filter = {};
+
+  let update = {};
+
+  const option = {
+    new: true
+  }
+
+  if (await checkIp()) {
+    filter = {
+      viewToken: viewToken,
+      'commentsUsers': { "$elemMatch": { "ip": ipAdress } }
+    }
+    update = {
+      $push:{
+        'commentsUsers.$.comments':{
+          selectedString: req.body.selectedString,
+          comment: req.body.comment,
+        }
+      }
+    };
+
+    return await Regulat.findOneAndUpdate(filter,update,option);
+  }
+  else {
+    filter = {
+      viewToken: viewToken,
+    }
+
+    update = {
+      $push:{
+        'commentsUsers':{
+          ip: ipAdress,
+        },
+      },
+    }
+
+    const res = await Regulat.findOneAndUpdate(filter,update,option);
+    if (res) {
+      filter = {
+        viewToken: viewToken,
+        'commentsUsers': { "$elemMatch": { "ip": ipAdress } }
+      }
+      update = {
+        $push:{
+          'commentsUsers.$.comments':{
+            selectedString: req.body.selectedString,
+            comment: req.body.comment,
+          }
+        }
+      };
+
+      return await Regulat.findOneAndUpdate(filter,update,option);
+    }
+  }
 }
 
 exports.saveDocumnet = async (req) => {
