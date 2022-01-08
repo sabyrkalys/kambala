@@ -5,6 +5,6 @@ const regulatSchema = new Schema ({
   lastName: { type: String, required: true },
   login: { type: String, required: true },
   password: { type: String, required: true },
-  accessToken: { type: Schema.Types.ObjectId },
-  refreshToken: { type: Schema.Types.ObjectId },
+  accessToken: { type: String },
+  refreshToken: { type: String },
 })

@@ -12,6 +12,7 @@ const accountRoutes = require('./routes/account')
 const addRegulatRoutes = require('./routes/addRegulat')
 const editRegulatRoutes = require('./routes/editRegulat')
 const commentRegulates = require('./routes/commentRegulat')
+const commentRegulatesView = require('./routes/commentRegulatView')
 const viewRegulates = require('./routes/viewRegulat')
 // const {url} = require('./password')
 
@@ -36,6 +37,7 @@ app.use('/addRegulat', addRegulatRoutes)
 app.use('/editRegulat', editRegulatRoutes)
 app.use('/account', accountRoutes)
 app.use('/commentRegulat', commentRegulates)
+app.use('/commentRegulatesView', commentRegulatesView)
 app.use('/viewRegulat', viewRegulates)
 
 

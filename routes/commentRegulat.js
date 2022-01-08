@@ -1,11 +1,12 @@
-const Router = require('express')
+const Router = require('express');
 const router = Router();
+const commentController = require('../controller/comment.controller');
 
-router.get('/', async (req, res) => {
- res.render('commentRegulat', {
-  title: 'Режим комментирования',
-  isCommentRegulat: true
- })
-})
+
+router.get('/:docId', commentController.index);
+router.put('saveDocumnet', commentController.saveDocument);
+
+
+
 
 module.exports = router;
