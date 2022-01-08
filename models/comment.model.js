@@ -1,10 +1,7 @@
 const Regulat = require('../schemas/regulat.schema.js');
 
-exports.index = async (req) => {
-  res.render('commentRegulat', {
-   title: 'Режим комментирования',
-   isCommentRegulat: true
-  })
+exports.index = async (viewToken) => {
+  return await Regulat.findOne({viewToken:viewToken});
 }
 
 exports.setComment = async (req) => {
