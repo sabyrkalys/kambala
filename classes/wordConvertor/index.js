@@ -7,6 +7,10 @@ class WordConvertor {
     this.docId = docId;
   }
 
-  
+  convert(){
+    console.log('work');
+  }
 
 }
+
+module.exports = WordConvertor;

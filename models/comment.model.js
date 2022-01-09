@@ -1,5 +1,6 @@
 const Regulat = require('../schemas/regulat.schema.js');
-const HtmlConvector = require('../classes/htmlConvertor');
+const HtmlConvertor = require('../classes/htmlConvertor');
+const WordConvertor = require('../classes/wordConvertor');
 
 exports.index = async (viewToken) => {
   return await Regulat.findOne({viewToken:viewToken});
@@ -79,11 +80,13 @@ exports.setComment = async (req) => {
 exports.confirmDocument = async (req) => {
   const docId = req.params.docId;
   const documentData = await Regulat.findById(docId);
-  const htmlConvertor = new HtmlConvector(docId,documentData.regDocument);
+  const htmlConvertor = new HtmlConvertor(docId,documentData.regDocument);
   return await htmlConvertor.createDocument();
 }
 
 
 exports.createWord = async (req) => {
   const docId = req.params.docId;
+  const wordConvertor = new WordConvertor(docId);
+  wordConvertor.convert();
 }

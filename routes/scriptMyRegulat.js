@@ -13,6 +13,10 @@ router.get('/', async (req, res) => {
 //  title: 'Создать регламент',
 //  isAddRegulat: true
 // })
- 
+
 //})
+
+
+
+
 module.exports = router

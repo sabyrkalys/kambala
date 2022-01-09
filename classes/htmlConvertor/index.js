@@ -1,13 +1,12 @@
 const createHTML = require('create-html');
 const fs = require('fs');
+const style = fs.readFileSync(__dirname + "/style.css", "utf8");
 
 
-class HtmlConvector {
+class HtmlConvertor {
   docId = '';
   title = 'Документ';
-  head = '';
   body = '';
-  css = ['/style/style.css','/style/normaliz.css'];
   lang = 'ru';
 
   documentData = {};
@@ -17,16 +16,15 @@ class HtmlConvector {
     this.documentData = documentData;
   }
 
-  setHead(){
-    this.head = `
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  setStyle(){
+    this.body = `
+      <style>${style}</style>
     `
   }
 
   startDocument(){
-    this.body = `
+    this.setStyle();
+    this.body +=`
       <main class="main">
         <section class="commetRegulat">
           <div class="wrapper myRegulat__wrapper">
@@ -98,7 +96,7 @@ class HtmlConvector {
     })
 
     try {
-      fs.writeFile(`public/files/${this.docId}.html`, html, function (err) {
+      fs.writeFile(`files/${this.docId}.html`, html, function (err) {
         if (err) {
           console.log(error);
         }
@@ -114,4 +112,4 @@ class HtmlConvector {
 
 }
 
-module.exports = HtmlConvector;
+module.exports = HtmlConvertor;

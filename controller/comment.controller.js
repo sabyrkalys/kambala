@@ -59,5 +59,5 @@ exports.confirmDocument = async (req,res) => {
 
 
 exports.createWord = async (req,res) => {
-  commentModel.createWorld(req)
+  await commentModel.createWord(req)
 }
