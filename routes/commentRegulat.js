@@ -4,6 +4,7 @@ const commentController = require('../controller/comment.controller');
 
 router.get('/:docId', commentController.index);
 router.put('/confirmDocument/:docId', commentController.confirmDocument);
+// router.put('/createWord/:docId', commentController.createWorld);
 
 
 

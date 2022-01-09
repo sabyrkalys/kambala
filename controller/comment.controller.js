@@ -43,6 +43,21 @@ exports.setComment = async (req, res) => {
 
 
 exports.confirmDocument = async (req,res) => {
+  try {
+    const result = await commentModel.confirmDocument(req);
+    if (!result) {
+      return res.status(404).send();
+    }
+    else {
+      return res.status(200).send({result})
+    }
+  } catch (e) {
+    console.log(e);
+    return res.status(500).send();
+  }
+}
 
-  await commentModel.confirmDocument(req);
+
+exports.createWord = async (req,res) => {
+  commentModel.createWorld(req)
 }

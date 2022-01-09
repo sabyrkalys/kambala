@@ -79,8 +79,11 @@ exports.setComment = async (req) => {
 exports.confirmDocument = async (req) => {
   const docId = req.params.docId;
   const documentData = await Regulat.findById(docId);
-  console.log(documentData.regDocument);
-  // const htmlConvertor = new HtmlConvector(documentData);
+  const htmlConvertor = new HtmlConvector(docId,documentData.regDocument);
+  return await htmlConvertor.createDocument();
+}
 
 
+exports.createWord = async (req) => {
+  const docId = req.params.docId;
 }
