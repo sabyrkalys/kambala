@@ -1,4 +1,5 @@
 const Regulat = require('../schemas/regulat.schema.js');
+const HtmlConvector = require('../classes/htmlConvertor');
 
 exports.index = async (viewToken) => {
   return await Regulat.findOne({viewToken:viewToken});
@@ -75,7 +76,11 @@ exports.setComment = async (req) => {
   }
 }
 
-exports.saveDocumnet = async (req) => {
+exports.confirmDocument = async (req) => {
+  const docId = req.params.docId;
+  const documentData = await Regulat.findById(docId);
+  console.log(documentData.regDocument);
+  // const htmlConvertor = new HtmlConvector(documentData);
 
 
 }

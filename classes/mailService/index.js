@@ -2,10 +2,8 @@ var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 
 class MailService {
-  user = {
-    user: '',
-    pass: '',
-  }
+  user = '';
+  pass = '';
 
   option = {
     from: process.env.GMAIL_USER,

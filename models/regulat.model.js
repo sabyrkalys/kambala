@@ -312,6 +312,5 @@ exports.sendDocument = async (req) => {
   const result = await Regulat.findById(docId);
   const documentLink = req.headers.host + `/commentRegulat?viewToken=${result.viewToken}`;
   const mailInfo = await mailService.sendDocument(emailArray,documentLink);
-
   return mailInfo;
 }

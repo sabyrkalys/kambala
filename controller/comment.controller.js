@@ -1,5 +1,6 @@
 const commentModel = require('../models/comment.model.js');
 
+
 exports.index = async (req, res) => {
   if (req.query.viewToken) {
     try {
@@ -41,7 +42,7 @@ exports.setComment = async (req, res) => {
 }
 
 
-exports.saveDocument = async (req,res) => {
+exports.confirmDocument = async (req,res) => {
 
-
+  await commentModel.confirmDocument(req);
 }
