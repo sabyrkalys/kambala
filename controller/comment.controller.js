@@ -59,5 +59,19 @@ exports.confirmDocument = async (req,res) => {
 
 
 exports.createWord = async (req,res) => {
-  await commentModel.createWord(req)
+  try {
+    const result = await commentModel.createWord(req)
+    if (!result) {
+      return res.status(404).send();
+    }
+    else {
+      res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      res.setHeader('Content-Disposition', `attachment; filename=document.docx`);
+      res.setHeader('Content-Length', result.length);
+      return res.status(200).send(result);
+    }
+  } catch (e) {
+    console.log(e);
+    return res.status(500).send();
+  }
 }

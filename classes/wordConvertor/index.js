@@ -1,14 +1,16 @@
+const htmlDocx = require('html-docx-js');
+const fs = require('fs');
+
 class WordConvertor {
   docId = '';
-  docLink = '';
-
 
   constructor(docId) {
     this.docId = docId;
   }
 
   convert(){
-    console.log('work');
+    const html = fs.readFileSync(`files/${this.docId}.html`, "utf8");
+    return htmlDocx.asBlob(html);
   }
 
 }

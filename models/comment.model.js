@@ -88,5 +88,5 @@ exports.confirmDocument = async (req) => {
 exports.createWord = async (req) => {
   const docId = req.params.docId;
   const wordConvertor = new WordConvertor(docId);
-  wordConvertor.convert();
+  return wordConvertor.convert();
 }
