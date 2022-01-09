@@ -75,3 +75,30 @@ exports.createWord = async (req,res) => {
     return res.status(500).send();
   }
 }
+
+
+exports.createPdf = async (req,res) => {
+  try {
+    const result = await commentModel.createPdf(req);
+
+    if (!result) {
+      return res.status(404).send();
+    }
+    else {
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', 'attachment; filename=document.pdf')
+      result.toBuffer(function(err, buffer){
+        if (err) {
+          console.log(err);
+          return res.status(404).send();
+        }
+        else {
+          return res.status(200).send(buffer)
+        }
+      });
+    }
+  } catch (e) {
+    console.log(e);
+    return res.status(500).send();
+  }
+}

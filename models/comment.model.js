@@ -1,6 +1,7 @@
 const Regulat = require('../schemas/regulat.schema.js');
 const HtmlConvertor = require('../classes/htmlConvertor');
 const WordConvertor = require('../classes/wordConvertor');
+const PdfConvertor = require('../classes/pdfConvertor');
 
 exports.index = async (viewToken) => {
   return await Regulat.findOne({viewToken:viewToken});
@@ -89,4 +90,10 @@ exports.createWord = async (req) => {
   const docId = req.params.docId;
   const wordConvertor = new WordConvertor(docId);
   return wordConvertor.convert();
+}
+
+exports.createPdf = async (req) => {
+  const docId = req.params.docId;
+  const pdfConvertor = new PdfConvertor(docId);
+  return pdfConvertor.convert();
 }
