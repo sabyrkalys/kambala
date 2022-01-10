@@ -63,7 +63,7 @@ class HtmlConvertor {
           <div class="commetRegulat-item-body__content">
             <div class="commetRegulat-item-body-title commetRegulat-item-body__title">1. Предмет регулирования Административного регламента</div>
     `;
-
+    
     this.body += `
           </div>
         </div>
