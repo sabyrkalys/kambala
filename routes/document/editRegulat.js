@@ -1,6 +1,6 @@
 const Router = require('express')
 const router = Router();
-const regulatController = require('../../controller/document/regulat.controller')
+const regulatController = require('../../controller/document/document.controller')
 
 router.get('/:docId', regulatController.index);
 router.put('/updateDocumentHeader/:docId', regulatController.updateDocumentHeader);

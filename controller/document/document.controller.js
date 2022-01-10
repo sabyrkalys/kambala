@@ -1,4 +1,4 @@
-const regulatModel = require('../../models/document/regulat.model.js');
+const regulatModel = require('../../models/document/document.model.js');
 
 
 exports.index = async (req, res) => {

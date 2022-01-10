@@ -14,8 +14,7 @@ const editRegulatRoutes = require('./routes/document/editRegulat')
 const commentRegulates = require('./routes/comment/commentRegulat')
 const commentRegulatesView = require('./routes/comment/commentRegulatView')
 const viewRegulates = require('./routes/document/viewRegulat')
-const loginRoutes = require('./routes/auth/login')
-const registerRoutes = require('./routes/auth/register')
+const authRoutes = require('./routes/auth/auth')
 
 const hbs = handlebars.create({
  defaultLayout: 'main',
@@ -35,8 +34,7 @@ app.use(express.urlencoded({
 app.use(express.json())
 
 app.use('/', MyRegulatRoutes)
-app.use('/login', loginRoutes)
-app.use('/register', loginRoutes)
+app.use('/auth', authRoutes)
 app.use('/addRegulat', addRegulatRoutes)
 app.use('/editRegulat', editRegulatRoutes)
 app.use('/account', accountRoutes)
