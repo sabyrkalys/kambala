@@ -7,14 +7,15 @@ const path = require('path');
 const handlebars = require('express-handlebars')
 const mongoose = require('mongoose')
 const app = express()
-const MyRegulatRoutes = require('./routes/scriptMyRegulat')
-const accountRoutes = require('./routes/account')
-const addRegulatRoutes = require('./routes/addRegulat')
-const editRegulatRoutes = require('./routes/editRegulat')
-const commentRegulates = require('./routes/commentRegulat')
-const commentRegulatesView = require('./routes/commentRegulatView')
-const viewRegulates = require('./routes/viewRegulat')
-// const {url} = require('./password')
+const MyRegulatRoutes = require('./routes/document/scriptMyRegulat')
+const accountRoutes = require('./routes/account/account')
+const addRegulatRoutes = require('./routes/document/addRegulat')
+const editRegulatRoutes = require('./routes/document/editRegulat')
+const commentRegulates = require('./routes/comment/commentRegulat')
+const commentRegulatesView = require('./routes/comment/commentRegulatView')
+const viewRegulates = require('./routes/document/viewRegulat')
+const loginRoutes = require('./routes/auth/login')
+const registerRoutes = require('./routes/auth/register')
 
 const hbs = handlebars.create({
  defaultLayout: 'main',
@@ -25,7 +26,7 @@ const hbs = handlebars.create({
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 app.set('views', 'views')
-// app.set('trust proxy',true); 
+// app.set('trust proxy',true);
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({
@@ -34,6 +35,8 @@ app.use(express.urlencoded({
 app.use(express.json())
 
 app.use('/', MyRegulatRoutes)
+app.use('/login', loginRoutes)
+app.use('/register', loginRoutes)
 app.use('/addRegulat', addRegulatRoutes)
 app.use('/editRegulat', editRegulatRoutes)
 app.use('/account', accountRoutes)

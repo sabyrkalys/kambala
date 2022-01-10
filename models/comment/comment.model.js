@@ -1,7 +1,7 @@
-const Regulat = require('../schemas/regulat.schema.js');
-const HtmlConvertor = require('../classes/htmlConvertor');
-const WordConvertor = require('../classes/wordConvertor');
-const PdfConvertor = require('../classes/pdfConvertor');
+const Regulat = require('../../schemas/document/regulat.schema.js');
+const HtmlConvertor = require('../../classes/htmlConvertor');
+const WordConvertor = require('../../classes/wordConvertor');
+const PdfConvertor = require('../../classes/pdfConvertor');
 
 exports.index = async (viewToken) => {
   return await Regulat.findOne({viewToken:viewToken});

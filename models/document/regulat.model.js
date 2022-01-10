@@ -1,5 +1,5 @@
-const Regulat = require('../schemas/regulat.schema.js');
-const MailService = require('../classes/mailService');
+const Regulat = require('../../schemas/document/regulat.schema.js');
+const MailService = require('../../classes/mailService');
 const mongoose = require('mongoose');
 const mailService = new MailService(process.env.GMAIL_USER,process.env.GMAIL_PASSWORD)
 
