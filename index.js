@@ -8,13 +8,14 @@ const handlebars = require('express-handlebars')
 const mongoose = require('mongoose')
 const app = express()
 const MyRegulatRoutes = require('./routes/document/scriptMyRegulat')
-const accountRoutes = require('./routes/account/account')
+const accountRoutes = require('./routes/account/account.routes')
 const addRegulatRoutes = require('./routes/document/addRegulat')
 const editRegulatRoutes = require('./routes/document/editRegulat')
-const commentRegulates = require('./routes/comment/commentRegulat')
-const commentRegulatesView = require('./routes/comment/commentRegulatView')
+// const commentRegulates = require('./routes/comment/commentRegulat')
+// const commentRegulatesView = require('./routes/comment/commentRegulatView')
+const commentRegulatesView = require('./routes/comment/comment.routes')
 const viewRegulates = require('./routes/document/viewRegulat')
-const authRoutes = require('./routes/auth/auth')
+const authRoutes = require('./routes/auth/auth.routes')
 
 const hbs = handlebars.create({
  defaultLayout: 'main',
