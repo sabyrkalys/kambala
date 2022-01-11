@@ -7,10 +7,7 @@ const path = require('path');
 const handlebars = require('express-handlebars')
 const mongoose = require('mongoose')
 const app = express()
-const documentRoutes = require('./routes/document/document.routes')
-const accountRoutes = require('./routes/account/account.routes')
-const commentRoutes = require('./routes/comment/comment.routes')
-const authRoutes = require('./routes/auth/auth.routes')
+const router = require('./routes');
 
 const hbs = handlebars.create({
  defaultLayout: 'main',
@@ -29,10 +26,7 @@ app.use(express.urlencoded({
 }))
 app.use(express.json())
 
-app.use('/', authRoutes)
-app.use('/document', documentRoutes)
-app.use('/account', accountRoutes)
-app.use('/comment', commentRoutes)
+app.use(router);
 
 
 const PORT = process.env.PORT || 3000;
