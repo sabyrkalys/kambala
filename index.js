@@ -7,14 +7,9 @@ const path = require('path');
 const handlebars = require('express-handlebars')
 const mongoose = require('mongoose')
 const app = express()
-const MyRegulatRoutes = require('./routes/document/scriptMyRegulat')
+const documentRoutes = require('./routes/document/document.routes')
 const accountRoutes = require('./routes/account/account.routes')
-const addRegulatRoutes = require('./routes/document/addRegulat')
-const editRegulatRoutes = require('./routes/document/editRegulat')
-// const commentRegulates = require('./routes/comment/commentRegulat')
-// const commentRegulatesView = require('./routes/comment/commentRegulatView')
-const commentRegulatesView = require('./routes/comment/comment.routes')
-const viewRegulates = require('./routes/document/viewRegulat')
+const commentRoutes = require('./routes/comment/comment.routes')
 const authRoutes = require('./routes/auth/auth.routes')
 
 const hbs = handlebars.create({
@@ -34,14 +29,10 @@ app.use(express.urlencoded({
 }))
 app.use(express.json())
 
-app.use('/', MyRegulatRoutes)
-app.use('/auth', authRoutes)
-app.use('/addRegulat', addRegulatRoutes)
-app.use('/editRegulat', editRegulatRoutes)
+app.use('/', authRoutes)
+app.use('/document', documentRoutes)
 app.use('/account', accountRoutes)
-app.use('/commentRegulat', commentRegulates)
-app.use('/commentRegulatesView', commentRegulatesView)
-app.use('/viewRegulat', viewRegulates)
+app.use('/comment', commentRoutes)
 
 
 const PORT = process.env.PORT || 3000;

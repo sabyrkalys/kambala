@@ -1,5 +1,5 @@
-exports.module = {
-  AuthController: require('./auth.controller'),
-  CommentController: require('./comment.controller'),
-  DocumentController: require('./document.controller'),
+module.exports = {
+  authController: require('./auth/auth.controller'),
+  commentController: require('./comment/comment.controller'),
+  documentController: require('./document/document.controller'),
 }
