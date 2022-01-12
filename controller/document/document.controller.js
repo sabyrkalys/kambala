@@ -2,6 +2,14 @@ const regulatModel = require('../../models/document/document.model.js');
 
 
 exports.index = async (req, res) => {
+  res.render('myRegulat', {
+   title: 'Список документов',
+   isAddRegulat: true,
+   // documentData: result,
+  })
+};
+
+exports.createDocument = async (req, res) => {
   if (req.params.docId) {
     const docId = req.params.docId;
     try {
@@ -27,8 +35,35 @@ exports.index = async (req, res) => {
      isAddRegulat: true
     })
   }
+}
 
-};
+exports.editDocument = async (req, res) => {
+  if (req.params.docId) {
+    const docId = req.params.docId;
+    try {
+      const result = await regulatModel.index(docId);
+      if (!result) {
+        return res.status(404).send();
+      }
+      else {
+        res.render('addRegulat', {
+         title: 'Создать регламент',
+         isAddRegulat: true,
+         documentData: result,
+        })
+      }
+    } catch (e) {
+      console.log(e);
+      res.status(500).send();
+    }
+  }
+  else {
+    res.render('addRegulat', {
+     title: 'Создать регламент',
+     isAddRegulat: true
+    })
+  }
+}
 
 
 exports.setDocumentHeader = async function (req, res) {
