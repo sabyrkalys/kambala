@@ -1,30 +1,41 @@
 global.TextEncoder = require("util").TextEncoder;
 global.TextDecoder = require("util").TextDecoder;
-require('dotenv').config()
+require('dotenv').config();
 
-const express = require('express')
+const express = require('express');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const handlebars = require('express-handlebars');
 const path = require('path');
-const handlebars = require('express-handlebars')
-const mongoose = require('mongoose')
-const app = express()
+const mongoose = require('mongoose');
+
+const app = express();
 const router = require('./routes');
 
 const hbs = handlebars.create({
  defaultLayout: 'main',
  extname: 'hbs'
-})
+});
 
 
-app.engine('hbs', hbs.engine)
-app.set('view engine', 'hbs')
-app.set('views', 'views')
-// app.set('trust proxy',true);
+app.use(session({
+  secret: process.env.APP_SESSION,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(cookieParser());
+
+app.engine('hbs', hbs.engine);
+app.set('view engine', 'hbs');
+app.set('views', 'views');
+
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({
  extended: true
-}))
-app.use(express.json())
+}));
+app.use(express.json());
 
 app.use(router);
 

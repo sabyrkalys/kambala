@@ -3,6 +3,7 @@ const {authModel} = require('../../models');
 
 
 exports.index = async (req, res) => {
+  console.log(req.session);
   res.render('login', {
    title: 'Вход в систему'
   })
@@ -15,7 +16,18 @@ exports.registerPage = async (req, res) => {
 }
 
 exports.loginUser = async (req, res) => {
-
+  try {
+    const result = await authModel.loginUser(req);
+    if (!result) {
+      return res.status(404).send();
+    }
+    else {
+      return res.status(200).send(result);
+      }
+    } catch (e) {
+      console.log(e);
+      res.status(500).send();
+    }
 }
 
 exports.registerUser = async (req, res) => {
@@ -25,10 +37,15 @@ exports.registerUser = async (req, res) => {
       return res.status(404).send();
     }
     else {
-      return res.status(200).send();
+      return res.status(200).send(result);
       }
     } catch (e) {
       console.log(e);
       res.status(500).send();
     }
+}
+
+exports.logoutUser = async (req, res) => {
+  req.session.destroy();
+
 }

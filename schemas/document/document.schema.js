@@ -1,6 +1,6 @@
 const {Schema, model} = require('mongoose')
 
-const regulatSchema = new Schema ({
+const documentSchema = new Schema ({
  authorId:{ type: Schema.Types.ObjectId, ref: 'User', required:true },
  title: { type: String, required: true },
  dateСreate: { type : Date, default: Date.now, required: true },
@@ -171,4 +171,4 @@ const regulatSchema = new Schema ({
  }
 
 })
-module.exports = model('Regulat', regulatSchema)
+module.exports = model('Document', documentSchema)
