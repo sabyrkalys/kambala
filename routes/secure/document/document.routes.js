@@ -4,6 +4,7 @@ const {documentController} = require('../../../controller')
 
 router.get('/', documentController.index);
 router.get('/createDocument', documentController.createDocument);
+router.get('/createDocument/:docId', documentController.createDocument);
 router.get('/editDocument/:docId', documentController.editDocument);
 
 
@@ -16,5 +17,9 @@ router.put('/setDocumentBody_4/:docId', documentController.setDocumentBody_4);
 router.put('/setDocumentBody_5/:docId', documentController.setDocumentBody_5);
 router.put('/saveDocument/:docId', documentController.saveDocument);
 router.post('/sendDocument', documentController.sendDocument);
+
+router.put('/confirmDocument/:docId', documentController.confirmDocument);
+router.put('/createWord/:docId', documentController.createWord);
+router.put('/createPdf/:docId', documentController.createPdf);
 
 module.exports = router;

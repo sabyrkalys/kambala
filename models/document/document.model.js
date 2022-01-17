@@ -1,5 +1,5 @@
 const Document = require('../../schemas/document/document.schema.js');
-const { MailService } = require('../../classes');
+const { MailService, HtmlConvertor,WordConvertor,PdfConvertor } = require('../../classes');
 const mongoose = require('mongoose');
 const mailService = new MailService(process.env.GMAIL_USER,process.env.GMAIL_PASSWORD)
 
@@ -159,7 +159,7 @@ exports.setDocumentBody_2 = async (req) => {
   }
 
   return await Document.findOneAndUpdate(filter,update, option);
-},
+}
 
 exports.setDocumentBody_3 = async (req) => {
   const action = req.query.action;
@@ -269,7 +269,6 @@ exports.setDocumentBody_5 = async (req) => {
   return await Document.findOneAndUpdate(filter,update, option);
 }
 
-
 exports.saveDocument = async (req) => {
   const action = req.query.action;
   const docId = req.params.docId;
@@ -290,21 +289,12 @@ exports.saveDocument = async (req) => {
 
   }
 
-  // else if (action === 'edit') {
-  //
-  //   update = {
-  //
-  //   }
-  //
-  // }
-
   const option = {
     new: true
   }
 
   return await Document.findOneAndUpdate(filter,update, option);
 }
-
 
 exports.sendDocument = async (req) => {
   const docId = req.body.docId;
@@ -313,4 +303,23 @@ exports.sendDocument = async (req) => {
   const documentLink = req.headers.host + `/commentRegulat?viewToken=${result.viewToken}`;
   const mailInfo = await mailService.sendDocument(emailArray,documentLink);
   return mailInfo;
+}
+
+exports.confirmDocument = async (req) => {
+  const docId = req.params.docId;
+  const documentData = await Document.findById(docId);
+  const htmlConvertor = new HtmlConvertor(docId,documentData.regDocument);
+  return await htmlConvertor.createDocument();
+}
+
+exports.createWord = async (req) => {
+  const docId = req.params.docId;
+  const wordConvertor = new WordConvertor(docId);
+  return wordConvertor.convert();
+}
+
+exports.createPdf = async (req) => {
+  const docId = req.params.docId;
+  const pdfConvertor = new PdfConvertor(docId);
+  return pdfConvertor.convert();
 }
