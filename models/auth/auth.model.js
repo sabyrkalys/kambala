@@ -12,7 +12,7 @@ exports.loginUser = async (req) => {
     return false;
   }
   else {
-    const {accessToken, refreshToken} = auth.sign(req.body.login,req.body.password);
+    const {accessToken, refreshToken} = auth.sign(req.session,req.body.login,req.body.password);
     const result = await User.findOneAndUpdate(
       {
         _id:user._id
@@ -27,8 +27,6 @@ exports.loginUser = async (req) => {
         new: true
       }
     )
-    req.session.accessToken = accessToken;
-    req.session.refreshToken = refreshToken;
 
     return result;
   }
