@@ -32,54 +32,51 @@ exports.index = async (req, res) => {
 
 
 exports.setDocumentHeader = async function (req, res) {
-  if (req.query.action === 'create') {
-    try {
-      const result = await regulatModel.setDocumentHeader(req);
-
-      if (!result) {
-        return res.status(404).send();
-      }
-      else {
-        return res.status(200).send({result})
-      }
-
-    } catch (e) {
-      console.log(e);
-      res.status(500).send()
+ if (req.body.headDOC.action === 'create') {
+  try {
+    const result = await regulatModel.setDocumentHeader(req);
+    if (!result) {
+     return res.status(404).send();
     }
-  }
-  else {
-    return res.status(400).send();
-  }
+    else {
+     return res.status(200).send({result})
+    }
+    
+   } catch (e) {
+    console.log(e);
+    res.status(500).send()
+   }
+ }
+ else {
+  return res.status(400).send();
+}
 }
 
 exports.updateDocumentHeader = async function (req, res) {
-  if (req.query.action === 'edit') {
-    try {
-      const result = await regulatModel.updateDocumentHeader(req);
-      console.log(result);
-      if (!result) {
-        return res.status(404).send();
-      }
-      else {
-        return res.status(200).send({result})
-      }
+if (req.query.action === 'edit') {
+ try {
+   const result = await regulatModel.updateDocumentHeader(req);
+   if (!result) {
+     return res.status(404).send();
+   }
+   else {
+     return res.status(200).send({result})
+   }
 
-    } catch (e) {
-      console.log(e);
-      res.status(500).send()
-    }
-  }
-  else {
-    return res.status(400).send();
-  }
+ } catch (e) {
+   console.log(e);
+   res.status(500).send()
+ }
+}
+else {
+ return res.status(400).send();
+}
 }
 
 exports.setDocumentBody_1 = async (req, res) => {
-  if (req.query.action === 'create' || req.query.action === 'edit') {
+  if (req.body.action === 'create' || req.query.action === 'edit') {
     try {
       const result = await regulatModel.setDocumentBody_1(req);
-      console.log(result);
       if (!result) {
         return res.status(404).send();
       }
@@ -98,10 +95,9 @@ exports.setDocumentBody_1 = async (req, res) => {
 }
 
 exports.setDocumentBody_2 = async (req, res) => {
-  if (req.query.action === 'create' || req.query.action === 'edit') {
+  if (req.body.action === 'create' || req.query.action === 'edit') {
     try {
       const result = await regulatModel.setDocumentBody_2(req);
-      console.log(result);
       if (!result) {
         return res.status(404).send();
       }
@@ -120,10 +116,9 @@ exports.setDocumentBody_2 = async (req, res) => {
 }
 
 exports.setDocumentBody_3 = async (req, res) => {
-  if (req.query.action === 'create' || req.query.action === 'edit') {
+  if (req.body.action === 'create' || req.query.action === 'edit') {
     try {
       const result = await regulatModel.setDocumentBody_3(req);
-      console.log(result);
       if (!result) {
         return res.status(404).send();
       }
@@ -142,10 +137,9 @@ exports.setDocumentBody_3 = async (req, res) => {
 }
 
 exports.setDocumentBody_4 = async (req, res) => {
-  if (req.query.action === 'create' || req.query.action === 'edit') {
+  if (req.body.action === 'create' || req.query.action === 'edit') {
     try {
       const result = await regulatModel.setDocumentBody_4(req);
-      console.log(result);
       if (!result) {
         return res.status(404).send();
       }
@@ -164,10 +158,9 @@ exports.setDocumentBody_4 = async (req, res) => {
 }
 
 exports.setDocumentBody_5 = async (req, res) => {
-  if (req.query.action === 'create' || req.query.action === 'edit') {
+  if (req.body.action === 'create' || req.query.action === 'edit') {
     try {
       const result = await regulatModel.setDocumentBody_5(req);
-      console.log(result);
       if (!result) {
         return res.status(404).send();
       }
@@ -186,10 +179,10 @@ exports.setDocumentBody_5 = async (req, res) => {
 }
 
 exports.saveDocument = async (req, res) => {
-  if (req.query.action === 'create' || req.query.action === 'edit') {
+
+  if (req.body.action === 'create' || req.query.action === 'edit') {
     try {
       const result = await regulatModel.saveDocument(req);
-      console.log(result);
       if (!result) {
         return res.status(404).send();
       }

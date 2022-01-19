@@ -36,7 +36,7 @@ class MailService {
   async sendDocument(emailArray, documentLink){
     await this.init();
     var response = '';
-    this.option.text = 'Ссылка на общий доступ к документу: ' + documentLink
+    this.option.text = 'Ссылка на общий доступ к документу: ' + `<a href="${documentLink}">${documentLink}</a>`
     for (let i = 0; i < emailArray.length; i++) {
       this.option.to[i] = emailArray[i].email;
     }

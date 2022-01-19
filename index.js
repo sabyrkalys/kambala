@@ -14,7 +14,7 @@ const editRegulatRoutes = require('./routes/editRegulat')
 const commentRegulates = require('./routes/commentRegulat')
 const commentRegulatesView = require('./routes/commentRegulatView')
 const viewRegulates = require('./routes/viewRegulat')
-// const {url} = require('./password')
+ const {url} = require('./password')
 
 const hbs = handlebars.create({
  defaultLayout: 'main',
@@ -47,8 +47,8 @@ const PORT = process.env.PORT || 3000;
 
 async function start() {
  try {
-  const password = '';
-  const url = `mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false`
+  //const password = '';
+  //const url = `mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false`
   await mongoose.connect(url, {
    useNewUrlParser: true,
   });
