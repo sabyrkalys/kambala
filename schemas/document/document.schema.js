@@ -1,8 +1,8 @@
 const {Schema, model} = require('mongoose')
 
 const documentSchema = new Schema ({
- authorId:{ type: Schema.Types.ObjectId, ref: 'User', required:true },
- title: { type: String, required: true },
+ //authorId:{ type: Schema.Types.ObjectId, ref: 'User', required:true },
+ //title: { type: String, required: true },
  dateСreate: { type : Date, default: Date.now, required: true },
  status: { type: Number, default: 0, required: true },
  step: { type: Number, default: 0, required: true },
@@ -57,9 +57,14 @@ const documentSchema = new Schema ({
       }]
     },
     subRegulat_2_2:{
-      items: [{
-        fieldName: { type: String, required: true }
+     items: [ {
+      item_2_2_1 : [{
+       fieldName: { type: String, required: true }
+      }],
+      item_2_2_2 : [{
+       fieldName: { type: String, required: true }
       }]
+     }]
     },
     subRegulat_2_3:{
       items: [{
