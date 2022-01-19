@@ -1,14 +1,14 @@
-const Regulat = require('../schemas/regulat.schema.js');
-const MailService = require('../classes/mailService');
+const Document = require('../../schemas/document/document.schema.js');
+const { MailService, HtmlConvertor,WordConvertor,PdfConvertor } = require('../../classes');
 const mongoose = require('mongoose');
 const mailService = new MailService(process.env.GMAIL_USER,process.env.GMAIL_PASSWORD)
 
 exports.index = async (docId) => {
-  return await Regulat.findById(docId)
+  return await Document.findById(docId)
 }
 
 exports.setDocumentHeader = async (req) => {
-  const regulat = new Regulat({
+  const regulat = new Document({
     authorId: req.body.authorId,
     title: req.body.title,
     date: req.body.dateCreation,
@@ -50,7 +50,7 @@ exports.updateDocumentHeader = async (req) => {
     new: true
   }
 
-  return await Regulat.findOneAndUpdate(filter,update, option);
+  return await Document.findOneAndUpdate(filter,update, option);
 
 }
 
@@ -88,7 +88,7 @@ exports.setDocumentBody_1 = async (req) => {
     new: true
   }
 
-  return await Regulat.findOneAndUpdate(filter,update, option);
+  return await Document.findOneAndUpdate(filter,update, option);
 }
 
 exports.setDocumentBody_2 = async (req) => {
@@ -158,8 +158,8 @@ exports.setDocumentBody_2 = async (req) => {
     new: true
   }
 
-  return await Regulat.findOneAndUpdate(filter,update, option);
-},
+  return await Document.findOneAndUpdate(filter,update, option);
+}
 
 exports.setDocumentBody_3 = async (req) => {
   const action = req.query.action;
@@ -195,7 +195,7 @@ exports.setDocumentBody_3 = async (req) => {
     new: true
   }
 
-  return await Regulat.findOneAndUpdate(filter,update, option);
+  return await Document.findOneAndUpdate(filter,update, option);
 }
 
 exports.setDocumentBody_4 = async (req) => {
@@ -228,7 +228,7 @@ exports.setDocumentBody_4 = async (req) => {
     new: true
   }
 
-  return await Regulat.findOneAndUpdate(filter,update, option);
+  return await Document.findOneAndUpdate(filter,update, option);
 
 }
 
@@ -266,9 +266,8 @@ exports.setDocumentBody_5 = async (req) => {
     new: true
   }
 
-  return await Regulat.findOneAndUpdate(filter,update, option);
+  return await Document.findOneAndUpdate(filter,update, option);
 }
-
 
 exports.saveDocument = async (req) => {
   const action = req.query.action;
@@ -290,28 +289,37 @@ exports.saveDocument = async (req) => {
 
   }
 
-  // else if (action === 'edit') {
-  //
-  //   update = {
-  //
-  //   }
-  //
-  // }
-
   const option = {
     new: true
   }
 
-  return await Regulat.findOneAndUpdate(filter,update, option);
+  return await Document.findOneAndUpdate(filter,update, option);
 }
-
 
 exports.sendDocument = async (req) => {
   const docId = req.body.docId;
   const emailArray = req.body.emailArray;
-  const result = await Regulat.findById(docId);
+  const result = await Document.findById(docId);
   const documentLink = req.headers.host + `/commentRegulat?viewToken=${result.viewToken}`;
   const mailInfo = await mailService.sendDocument(emailArray,documentLink);
-
   return mailInfo;
+}
+
+exports.confirmDocument = async (req) => {
+  const docId = req.params.docId;
+  const documentData = await Document.findById(docId);
+  const htmlConvertor = new HtmlConvertor(docId,documentData.regDocument);
+  return await htmlConvertor.createDocument();
+}
+
+exports.createWord = async (req) => {
+  const docId = req.params.docId;
+  const wordConvertor = new WordConvertor(docId);
+  return wordConvertor.convert();
+}
+
+exports.createPdf = async (req) => {
+  const docId = req.params.docId;
+  const pdfConvertor = new PdfConvertor(docId);
+  return pdfConvertor.convert();
 }
