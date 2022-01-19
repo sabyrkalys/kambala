@@ -1,7 +1,8 @@
-const Regulat = require('../schemas/regulat.schema.js');
+const Document = require('../../schemas/document/document.schema.js');
+const {HtmlConvertor,WordConvertor,PdfConvertor} = require('../../classes');
 
 exports.index = async (viewToken) => {
-  return await Regulat.findOne({viewToken:viewToken});
+  return await Document.findOne({viewToken:viewToken});
 }
 
 exports.setComment = async (req) => {
@@ -9,7 +10,7 @@ exports.setComment = async (req) => {
   const ipAdress = req.ip;
 
   let checkIp = async () => {
-    let res = await Regulat.findOne({viewToken: viewToken},{'commentsUsers': { "$elemMatch": { "ip": ipAdress } }});
+    let res = await Document.findOne({viewToken: viewToken},{'commentsUsers': { "$elemMatch": { "ip": ipAdress } }});
     if (!res.commentsUsers.length || !res.commentsUsers[0].ip) {
       return false
     }
@@ -40,7 +41,7 @@ exports.setComment = async (req) => {
       }
     };
 
-    return await Regulat.findOneAndUpdate(filter,update,option);
+    return await Document.findOneAndUpdate(filter,update,option);
   }
   else {
     filter = {
@@ -55,7 +56,7 @@ exports.setComment = async (req) => {
       },
     }
 
-    const res = await Regulat.findOneAndUpdate(filter,update,option);
+    const res = await Document.findOneAndUpdate(filter,update,option);
     if (res) {
       filter = {
         viewToken: viewToken,
@@ -70,12 +71,27 @@ exports.setComment = async (req) => {
         }
       };
 
-      return await Regulat.findOneAndUpdate(filter,update,option);
+      return await Document.findOneAndUpdate(filter,update,option);
     }
   }
 }
 
-exports.saveDocumnet = async (req) => {
+exports.confirmDocument = async (req) => {
+  const docId = req.params.docId;
+  const documentData = await Document.findById(docId);
+  const htmlConvertor = new HtmlConvertor(docId,documentData.regDocument);
+  return await htmlConvertor.createDocument();
+}
 
 
+exports.createWord = async (req) => {
+  const docId = req.params.docId;
+  const wordConvertor = new WordConvertor(docId);
+  return wordConvertor.convert();
+}
+
+exports.createPdf = async (req) => {
+  const docId = req.params.docId;
+  const pdfConvertor = new PdfConvertor(docId);
+  return pdfConvertor.convert();
 }

@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="ru" dir="ltr">
+<head>
+<title>Документ</title>
+<meta charset="utf-8">
+
+
+
+
+</head>
+<body>
+
+      <style>/* raleway-regular - latin_cyrillic */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''), url('../style/fonts/raleway-v22-latin_cyrillic-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../style/fonts/raleway-v22-latin_cyrillic-regular.woff') format('woff');
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* raleway-600 - latin_cyrillic */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  src: local(''), url('../style/fonts/raleway-v22-latin_cyrillic-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../style/fonts/raleway-v22-latin_cyrillic-600.woff') format('woff');
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* raleway-700 - latin_cyrillic */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''), url('../style/fonts/raleway-v22-latin_cyrillic-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../style/fonts/raleway-v22-latin_cyrillic-700.woff') format('woff');
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* raleway-500 - latin_cyrillic */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 500;
+  src: local(''), url('../style/fonts/raleway-v22-latin_cyrillic-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../style/fonts/raleway-v22-latin_cyrillic-500.woff') format('woff');
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+:root {
+  --bgHeaderFooter: #313B44;
+  --bgFound: #fff;
+  --bgBlock: #EEEEEE;
+  --BlackColorText: #000000;
+  --WhiteColorText: #fff;
+  --bgRed1: #CF6E5C;
+  --bgRed2: #BE533F;
+  --bgBlue: #4E689A;
+}
+p.commetRegulat-item-body__desc::selection {
+  color: var(--BlackColorText);
+  background: rgba(24, 85, 203, 0.3);
+}
+html {
+  font-size: 10px;
+  overflow-x: hidden;
+}
+body {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bgFound);
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+button:focus,
+input:focus,
+a:focus,
+textarea:focus {
+  outline: none;
+}
+a {
+  text-decoration: none;
+}
+header,
+footer {
+  flex-shrink: 0;
+}
+footer {
+  margin-top: auto;
+}
+main {
+  flex-grow: 1;
+}
+.wrapper {
+  width: calc(100% - 40px);
+  margin: 0 auto;
+}
+.btn {
+  color: var(--WhiteColorText);
+  border: none;
+  border-radius: 10px;
+  background-color: var(--bgRed1);
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  background-color: #f71a16;
+}
+.section-header {
+  display: block;
+}
+.section-header .section-header__title {
+  font-family: 'Raleway', sans-serif;
+  text-align: left;
+  font-weight: 600;
+  font-size: 3em;
+  line-height: 35px;
+}
+.section-header__title_font700 {
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 700 !important;
+  margin-left: 7rem;
+}
+.section-header__title_ml10 {
+  margin-left: 10rem;
+  margin-bottom: 1.8rem;
+}
+.section-header--mt {
+  margin-left: 4rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+.section-header--font700 {
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+}
+.section-header--mt7 {
+  margin-top: 7rem;
+  margin-bottom: 3rem;
+}
+.section-header--mb2 {
+  margin-bottom: 2rem;
+}
+.section-header__title_fz18 {
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.8em !important;
+  line-height: 2.1rem !important;
+  text-align: center !important;
+}
+.section-header__title_fz24 {
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 2.4em !important;
+  line-height: 2.8rem !important;
+  text-align: center !important;
+  margin-bottom: 2rem;
+}
+.header-top {
+  background-color: var(--bgHeaderFooter);
+}
+.header-top__main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-top__item {
+  height: 7.4rem;
+}
+.header-top-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-top-item__block {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.header-top-item__block_margin {
+  margin-right: 4rem;
+}
+.header-top-item__link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.header-top-item__title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 3em;
+  margin-left: 1rem;
+  color: var(--WhiteColorText);
+}
+.header-top-item__notification {
+  position: relative;
+  display: block;
+  width: 27px;
+  height: 32px;
+  background-image: url(img/kolokol.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding: 0 2.3rem;
+}
+.header-top-item__qty {
+  position: absolute;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 1em;
+  color: var(--bgRed1);
+  top: 4px;
+  left: 57%;
+}
+.menu {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.menu__humburger {
+  display: block;
+  width: 3rem;
+  height: 0.2rem;
+  position: relative;
+  background-color: var(--bgFound);
+}
+.menu__humburger::before {
+  content: '';
+  display: block;
+  width: 3rem;
+  height: 0.2rem;
+  position: absolute;
+  left: 0;
+  top: -9px;
+  background-color: var(--bgFound);
+}
+.menu__humburger::after {
+  content: '';
+  display: block;
+  width: 3rem;
+  height: 0.2rem;
+  position: absolute;
+  left: 0;
+  top: 9px;
+  background-color: var(--bgFound);
+}
+.logo {
+  position: relative;
+}
+.logo__img {
+  display: block;
+}
+.logo__link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.header-top-item-block__img {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: var(--bgFound);
+  overflow: hidden;
+}
+.header-top-item-block__link {
+  color: var(--WhiteColorText);
+  font-size: 2em;
+  padding-right: 2rem;
+}
+.header-top-item-block--separater::after {
+  content: '';
+  display: inline-block;
+  width: 1px;
+  height: 2.2rem;
+  background-color: var(--bgFound);
+}
+.header-top-item-block--ml {
+  margin-left: 2rem;
+  margin-right: 3rem;
+}
+.footer {
+  background-color: var(--bgHeaderFooter);
+}
+.footer__container {
+  box-sizing: border-box;
+  height: 23.6rem;
+  padding: 3rem 0rem 3.4rem 0rem;
+}
+.footer-container {
+  display: flex;
+  justify-content: center;
+}
+.footer-container__logo {
+  margin-right: 27rem;
+}
+.footer-container__img {
+  width: 13rem;
+}
+.footer-container__item:not(:last-child) {
+  margin-right: 10.9rem;
+}
+.footer-container-item {
+  display: flex;
+  flex-direction: column;
+}
+.footer-container-item__title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  font-size: 2.4em;
+  color: var(--WhiteColorText);
+  line-height: 2.8rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+.footer-container-item__nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.footer-container-item-nav {
+  display: flex;
+  flex-direction: column;
+}
+.footer-container-item-nav__li:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+.footer-container-item-nav__link {
+  color: var(--WhiteColorText);
+  font-size: 1.8em;
+  line-height: 2.1rem;
+}
+.commetRegulat__container {
+  display: flex;
+}
+.commetRegulat__item {
+  margin-bottom: 2rem;
+}
+.commetRegulat__item_left {
+  margin-right: 2rem;
+}
+.commetRegulat-item {
+  width: 100%;
+}
+.commetRegulat-item__header {
+  background-color: rgba(238, 238, 238, 0.65);
+  margin-bottom: 2rem;
+}
+.commetRegulat-item-header__container {
+  padding: 3rem 3rem 4rem 3rem;
+}
+.commetRegulat-item-header__header-doc {
+  margin-bottom: 3rem;
+  width: 32rem;
+  height: auto;
+}
+.commetRegulat-item-header__title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 1.6em;
+  line-height: 1.9rem;
+  margin-bottom: 1rem;
+  display: block;
+  text-align: center;
+}
+.commetRegulat-item-header__desc {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 1.6em;
+  line-height: 1.9rem;
+  margin-bottom: 1rem;
+  display: block;
+  text-align: center;
+}
+.commetRegulat-item-header__right {
+  display: flex;
+  justify-content: flex-end;
+}
+.commetRegulat-desc {
+  font-size: 1.6em;
+  color: var(--BlackColorText);
+}
+.commetRegulat-correct {
+  width: 50%;
+  background-color: var(--bgBlock);
+}
+.commetRegulat-correct__container {
+  padding: 2rem 1rem 2rem 2rem;
+}
+.commetRegulat-correct__ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+}
+.commetRegulat-correct__item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+}
+.commetRegulat-correct__addcommet {
+  background-color: transparent;
+  border: 1px solid var(--bgBlue);
+  color: var(--bgBlue);
+}
+.commetRegulat-correct__addcommet:hover {
+  color: #fff;
+}
+.commetRegulat-correct-item__title {
+  font-size: 1.6em;
+  line-height: 1.9rem;
+  color: var(--BlackColorText);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 1rem;
+}
+.commetRegulat-correct-item__desc {
+  border: 0.3px solid #000000;
+  box-sizing: border-box;
+  font-size: 1.6em;
+  line-height: 1.9rem;
+  color: var(--BlackColorText);
+}
+.commetRegulat-item-body__content {
+  background-color: rgba(238, 238, 238, 0.65);
+  padding: 1rem 2.8rem 2rem 3.2rem;
+}
+.commetRegulat-item-body__title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 1.8em;
+  line-height: 2.1rem;
+  color: var(--BlackColorText);
+  margin-bottom: 1.8rem;
+  text-align: center;
+}
+.commetRegulat-item-body__desc:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.commetRegulat-item-body__btn_open {
+  background-color: var(--bgBlue);
+  margin-right: 2rem;
+}
+.commetRegulat-item-body__btn_close {
+  background-color: var(--bgHeaderFooter);
+  margin-right: 2rem;
+}
+.commetRegulat-item-body__btn_close:hover {
+  background-color: #4d5f6e;
+}
+.commetRegulat-item-body__btn_edit {
+  background-color: transparent;
+  border: 1px solid var(--bgRed2);
+  color: var(--bgRed2);
+}
+.commetRegulat-item-body__btn_edit:hover {
+  color: var(--WhiteColorText);
+}
+.commetRegulat-item-body__center {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+}
+.commetRegulat-item-body__desc {
+  position: relative;
+}
+</style>
+    
+      <main class="main">
+        <section class="commetRegulat">
+          <div class="wrapper myRegulat__wrapper">
+            <div class="commetRegulat__container">
+              <div class="accardion commetRegulat-item commetRegulat__item commetRegulat__item_left">
+      <div class="commetRegulat-item__header commetRegulat-item-header">
+        <div class="commetRegulat-item-header__container">
+    
+      <div class="commetRegulat-item-header__right">
+        <p class="commetRegulat-desc commetRegulat-item-header__header-doc">Приложение 46 к протоколу комиссии по повышению качества и доступности государственных и муниципальных услуг и организации межведомственного взаимодействия от 10 марта 2021 г. № 8</p>
+      </div>
+      <span class="commetRegulat-item-header__title">АДМИНИСТРАТИВНЫЙ РЕГЛАМЕНТ</span>
+      <p class="commetRegulat-item-header__desc">Предоставления администрацией Амурской области муниципальной услуги "предоставление финансовой поддержки (субсидий) субъектам малого и среднего предпринимательства"</p>
+    
+        </div>
+      </div>
+    
+      <div class="accardion-item commetRegulat-item-body">
+        <div class="section-header section-header--mb2">
+          <h2 class="section-header__title section-header__title_fz18">1. Общие положения</h2>
+        </div>
+        <div class="accardion-content commetRegulat-item-content">
+          <div class="commetRegulat-item-body__content">
+            <div class="commetRegulat-item-body-title commetRegulat-item-body__title">1. Предмет регулирования Административного регламента</div>
+    
+          </div>
+        </div>
+      </div>
+    
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    
+
+</body>
+</html>

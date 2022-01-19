@@ -1,4 +1,4 @@
-const commentModel = require('../models/comment.model.js');
+const commentModel = require('../../models/comment/comment.model.js');
 
 exports.index = async (req, res) => {
   if (req.query.viewToken) {
@@ -38,10 +38,4 @@ exports.setComment = async (req, res) => {
     console.log(e);
     return res.status(500).send();
   }
-}
-
-
-exports.saveDocument = async (req,res) => {
-
-
 }
