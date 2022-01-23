@@ -1,0 +1,93 @@
+.myAccaunt__wrapper {
+  width: calc(100% - 100px);
+}
+.myAccaunt__block {
+  margin-left: 4rem;
+  margin-bottom: 20rem;
+}
+.myAccaunt-form__column {
+  display: flex;
+  width: 100%;
+}
+.myAccaunt-form__column_right {
+  justify-content: flex-end;
+}
+.myAccaunt-form__mainItem {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.myAccaunt-form__mainItem:not(:last-child) {
+  margin-right: 10.1rem;
+}
+.myAccaunt-form__item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5rem;
+}
+.myAccaunt-form__item_mb {
+  margin-bottom: 7.4rem;
+}
+.myAccaunt-form__title {
+  color: var(--BlackColorText);
+  font-size: 2.4em;
+  line-height: 2.8rem;
+  margin-bottom: 4.4rem;
+}
+.myAccaunt-form__title_mb {
+  margin-bottom: 2rem;
+}
+.myAccaunt-form__blockInput {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.myAccaunt-form__label {
+  color: var(--BlackColorText);
+  line-height: 2.1rem;
+  font-size: 1.8em;
+}
+.myAccaunt-form__input {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 35rem;
+  background: #FFFFFF;
+  border: 0.5px solid var(--bgBlue);
+  border-radius: 10px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1.6em;
+}
+.myAccaunt-form__blockImg {
+  width: 15rem;
+  height: 20rem;
+  background-color: #C4C4C4;
+  overflow: hidden;
+}
+.myAccaunt-form__img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  height: inherit;
+}
+.myAccaunt-form__btn {
+  padding: 0.4rem 3.3rem;
+  color: var(--WhiteColorText);
+  font-size: 1.8em;
+  line-height: 2.1rem;
+}
+.myAccaunt-form__btn_red {
+  margin-right: 1rem;
+}
+.myAccaunt-form__btn_blue {
+  padding: 0.4rem 4.4rem;
+  background-color: var(--bgBlue);
+  margin-right: 5.4rem;
+}
+.myAccaunt-form__btn_blue:hover {
+  background-color: #224ec9;
+}

@@ -2,10 +2,10 @@ const Router = require('express')
 const router = Router();
 const {documentController} = require('../../../controller')
 
-router.get('/', documentController.index);
-router.get('/createDocument', documentController.createDocument);
-router.get('/createDocument/:docId', documentController.createDocument);
-router.get('/editDocument/:docId', documentController.editDocument);
+router.get('/:userId/document', documentController.index);
+router.get('/:userId/document/createDocument', documentController.createDocument);
+router.get('/:userId/document/createDocument/:docId', documentController.createDocument);
+router.get('/:userId/document/editDocument/:docId', documentController.editDocument);
 
 
 router.post('/setDocumentHeader', documentController.setDocumentHeader);

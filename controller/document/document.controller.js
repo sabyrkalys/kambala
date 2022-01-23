@@ -3,28 +3,27 @@ const {AuthService} = require('../../classes');
 const auth = new AuthService;
 
 exports.index = async (req, res) => {
-  //let isLogined = await auth.check(req.session);
-  //if (isLogined) {
-    //if (req.params.userId) {
+  let isLogined = await auth.check(req.session);
+  if (isLogined) {
+    if (req.params.userId) {
       res.render('myDocument', {
        title: 'Список документов',
        isAddRegulat: true,
 
       })
-      console.log(req.session);
-    //}
-    //else {
-    //  res.redirect('/');
-    //}
-  //}
-  //else {
-  //  res.redirect('/');
-  //}
+    }
+    else {
+      res.redirect('/');
+    }
+  }
+  else {
+    res.redirect('/');
+  }
 };
 
 exports.createDocument = async (req, res) => {
-  //let isLogined = await auth.check(req.session);
-  //if (isLogined) {
+  let isLogined = await auth.check(req.session);
+  if (isLogined) {
     if (req.params.docId) {
       const docId = req.params.docId;
       try {
@@ -50,10 +49,10 @@ exports.createDocument = async (req, res) => {
        isAddRegulat: true
       })
     }
-  //}
-  //else {
-  //  res.status(401).send(isLogined);
-  //}
+  }
+  else {
+    res.status(401).send(isLogined);
+  }
 }
 
 exports.editDocument = async (req, res) => {

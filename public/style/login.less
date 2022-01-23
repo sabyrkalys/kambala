@@ -1,0 +1,194 @@
+//............................регистрация и авторизация....................................start
+.about {
+ color: #000;
+ max-width: 1240px;
+ margin: 0 auto;
+ margin-top: 10rem;
+ margin-bottom: 15rem;
+
+ &-tabs {
+
+  &__triggers {
+   position: relative;
+   display: flex;
+   max-width: 1000px;
+   align-items: center;
+   justify-content: center;
+   margin: 0rem auto;
+
+   &-block {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+
+    &-item {
+     text-decoration: none;
+     text-transform: uppercase;
+     font-size: 16px;
+     line-height: 120%;
+     color: #535353;
+     font-weight: 700;
+     text-align: center;
+     padding: 20px 0;
+     width: 100%;
+     background: #FFFFFF;
+     border: 2px solid #F4F4F4;
+     box-sizing: border-box;
+     border-radius: 30px 30px 0px 0px;
+
+     &:hover {
+      color: #212122;
+     }
+    }
+
+
+   }
+
+  }
+
+
+
+  &__contant {
+   max-height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   margin: 0 auto;
+   padding-top: 5rem;
+   background: #F4F4F4;
+   max-width: 1000px;
+   border-radius: 0px 0px 30px 30px;
+   position: relative;
+   z-index: 0;
+
+
+   &-item {
+    display: none;
+    width: 100%;
+    padding: 0rem 5rem;
+    font-size: 20px;
+    font-weight: 400;
+    //display: flex;
+    overflow: hidden;
+    transition: height .4s ease-in-out;
+    -webkit-transition: height .4s ease-in-out;
+    -o-transition: height .4s ease-in-out;
+    transition: height .4s ease-in-out;
+    animation: content 0.5s linear forwards;
+
+
+
+    //&-block-active {
+    // max-width: 80rem;
+    // width: 100%;
+    // margin: 0 auto;
+    // -webkit-box-sizing: border-box;
+    // box-sizing: border-box;
+    // margin-bottom: 2rem;
+    // line-height: 1.7em;
+    //}
+
+   }
+
+   .about-tabs__contant-item--active {
+    display: flex;
+   }
+
+   //.about-accordion__contant-item--active {
+   // display: block;
+   //}
+
+  }
+ }
+}
+
+#tab-2 {
+ justify-content: flex-end;
+}
+
+form {
+ width: 45%;
+}
+
+.login {
+ width: 100%;
+ // .login__row1
+
+ &__row1 {
+  display: flex;
+  flex-direction: column;
+ }
+
+ // .login__row2
+ &__row2 {
+  display: flex;
+  margin-top: 3rem;
+  justify-content: space-between;
+
+  .field-item {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+  }
+ }
+}
+
+
+.field-item {
+
+ // .field-item__login
+
+ &__input {
+  padding: 0.8rem 2rem;
+  margin: 0;
+  width: 100%;
+  background: #FFFFFF;
+  border: 0.5px solid #4E689A;
+  box-sizing: border-box;
+  border-radius: 10px;
+ }
+
+ // .field-item__label
+
+ &__label {
+  color: rgba(0, 0, 0, 0.7);
+  white-space: nowrap;
+  margin-left: 1.5rem;
+ }
+
+ // .field-item__link
+
+ &__link {
+  color: rgba(0, 0, 0, 0.7);
+
+ }
+
+ &__notmargin {
+  margin-bottom: 0 !important;
+ }
+}
+
+.field-item:not(:last-child) {
+ margin-bottom: 3rem;
+}
+
+.btn-login {
+ padding: 1rem 7.8rem !important;
+ font-size: 18px !important;
+ margin-top: 5rem;
+ margin-bottom: 15rem;
+ background: #4E689A;
+}
+
+.btn-registr {
+ padding: 1rem 7.8rem !important;
+ font-size: 18px !important;
+ margin-top: 5rem;
+ margin-bottom: 6.5rem;
+ background: #4E689A;
+}
+
+
+
+//............................регистрация и авторизация.....................................end

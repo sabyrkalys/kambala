@@ -3,7 +3,7 @@ const {authModel} = require('../../models');
 
 
 exports.index = async (req, res) => {
-  console.log(req.session);
+  //console.log(req.session);
   res.render('login', {
    title: 'Вход в систему'
   })
@@ -22,7 +22,7 @@ exports.loginUser = async (req, res) => {
       return res.status(404).send();
     }
     else {
-      return res.status(200).send(result);
+      return res.status(200).redirect(`/user/${result._id}/document`);
       }
     } catch (e) {
       console.log(e);
@@ -37,7 +37,7 @@ exports.registerUser = async (req, res) => {
       return res.status(404).send();
     }
     else {
-      return res.status(200).send(result);
+      return res.status(200).redirect(`/user/${result._id}/account`);
       }
     } catch (e) {
       console.log(e);

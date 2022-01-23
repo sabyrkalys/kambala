@@ -8,6 +8,11 @@ const userSchema = new Schema ({
     name: { type: String  },
     lastName: { type: String },
     patronymic: { type: String },
+    DOB:{ type: String },
+    NameOrganization: {type: String},
+    sybDivision:{type: String},
+    Position: {type: String},
+    phone: {type: String}
   },
   profileStatus: { type: Number, required: true, default: 0  },
   accessToken: { type: String },

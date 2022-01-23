@@ -5,8 +5,8 @@ const documentRoutes = require('./document/document.routes')
 const accountRoutes = require('./account/account.routes')
 const commentRoutes = require('./comment/comment.routes')
 
-router.use('/document', documentRoutes)
-router.use('/account', accountRoutes)
-router.use('/comment', commentRoutes)
+router.use('/user', documentRoutes)
+router.use('/user', accountRoutes)
+router.use('/user', commentRoutes)
 
 module.exports = router;

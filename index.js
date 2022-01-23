@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const handlebars = require('express-handlebars');
 const path = require('path');
 const mongoose = require('mongoose');
-
+const {url} = require('./password');
 const app = express();
 const router = require('./routes');
 
@@ -46,7 +46,7 @@ const PORT = process.env.PORT || 3000;
 async function start() {
  try {
   const password = '';
-  const url = `mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false`
+  //const url = `mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false`
   await mongoose.connect(url, {
    useNewUrlParser: true,
   });

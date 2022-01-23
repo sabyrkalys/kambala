@@ -1,11 +1,8 @@
 const {Router} = require('express')
 const router = Router()
+const {accountController} = require('../../../controller')
 
-router.get('/', async (req, res) => {
- res.render('account', {
-  title: 'Мой аккаунт',
-  isAccount: true
- })
-})
+router.get('/:userId/account', accountController.index);
+
 
 module.exports = router

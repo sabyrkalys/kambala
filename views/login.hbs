@@ -1,1 +1,68 @@
-<h1>Login</h1>
+<section class="about">
+ <div class="about-tabs">
+  <div class="about-tabs__box">
+   <div class="about-tabs__triggers">
+    <div class="about-tabs__triggers-block"><a href="#tab-1" class="about-tabs__triggers-block-item">Вход</a></div>
+    <div class="about-tabs__triggers-block"><a href="#tab-2" class="about-tabs__triggers-block-item">Регистрация</a>
+    </div>
+   </div>
+  </div>
+  <div class="about-tabs__contant">
+   <div id="tab-1" class="about-tabs__contant-item">
+    <form action="/login" method="POST">
+     <div class="login">
+      <div class="login__row1">
+       <div class="field-item">
+        <input type="text" class="field-item__input" id="fieldItemLogin" name="fieldItemLogin" placeholder="Логин"
+         required>
+       </div>
+       <div class="field-item">
+        <input type="text" class="field-item__input" id="fieldItemPassword" name="fieldItemPassword"
+         placeholder="Пароль" required>
+       </div>
+      </div>
+      <div class="login__row2">
+       <div class="field-item field-item__notmargin">
+        <input type="checkbox" class="field-item__save" id="field-item__save" name="field-item__save"
+         placeholder="Логин">
+        <label for="field-item__save" class="field-item__label">Запомнить меня</label>
+       </div>
+       <div class="field-item">
+        <a href="#" class="field-item__link">Забыли пароль?</a>
+       </div>
+      </div>
+      <button class="btn constRegulat-form-blockBtn__btn btn-login" formaction="/login">Войти</button>
+     </div>
+    </form>
+   </div>
+   <div id="tab-2" class="about-tabs__contant-item">
+    <form action="/register" method="POST">
+     <div class="login">
+      <div class="login__row1">
+       <div class="field-item">
+        <input type="text" class="field-item__input" id="fieldItemLogin" name="fieldItemLogin" placeholder="Логин"
+         required>
+       </div>
+       {{!--<div class="field-item">
+        <input type="text" class="field-item__input" id="field-item__campany" name="field-item__campany"
+         placeholder="Название организации" required>
+       </div>--}}
+       <div class="field-item">
+        <input type="text" class="field-item__input" id="fieldItemEmail" name="fieldItemEmail"
+         placeholder="Электронная почта" required>
+       </div>
+       <div class="field-item">
+        <input type="text" class="field-item__input" id="fieldItemPassword" name="fieldItemPassword"
+         placeholder="Пароль" required>
+       </div>
+
+      </div>
+      <button class="btn constRegulat-form-blockBtn__btn btn-registr" formaction="/register">Зарегистрироваться</button>
+     </div>
+    </form>
+    <div class="nav-dish"></div>
+   </div>
+  </div>
+ </div>
+</section>
+<script src="js/tabs.js"></script>
