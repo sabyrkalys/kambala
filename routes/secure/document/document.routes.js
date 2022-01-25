@@ -8,15 +8,15 @@ router.get('/:userId/document/createDocument/:docId', documentController.createD
 router.get('/:userId/document/editDocument/:docId', documentController.editDocument);
 
 
-router.post('/setDocumentHeader', documentController.setDocumentHeader);
+router.post('/:userId/document/createDocument/setDocumentHeader', documentController.setDocumentHeader);
 router.put('/updateDocumentHeader/:docId', documentController.updateDocumentHeader);
-router.put('/setDocumentBody_1', documentController.setDocumentBody_1);
-router.put('/setDocumentBody_2', documentController.setDocumentBody_2);
-router.put('/setDocumentBody_3', documentController.setDocumentBody_3);
-router.put('/setDocumentBody_4', documentController.setDocumentBody_4);
-router.put('/setDocumentBody_5', documentController.setDocumentBody_5);
-router.put('/saveDocument', documentController.saveDocument);
-router.post('/sendDocument', documentController.sendDocument);
+router.put('/:userId/document/createDocument/setDocumentBody_1', documentController.setDocumentBody_1);
+router.put('/:userId/document/createDocument/setDocumentBody_2', documentController.setDocumentBody_2);
+router.put('/:userId/document/createDocument/setDocumentBody_3', documentController.setDocumentBody_3);
+router.put('/:userId/document/createDocument/setDocumentBody_4', documentController.setDocumentBody_4);
+router.put('/:userId/document/createDocument/setDocumentBody_5', documentController.setDocumentBody_5);
+router.put('/:userId/document/createDocument/saveDocument', documentController.saveDocument);
+router.post('/:userId/document/createDocument/sendDocument', documentController.sendDocument);
 
 router.put('/confirmDocument/:docId', documentController.confirmDocument);
 router.put('/createWord/:docId', documentController.createWord);

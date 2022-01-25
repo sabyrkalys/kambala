@@ -62,14 +62,14 @@
   transition: height 0.4s ease-in-out;
   animation: content 0.5s linear forwards;
 }
+.about-tabs__contant-item form {
+  width: 45%;
+}
 .about-tabs__contant .about-tabs__contant-item--active {
   display: flex;
 }
 #tab-2 {
   justify-content: flex-end;
-}
-form {
-  width: 45%;
 }
 .login {
   width: 100%;

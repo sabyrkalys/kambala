@@ -6,8 +6,6 @@ export function saveDate(target) {
  const triger = target;
  const item = (triger.parentNode).parentNode;
  const constRegulat = document.querySelector('.constRegulat');
- const parsedUrl = new URL(window.location.href);
- const create = parsedUrl.searchParams.get("action");
  if(item.querySelector('#headerText')){
   saveDocumentHeader()
  }
@@ -34,7 +32,7 @@ export function saveDate(target) {
  if(item.querySelector('#btnSaveDocument')){
   saveDocumentBody();
  }
- if(item.querySelector('#sendEmail')){
+ if(item.querySelector('#emailArray')){
   sendDocumentBody();
  }
 
@@ -43,14 +41,15 @@ export function saveDate(target) {
   const nameOrg = item.querySelector('#nameOrg');
   const nameService = item.querySelector('#nameService');
   const DOC = {
+   authorId: document.querySelector('#authorId').dataset.id,
+    title: document.querySelector('#title').value,
    headDOC: {
-    action:create,
     headerTitle: headerText.value,
    deliveryDoc: nameOrg.value,
    servicy: nameService.value
   },
   }
- fetch('/addRegulat/setDocumentHeader', {
+ fetch('../document/createDocument/setDocumentHeader?action=create', {
  method: 'post',
  headers: {
   'Content-Type': 'application/json'
@@ -68,13 +67,12 @@ export function saveDate(target) {
  
  function saveDocumentBody_1(){
   const subRegulat = {
-   action:create,
    id: constRegulat.dataset.id,
    row_1_1: items.subRegulat_1_1,
    row_1_2: items.subRegulat_1_2,
    row_1_3: items.subRegulat_1_3
   }
- fetch('/addRegulat/setDocumentBody_1', {
+ fetch('../document/createDocument/setDocumentBody_1?action=create', {
  method: 'put',
  headers: {
   'Content-Type': 'application/json'
@@ -90,7 +88,6 @@ export function saveDate(target) {
 
  function saveDocumentBody_2(){
   const subRegulat = {
-   action:create,
    id: constRegulat.dataset.id,
    row_2_1: items.subRegulat_2_1,
    row_2_2: {
@@ -116,7 +113,7 @@ export function saveDate(target) {
    row_2_19: items.subRegulat_2_19,
 
   }
- fetch('/addRegulat/setDocumentBody_2', {
+ fetch('../document/createDocument/setDocumentBody_2?action=create', {
  method: 'put',
  headers: {
   'Content-Type': 'application/json'
@@ -131,11 +128,10 @@ export function saveDate(target) {
 
  function saveDocumentBody_3(){
   const subRegulat = {
-   action:create,
    id: constRegulat.dataset.id,
    row_3_1: items.subRegulat_3_1
   }
- fetch('/addRegulat/setDocumentBody_3', {
+ fetch('../document/createDocument/setDocumentBody_3?action=create', {
  method: 'put',
  headers: {
   'Content-Type': 'application/json'
@@ -150,11 +146,10 @@ export function saveDate(target) {
 
  function saveDocumentBody_4(){
   const subRegulat = {
-   action:create,
    id: constRegulat.dataset.id,
    row_4_1: items.subRegulat_4_1
   }
- fetch('/addRegulat/setDocumentBody_4', {
+ fetch('../document/createDocument/setDocumentBody_4?action=create', {
  method: 'put',
  headers: {
   'Content-Type': 'application/json'
@@ -169,11 +164,10 @@ export function saveDate(target) {
 
  function saveDocumentBody_5(){
   const subRegulat = {
-   action:create,
    id: constRegulat.dataset.id,
    row_5_1: items.subRegulat_5_1
   }
- fetch('/addRegulat/setDocumentBody_5', {
+ fetch('../document/createDocument/setDocumentBody_5?action=create', {
  method: 'put',
  headers: {
   'Content-Type': 'application/json'
@@ -189,31 +183,39 @@ export function saveDate(target) {
 
  function saveDocumentBody(){
   const subRegulat = {
-   action:create,
    id: constRegulat.dataset.id
   }
- fetch('/addRegulat/saveDocument', {
+ fetch('../document/createDocument/saveDocument?action=create', {
  method: 'put',
  headers: {
   'Content-Type': 'application/json'
  },
  body: JSON.stringify(subRegulat)
- }).then(res => res.json())
+ }).then(res => res.json()).then(res => {
+  document.getElementById('docId').value = res.result.authorId
+  
+ })
  }
 
  function sendDocumentBody(){
   const subRegulat = {
    docId: constRegulat.dataset.id,
    emailArray: [{
-    email:item.querySelector('#sendEmail').value
+    email:item.querySelector('#emailArray').value
    }]
   }
- fetch('/addRegulat/sendDocument', {
+ fetch('../document/createDocument/sendDocument', {
  method: 'post',
  headers: {
   'Content-Type': 'application/json'
  },
  body: JSON.stringify(subRegulat)
- }).then(res => console.log(res.json()))
+ }).then(res => res.json()).then(res => {
+  console.log('res: ', res);
+
+  if(res.result){
+   window.location.href = `http://localhost:3000/user/${document.getElementById('docId').value}/document`
+  }
+ })
  }
 }

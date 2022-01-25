@@ -1,7 +1,6 @@
 import {saveDate} from './ajaxAddRegulat.js';
 import {render} from './renderPunkt.js';
 
-
 const accardion = document.querySelectorAll('.accardion');
 const list = document.querySelectorAll('.constRegulat-form-headerDoc__ul');
 const linkName = document.querySelector('.create-personal-data__link');

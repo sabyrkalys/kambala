@@ -1,41 +1,59 @@
 <section class="myAccaunt">
  <div class="wrapper myAccaunt__wrapper">
+  {{#if user.profile}}
+  {{else}}
+  <p class="warning">Обязательно заполните свой профиль для дальнейшей работы.<br>Перед сохранением проверьте, чтобы все
+   поля были заполены.</p>
+  {{/if}}
   <div class="section-header section-header--mt">
    <h2 class="section-header__title">Личный кабинет</h2>
   </div>
-  
+
   <div class="myAccaunt__block">
-   <forum class="myAccaunt-form myAccaunt__form">
+   <form action="{{#if user.profile}}./account/updateAccountData{{else}}./account/saveAccountData{{/if}}" method="{{#if user.profile}}PUT{{else}}
+   POST{{/if}}" class="myAccaunt-form myAccaunt__form">
     <div class="myAccaunt-form__column">
      <div class="myAccaunt-form__mainItem">
       <div class="myAccaunt-form__item">
        <h3 class="myAccaunt-form__title">Персональная информация</h3>
        <div class="myAccaunt-form__blockInput  ">
-        <label for="#" class="myAccaunt-form__label">Фамилия</label><input type="text" class="myAccaunt-form__input">
+        <label for="lastName" class="myAccaunt-form__label">Фамилия</label>
+        <input type="text" class="myAccaunt-form__input" id="lastName" name="lastName" value="{{user.profile.lastName}}"
+         required>
        </div>
        <div class="myAccaunt-form__blockInput  ">
-        <label for="#" class="myAccaunt-form__label">Имя</label><input type="text" class="myAccaunt-form__input">
+        <label for="name" class="myAccaunt-form__label">Имя</label>
+        <input type="text" class="myAccaunt-form__input" required id="name" name="name" value="{{user.profile.name}}">
        </div>
        <div class="myAccaunt-form__blockInput  ">
-        <label for="#" class="myAccaunt-form__label">Отчество</label><input type="text" class="myAccaunt-form__input">
+        <label for="patronymic" class="myAccaunt-form__label">Отчество</label>
+        <input type="text" class="myAccaunt-form__input" required id="patronymic" name="patronymic"
+         value="{{user.profile.patronymic}}">
+       </div>
+       <div class="myAccaunt-form__blockInput">
+        <label for="login" class="myAccaunt-form__label">Логин</label>
+        <input type="text" class="myAccaunt-form__input" required id="login" name="login" value="{{user.login}}">
        </div>
        <div class="myAccaunt-form__blockInput  ">
-        <label for="#" class="myAccaunt-form__label">Дата рождения</label><input type="text"
-         class="myAccaunt-form__input">
+        <label for="dob" class="myAccaunt-form__label">Дата рождения</label>
+        <input type="date" class="myAccaunt-form__input" required id="dob" name="dob" value="{{user.profile.DOB}}">
        </div>
       </div>
       <div class="myAccaunt-form__item">
        <h3 class="myAccaunt-form__title">Данные сотрудника</h3>
        <div class="myAccaunt-form__blockInput  ">
-        <label for="#" class="myAccaunt-form__label">Название организации</label><input type="text"
-         class="myAccaunt-form__input">
+        <label for="NameOrganization" class="myAccaunt-form__label">Название организации</label><input type="text"
+         class="myAccaunt-form__input" required id="NameOrganization" name="NameOrganization"
+         value="{{user.profile.NameOrganization}}">
        </div>
        <div class="myAccaunt-form__blockInput  ">
-        <label for="#" class="myAccaunt-form__label">Подразделение</label><input type="text"
-         class="myAccaunt-form__input">
+        <label for="sybDivision" class="myAccaunt-form__label">Подразделение</label><input type="text"
+         class="myAccaunt-form__input" required id="sybDivision" name="sybDivision"
+         value="{{user.profile.sybDivision}}">
        </div>
        <div class="myAccaunt-form__blockInput  ">
-        <label for="#" class="myAccaunt-form__label">Должность</label><input type="text" class="myAccaunt-form__input">
+        <label for="position" class="myAccaunt-form__label">Должность</label><input type="text"
+         class="myAccaunt-form__input" required id="position" name="position" value="{{user.profile.position}}">
        </div>
       </div>
      </div>
@@ -50,20 +68,29 @@
       <div class="myAccaunt-form__item">
        <h3 class="myAccaunt-form__title">Контактная информация</h3>
        <div class="myAccaunt-form__blockInput  ">
-        <label for="#" class="myAccaunt-form__label">Телефон</label><input type="text" class="myAccaunt-form__input">
+        <label for="phone" class="myAccaunt-form__label">Телефон</label><input type="text" class="myAccaunt-form__input"
+         required id="phone" name="phone" placeholder="+79453442312" value="{{user.profile.phone}}">
        </div>
        <div class="myAccaunt-form__blockInput  ">
-        <label for="#" class="myAccaunt-form__label">Электронная почта</label><input type="text"
-         class="myAccaunt-form__input">
+        <label for="email" class="myAccaunt-form__label">Электронная почта</label><input type="text"
+         class="myAccaunt-form__input" required id="email" name="email" value="{{user.email}}">
        </div>
       </div>
      </div>
     </div>
     <div class="myAccaunt-form__column myAccaunt-form__column_right">
-     <button type="submit" class="btn myAccaunt-form__btn myAccaunt-form__btn_red">Отменить</button>
-     <button type="submit" class="btn myAccaunt-form__btn myAccaunt-form__btn_blue">Сохранить</button>
+     {{#if user.profile}}
+     <button type="submit" formaction="./account/updateAccountData"
+      class="btn myAccaunt-form__btn myAccaunt-form__btn-edit myAccaunt-form__btn_red">Редактировать</button>
+     {{else}}
+     {{!--<button type="submit" formaction="./account/updateAccountData"
+      class="btn myAccaunt-form__btn myAccaunt-form__btn-edit myAccaunt-form__btn_red"
+      style="display: none;">Редактировать</button>--}}
+     <button type="submit" formaction="./account/saveAccountData"
+      class="btn myAccaunt-form__btn myAccaunt-form__btn-save myAccaunt-form__btn_blue">Сохранить</button>
+     {{/if}}
     </div>
-   </forum>
+   </form>
   </div>
  </div>
 </section>

@@ -1,8 +1,9 @@
 const {Schema, model} = require('mongoose')
 
 const documentSchema = new Schema ({
- //authorId:{ type: Schema.Types.ObjectId, ref: 'User', required:true },
- //title: { type: String, required: true },
+ authorId:{ type: Schema.Types.ObjectId, 
+  ref: 'User', required:true },
+ title: { type: String, required: true },
  dateСreate: { type : Date, default: Date.now, required: true },
  status: { type: Number, default: 0, required: true },
  step: { type: Number, default: 0, required: true },

@@ -3,17 +3,17 @@ const {authModel} = require('../../models');
 
 
 exports.index = async (req, res) => {
-  //console.log(req.session);
   res.render('login', {
-   title: 'Вход в систему'
+   title: 'Вход в систему',
+   isLogin: true,
   })
 }
 
-exports.registerPage = async (req, res) => {
-  res.render('register', {
-   title: 'Регестрация'
-  })
-}
+//exports.registerPage = async (req, res) => {
+//  res.render('register', {
+//   title: 'Регестрация'
+//  })
+//}
 
 exports.loginUser = async (req, res) => {
   try {

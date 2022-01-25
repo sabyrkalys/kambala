@@ -9,8 +9,8 @@ exports.index = async (docId) => {
 
 exports.setDocumentHeader = async (req) => {
   const regulat = new Document({
-    //authorId: req.body.authorId,
-    //title: req.body.title,
+    authorId: req.body.authorId,
+    title: req.body.title,
     date: req.body.dateCreation,
     status: req.body.status,
     versions: {
@@ -55,8 +55,8 @@ exports.updateDocumentHeader = async (req) => {
 }
 
 exports.setDocumentBody_1 = async (req) => {
-  const action = req.body.action;
-  const docId = req.body.docId;
+  const action = req.query.action;
+  const docId = req.body.id;
 
   const filter = {
     _id: docId
@@ -92,8 +92,8 @@ exports.setDocumentBody_1 = async (req) => {
 }
 
 exports.setDocumentBody_2 = async (req) => {
-  const action = req.body.action;
-  const docId = req.body.docId;
+  const action = req.query.action;
+  const docId = req.body.id;
 
   const filter = {
     _id: docId
@@ -162,8 +162,8 @@ exports.setDocumentBody_2 = async (req) => {
 }
 
 exports.setDocumentBody_3 = async (req) => {
-  const action = req.body.action;
-  const docId = req.body.docId;
+  const action = req.query.action;
+  const docId = req.body.id;
 
   const filter = {
     _id: docId
@@ -199,8 +199,8 @@ exports.setDocumentBody_3 = async (req) => {
 }
 
 exports.setDocumentBody_4 = async (req) => {
-  const action = req.body.action;
-  const docId = req.body.docId;
+  const action = req.query.action;
+  const docId = req.body.id;
 
   const filter = {
     _id: docId
@@ -233,8 +233,8 @@ exports.setDocumentBody_4 = async (req) => {
 }
 
 exports.setDocumentBody_5 = async (req) => {
-  const action = req.body.action;
-  const docId = req.body.docId;
+  const action = req.query.action;
+  const docId = req.body.id;
 
   const filter = {
     _id: docId
@@ -270,8 +270,8 @@ exports.setDocumentBody_5 = async (req) => {
 }
 
 exports.saveDocument = async (req) => {
-  const action = req.body.action;
-  const docId = req.body.docId;
+  const action = req.query.action;
+  const docId = req.body.id;
   const viewToken = new mongoose.Types.ObjectId();
 
   const filter = {
@@ -298,7 +298,7 @@ exports.saveDocument = async (req) => {
 
 exports.sendDocument = async (req) => {
   const docId = req.body.docId;
-  const emailArray = req.body.emailArray;
+  const emailArray = req.body.emailArray
   const result = await Document.findById(docId);
   const documentLink = req.headers.host + `/commentRegulat?viewToken=${result.viewToken}`;
   const mailInfo = await mailService.sendDocument(emailArray,documentLink);

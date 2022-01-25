@@ -6,25 +6,47 @@
     <a href="#" class="header-top-item__link"></a>
    </div>
    <div class="logo header-top-item__block">
-    <img src="./style/img/logo.svg" alt="" class="logo__img header-top-item__img">
+    <img src="../../../style/img/logo.svg" alt="" class="logo__img header-top-item__img">
     <h1 class="header-top-item__title">АИС КАМБАЛА</h1>
     <a href="/" class="logo__link header-top-item__link"></a>
    </div>
   </div>
   <div class="header-top__item header-top-item">
    <div class="header-top-item__block header-top-item-block header-top-item-block--separater">
-    <a href="../document/" class="header-top-item-block__link">Мои документы</a>
+    {{#if isAccount}}
+    <a href="./document" class="header-top-item-block__link">Мои документы</a>
+    {{else if isRegulat}}
+    <a href="./document" class="header-top-item-block__link">Мои документы</a>
+    {{else if isAddRegulat}}
+    <a href="../document" class="header-top-item-block__link">Мои документы</a>
+    {{else if isLogin}}
+    <a href="#" class="header-top-item-block__link"></a>
+    {{else}}
+    <a href="../document" class="header-top-item-block__link">Мои документы</a>
+    {{/if}}
    </div>
    <div class="header-top-item__block header-top-item-block--separater">
     <span class="header-top-item__notification">
      <span class="header-top-item__qty">1</span>
     </span>
+    {{#if isLogin}}
+    {{!--<a href="#" class="header-top-item__link"></a>--}}
+    {{/if}}
     <a href="#" class="header-top-item__link"></a>
    </div>
    <div class="header-top-item__block header-top-item-block header-top-item-block--ml">
+    {{#if isLogin}}
+    {{else}}
     <img src="/style/img/png-clipart-indian-elephant-drawing-animal-locomotion-blue-mammal.png" alt=""
      class="header-top-item-block__img ">
-    <a href="../account/" class="header-top-item__link"></a>
+    {{/if}}
+    {{#if isAddRegulat}}
+    <a href="../account" class="header-top-item__link"></a>
+    {{else if isLogin}}
+    {{!--<a href="#" class="header-top-item__link"></a>--}}
+    {{else}}
+    <a href="./account" class="header-top-item__link"></a>
+    {{/if}}
    </div>
   </div>
  </div>

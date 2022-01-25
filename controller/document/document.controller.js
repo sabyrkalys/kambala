@@ -1,15 +1,27 @@
 const documentModel = require('../../models/document/document.model.js');
 const {AuthService} = require('../../classes');
+const User = require('../../schemas/user/user.schema')
 const auth = new AuthService;
+
+function mapDocItems(doc) {
+ return doc.items.map(c => ({
+  ...c.documentId._doc
+ }))
+}
 
 exports.index = async (req, res) => {
   let isLogined = await auth.check(req.session);
+  const user = await User.findById(req.params.userId).lean();
+  //const docs = await user.find().populate('documentId').lean();
+  //const documents = mapDocItems(docs.documents);
+
   if (isLogined) {
     if (req.params.userId) {
       res.render('myDocument', {
        title: 'Список документов',
-       isAddRegulat: true,
-
+       id: user._id,
+       isRegulat: true,
+       user,
       })
     }
     else {
@@ -23,6 +35,7 @@ exports.index = async (req, res) => {
 
 exports.createDocument = async (req, res) => {
   let isLogined = await auth.check(req.session);
+  const user = await User.findById(req.params.userId).lean();
   if (isLogined) {
     if (req.params.docId) {
       const docId = req.params.docId;
@@ -44,9 +57,10 @@ exports.createDocument = async (req, res) => {
       }
     }
     else {
-      res.render('addRegulat', {
+      res.render('addDocument', {
        title: 'Создать регламент',
-       isAddRegulat: true
+       isAddRegulat: true,
+       user
       })
     }
   }
@@ -64,7 +78,7 @@ exports.editDocument = async (req, res) => {
         return res.status(404).send();
       }
       else {
-        res.render('addRegulat', {
+        res.render('addDocument', {
          title: 'Создать регламент',
          isAddRegulat: true,
          documentData: result,
@@ -76,7 +90,7 @@ exports.editDocument = async (req, res) => {
     }
   }
   else {
-    res.render('addRegulat', {
+    res.render('addDocument', {
      title: 'Создать регламент',
      isAddRegulat: true
     })
@@ -84,9 +98,10 @@ exports.editDocument = async (req, res) => {
 }
 
 exports.setDocumentHeader = async function (req, res) {
-  //let isLogined = await auth.check(req.session);
-  //if (isLogined) {
-    if (req.query.action === 'create') {
+
+  let isLogined = await auth.check(req.session);
+  if (isLogined) {
+   if (req.query.action === 'create') {
       try {
         const result = await documentModel.setDocumentHeader(req);
 
@@ -105,15 +120,15 @@ exports.setDocumentHeader = async function (req, res) {
     else {
       return res.status(400).send();
     }
-  //}
-  //else {
-  //  res.status(401).send(isLogined);
-  //}
+  }
+  else {
+    res.status(401).send(isLogined);
+  }
 }
 
 exports.updateDocumentHeader = async function (req, res) {
-  //let isLogined = await auth.check(req.session);
-  //if (isLogined) {
+  let isLogined = await auth.check(req.session);
+  if (isLogined) {
     if (req.query.action === 'edit') {
       try {
         const result = await documentModel.updateDocumentHeader(req);
@@ -132,19 +147,18 @@ exports.updateDocumentHeader = async function (req, res) {
     else {
       return res.status(400).send();
     }
-  //}
-  //else {
-  //  res.status(401).send(isLogined);
-  //}
+  }
+  else {
+    res.status(401).send(isLogined);
+  }
 }
 
 exports.setDocumentBody_1 = async (req, res) => {
-  //let isLogined = await auth.check(req.session);
-  //if (isLogined) {
-    if (req.body.action === 'create' || req.query.action === 'edit') {
+  let isLogined = await auth.check(req.session);
+  if (isLogined) {
+    if (req.query.action === 'create' || req.query.action === 'edit') {
       try {
         const result = await documentModel.setDocumentBody_1(req);
-        console.log(result);
         if (!result) {
           return res.status(404).send();
         }
@@ -160,19 +174,18 @@ exports.setDocumentBody_1 = async (req, res) => {
     else {
       return res.status(400).send();
     }
-  //}
-  //else {
-  //  res.status(401).send(isLogined);
-  //}
+  }
+  else {
+    res.status(401).send(isLogined);
+  }
 }
 
 exports.setDocumentBody_2 = async (req, res) => {
-  //let isLogined = await auth.check(req.session);
-  //if (isLogined) {
-    if (req.body.action === 'create' || req.query.action === 'edit') {
+  let isLogined = await auth.check(req.session);
+  if (isLogined) {
+    if (req.query.action === 'create' || req.query.action === 'edit') {
       try {
         const result = await documentModel.setDocumentBody_2(req);
-        console.log(result);
         if (!result) {
           return res.status(404).send();
         }
@@ -188,19 +201,18 @@ exports.setDocumentBody_2 = async (req, res) => {
     else {
       return res.status(400).send();
     }
-  //}
-  //else {
-  //  res.status(401).send(isLogined);
-  //}
+  }
+  else {
+    res.status(401).send(isLogined);
+  }
 }
 
 exports.setDocumentBody_3 = async (req, res) => {
-  //let isLogined = await auth.check(req.session);
-  //if (isLogined) {
-    if (req.body.action === 'create' || req.query.action === 'edit') {
+  let isLogined = await auth.check(req.session);
+  if (isLogined) {
+    if (req.query.action === 'create' || req.query.action === 'edit') {
       try {
         const result = await documentModel.setDocumentBody_3(req);
-        console.log(result);
         if (!result) {
           return res.status(404).send();
         }
@@ -216,19 +228,18 @@ exports.setDocumentBody_3 = async (req, res) => {
     else {
       return res.status(400).send();
     }
-  //}
-  //else {
-  //  res.status(401).send(isLogined);
-  //}
+  }
+  else {
+    res.status(401).send(isLogined);
+  }
 }
 
 exports.setDocumentBody_4 = async (req, res) => {
-  //let isLogined = await auth.check(req.session);
-  //if (isLogined) {
-    if (req.body.action === 'create' || req.query.action === 'edit') {
+  let isLogined = await auth.check(req.session);
+  if (isLogined) {
+    if (req.query.action === 'create' || req.query.action === 'edit') {
       try {
         const result = await documentModel.setDocumentBody_4(req);
-        console.log(result);
         if (!result) {
           return res.status(404).send();
         }
@@ -244,19 +255,18 @@ exports.setDocumentBody_4 = async (req, res) => {
     else {
       return res.status(400).send();
     }
-  //}
-  //else {
-  //  res.status(401).send(isLogined);
-  //}
+  }
+  else {
+    res.status(401).send(isLogined);
+  }
 }
 
 exports.setDocumentBody_5 = async (req, res) => {
-  //let isLogined = await auth.check(req.session);
-  //if (isLogined) {
-    if (req.body.action === 'create' || req.query.action === 'edit') {
+  let isLogined = await auth.check(req.session);
+  if (isLogined) {
+    if (req.query.action === 'create' || req.query.action === 'edit') {
       try {
         const result = await documentModel.setDocumentBody_5(req);
-        console.log(result);
         if (!result) {
           return res.status(404).send();
         }
@@ -272,23 +282,24 @@ exports.setDocumentBody_5 = async (req, res) => {
     else {
       return res.status(400).send();
     }
-  //}
-  //else {
-  //  res.status(401).send(isLogined);
-  //}
+  }
+  else {
+    res.status(401).send(isLogined);
+  }
 }
 
 exports.saveDocument = async (req, res) => {
-  //let isLogined = await auth.check(req.session);
-  //if (isLogined) {
-    if (req.body.action === 'create' || req.query.action === 'edit') {
+  let isLogined = await auth.check(req.session);
+  const user = await User.findById(req.params.userId);
+  if (isLogined) {
+    if (req.query.action === 'create' || req.query.action === 'edit') {
       try {
         const result = await documentModel.saveDocument(req);
-        console.log(result);
         if (!result) {
           return res.status(404).send();
         }
         else {
+          await user.addDocument(result);
           return res.status(200).send({result});
         }
 
@@ -300,37 +311,37 @@ exports.saveDocument = async (req, res) => {
     else {
       return res.status(400).send();
     }
-  //}
-  //else {
-  //  res.status(401).send(isLogined);
-  //}
+  }
+  else {
+    res.status(401).send(isLogined);
+  }
 }
 
 exports.sendDocument = async (req, res) => {
-  //let isLogined = await auth.check(req.session);
-  //if (isLogined) {
+  let isLogined = await auth.check(req.session);
+  if (isLogined) {
     try {
       const result = await documentModel.sendDocument(req);
       if (!result) {
         return res.status(500).send();
       }
       else {
-        return res.status(200).send({result});
+        return res.status(500).send({result});
       }
 
     } catch (e) {
       console.log(e);
       res.status(500).send();
     }
-  //}
-  //else {
-  //  res.status(401).send(isLogined);
-  //}
+  }
+  else {
+    res.status(401).send(isLogined);
+  }
 }
 
 exports.confirmDocument = async (req,res) => {
-  //let isLogined = await auth.check(req.session);
-  //if (isLogined) {
+  let isLogined = await auth.check(req.session);
+  if (isLogined) {
     try {
       const result = await documentModel.confirmDocument(req);
       if (!result) {
@@ -343,15 +354,15 @@ exports.confirmDocument = async (req,res) => {
       console.log(e);
       return res.status(500).send();
     }
-  //}
-  //else {
-  //  res.status(401).send(isLogined);
-  //}
+  }
+  else {
+    res.status(401).send(isLogined);
+  }
 }
 
 exports.createWord = async (req,res) => {
-  //let isLogined = await auth.check(req.session);
-  //if (isLogined) {
+  let isLogined = await auth.check(req.session);
+  if (isLogined) {
     try {
       const result = await documentModel.createWord(req)
       if (!result) {
@@ -367,15 +378,15 @@ exports.createWord = async (req,res) => {
       console.log(e);
       return res.status(500).send();
     }
-  //}
-  //else {
-  //  res.status(401).send(isLogined);
-  //}
+  }
+  else {
+    res.status(401).send(isLogined);
+  }
 }
 
 exports.createPdf = async (req,res) => {
-  //let isLogined = await auth.check(req.session);
-  //if (isLogined) {
+  let isLogined = await auth.check(req.session);
+  if (isLogined) {
     try {
       const result = await documentModel.createPdf(req);
 
@@ -399,8 +410,8 @@ exports.createPdf = async (req,res) => {
       console.log(e);
       return res.status(500).send();
     }
-  //}
-  //else {
-  //  res.status(401).send(isLogined);
-  //}
+  }
+  else {
+    res.status(401).send(isLogined);
+  }
 }

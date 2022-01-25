@@ -11,13 +11,43 @@ const userSchema = new Schema ({
     DOB:{ type: String },
     NameOrganization: {type: String},
     sybDivision:{type: String},
-    Position: {type: String},
+    position: {type: String},
     phone: {type: String}
+  },
+  documents: {
+   items: [
+    {
+     documentId:{
+     type: Schema.Types.ObjectId,
+     ref: 'Document',
+     required:true
+     }
+    }
+   ]
   },
   profileStatus: { type: Number, required: true, default: 0  },
   accessToken: { type: String },
   refreshToken: { type: String },
 
 })
+
+userSchema.methods.addDocument = function(document) {
+ const items = [...this.documents.items];
+ items.push({
+  documentId:document._id
+ })
+ //const idx = items.findIndex(c => {
+ // return c.courseId.toString() === document._id.toString();
+ //})
+ 
+ //if(idx) {
+ // return true
+ //} else {
+  
+ //}
+ this.documents = {items};
+ return this.save();
+}
+
 
 module.exports = model('User', userSchema)

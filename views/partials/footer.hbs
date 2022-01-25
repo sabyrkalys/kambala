@@ -2,7 +2,7 @@
  <div class="wrapper">
   <div class="footer__container footer-container">
    <div class="logo footer-container__logo">
-    <img src="./style/img/logo-footer.png" alt="" class="logo__img footer-container__img">
+    <img src="../../../style/img/logo-footer.png" alt="" class="logo__img footer-container__img">
     <a href="#" class="logo__link"></a>
    </div>
    <div class="footer-container__item footer-container-item">
@@ -28,4 +28,9 @@
   </div>
  </div>
 </footer>
-<script type="module" src="js/script.js"></script>
+{{#if isAccount}}
+<script type="module" src="../../../js/ajaxAccount.js"></script>
+{{/if}}
+{{#if isAddRegulat}}
+<script type="module" src="../../../js/script.js"></script>
+{{/if}}

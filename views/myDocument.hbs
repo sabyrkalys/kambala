@@ -9,22 +9,23 @@
         class="myRegulat-container__img"></div>
      </div>
      <div class="myRegulat-container__personalData">
-      <span class="myRegulat-container__name">Иванов Иван Иванович</span>
-      <span class="myRegulat-container__work">(место работы)</span>
-      <span class="myRegulat-container__position">(должность)</span>
+      <span class="myRegulat-container__name">{{user.profile.lastName}} {{user.profile.name}}
+       {{user.profile.patronymic}}</span>
+      <span class="myRegulat-container__work">({{user.profile.NameOrganization}})</span>
+      <span class="myRegulat-container__position">({{user.profile.position}})</span>
      </div>
      <div class="myRegulat-container__createRegulat myRegulat-container-createRegulat">
       <div class="myRegulat-container-createRegulat__item">
        <span class="myRegulat-container-createRegulat__title">Создано регламентов</span><span
-        class="myRegulat-container-createRegulat__qty">7</span>
+        class="myRegulat-container-createRegulat__qty">0</span>
       </div>
       <div class="myRegulat-container-createRegulat__item">
        <span class="myRegulat-container-createRegulat__title">Согласованно регламентов</span><span
-        class="myRegulat-container-createRegulat__qty">7</span>
+        class="myRegulat-container-createRegulat__qty">0</span>
       </div>
       <div class="myRegulat-container-createRegulat__item">
        <span class="myRegulat-container-createRegulat__title">Регламенты на согласование</span><span
-        class="myRegulat-container-createRegulat__qty">7</span>
+        class="myRegulat-container-createRegulat__qty">0</span>
       </div>
      </div>
     </div>
@@ -45,15 +46,23 @@
       <div class="section-header">
        <h2 class="section-header__title myRegulat-container-list__title">{{title}}</h2>
       </div>
-      <div class="myRegulat-container-list__create"><a href="../document/createDocument" class="myRegulat-container-list__link">Создать
+      <div class="myRegulat-container-list__create"><a href="../{{id}}/document/createDocument"
+        class="myRegulat-container-list__link">Создать
         <i class="myRegulat-container-list__addIcon"></i></a>
       </div>
      </div>
      <div class="myRegulat-container-list__block">
       <div class="myRegulat-container-list__container">
+       {{#if user.documents.items.length}}
        <div class="myRegulat-container-list__total-regul">У вас
-        <span class="myRegulat-container-list__total-qty">10</span> созданных регламента
+        <span class="myRegulat-container-list__total-qty">{{user.documents.items.length}}</span> созданных регламента
        </div>
+       {{else}}
+       <div class="myRegulat-container-list__total-regul">У вас
+        <span class="myRegulat-container-list__total-qty">пока нет созданных регламентов</span>
+       </div>
+       {{/if}}
+
        <ul class="myRegulat-container-list__regulat">
         <li class="myRegulat-container-list__item myRegulat-container-list-item">
          <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>

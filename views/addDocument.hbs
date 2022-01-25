@@ -11,15 +11,16 @@
        <div class="myRegulat-container-list__container myRegulat-container-list__container_pdg">
         <ul class="myRegulat-container-list__regulat">
          <li class="myRegulat-container-list__item myRegulat-container-list-item">
-          <div class="create-personal-data create-personal-data--pl"><label for="#"
-            class="create-personal-data__name">Ваши Ф.И.О.</label><input type="text" class="create-personal-data__input"
-            placeholder="Иванов Иван Иванович"></div>
+          <div class="create-personal-data create-personal-data--pl"><label for="authorId"
+            class="create-personal-data__name">Ваши Ф.И.О.</label><input type="text" data-id="{{user._id}}"
+            id="authorId" name="authorId" class="create-personal-data__input" placeholder="Иванов Иван Иванович"
+            value="{{user.profile.lastName}} {{user.profile.name}} {{user.profile.patronymic}}"></div>
          </li>
          <li class="myRegulat-container-list__item myRegulat-container-list-item">
-          <div class="create-personal-data create-personal-data--pl"><label for="#"
+          <div class="create-personal-data create-personal-data--pl"><label for="title"
             class="create-personal-data__name create-personal-data__name_mnull">Регламент:</label><input type="text"
-            class="create-personal-data__input create-personal-data__input_nameInputReg" value="Новый регламент 6"
-            disabled> <a href="#" class="create-personal-data__link">Переименовать</a></div>
+            id="title" name="title" class="create-personal-data__input create-personal-data__input_nameInputReg"
+            value="Новый регламент 6" disabled> <a href="#" class="create-personal-data__link">Переименовать</a></div>
          </li>
          <li class="myRegulat-container-list__item myRegulat-container-list-item">
           <div class="create-personal-data create-personal-data--pl"><span class="create-personal-data__name">Дата
@@ -82,7 +83,7 @@
   </div>
   <div class="accardion myRegulat-container myRegulat-container--column">
 
-   <form action="/addRegulat/setDocumentHeader?action=create" method="POST" name="constRegulatForm"
+   <form action="../document/createDocument/setDocumentHeader?action=create" method="POST" name="constRegulatForm"
     class="accardion-item constRegulat__form constRegulat-form">
     <div class="accardion-content constRegulat__headerDoc">
      <div class="constRegulat__container">
@@ -121,7 +122,7 @@
     </div>
     <div class="constRegulat-form__blockBtn constRegulat-form__blockBtn_mt3 constRegulat-form-blockBtn"><button
       class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_save" type="submit"
-      formaction="/addRegulat/setDocumentHeader">Сохранить</button><button name="#constRegulatForm"
+      formaction="../document/createDocument/setDocumentHeader">Сохранить</button><button name="#constRegulatForm"
       class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_tab accardion-triger">Свернуть</button>
     </div>
    </form>
@@ -131,8 +132,8 @@
     <h2 class="section-header__title section-header__title_font700">Основной текст</h2>
    </div>
 
-   <form action="/addRegulat/setDocumentBody_1" method="PUT" name="setDocumentBody_1" id="setDocumentBody_1" hidden
-    class="accardion-item constRegulat__form constRegulat-form constRegulat__form_mb100">
+   <form action="../document/createDocument/setDocumentBody_1" method="PUT" name="setDocumentBody_1"
+    id="setDocumentBody_1" hidden class="accardion-item constRegulat__form constRegulat-form constRegulat__form_mb100">
     <div class="accardion-content constRegulat__headerDoc">
      <div class="constRegulat__container">
       <div class="section-header">
@@ -265,14 +266,14 @@
     </div>
     <div class="constRegulat-form__blockBtn constRegulat-form__blockBtn_mt3 constRegulat-form-blockBtn"><button
       class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_save" type="submit"
-      formaction="/addRegulat/setDocumentBody_1">Сохранить
+      formaction="../document/createDocument/setDocumentBody_1">Сохранить
       раздел</button><button
       class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_tab accardion-triger">Свернуть
       раздел</button></div>
    </form>
 
-   <form action="/addRegulat/setDocumentBody_2" method="PUT" name="setDocumentBody_2" id="setDocumentBody_2" hidden
-    class="accardion-item constRegulat__form constRegulat-form constRegulat__form_mb100">
+   <form action="../document/createDocument/setDocumentBody_2" method="PUT" name="setDocumentBody_2"
+    id="setDocumentBody_2" hidden class="accardion-item constRegulat__form constRegulat-form constRegulat__form_mb100">
     <div class="accardion-content constRegulat__headerDoc">
      <div class="constRegulat__container">
       <div class="section-header">
@@ -626,14 +627,14 @@
     </div>
     <div class="constRegulat-form__blockBtn constRegulat-form__blockBtn_mt3 constRegulat-form-blockBtn"><button
       class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_save"
-      formaction="/addRegulat/setDocumentBody_2" type="submit">Сохранить
+      formaction="../document/createDocument/setDocumentBody_2" type="submit">Сохранить
       раздел</button><button
       class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_tab accardion-triger">Свернуть
       раздел</button></div>
    </form>
 
-   <form action="/addRegulat/setDocumentBody_3" method="PUT" name="setDocumentBody_3" id="setDocumentBody_3" hidden
-    class="accardion-item constRegulat__form constRegulat-form constRegulat__form_mb100">
+   <form action="../document/createDocument/setDocumentBody_3" method="PUT" name="setDocumentBody_3"
+    id="setDocumentBody_3" hidden class="accardion-item constRegulat__form constRegulat-form constRegulat__form_mb100">
     <div class="accardion-content constRegulat__headerDoc">
      <div class="constRegulat__container">
       <div class="section-header">
@@ -656,14 +657,14 @@
     </div>
     <div class="constRegulat-form__blockBtn constRegulat-form__blockBtn_mt3 constRegulat-form-blockBtn"><button
       class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_save"
-      formaction="/addRegulat/setDocumentBody_3" type="submit">Сохранить
+      formaction="../document/createDocument/setDocumentBody_3" type="submit">Сохранить
       раздел</button><button
       class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_tab accardion-triger">Свернуть
       раздел</button></div>
    </form>
 
-   <form action="/addRegulat/setDocumentBody_4" method="PUT" name="setDocumentBody_4" id="setDocumentBody_4" hidden
-    class="accardion-item constRegulat__form constRegulat-form constRegulat__form_mb100">
+   <form action="../document/createDocument/setDocumentBody_4" method="PUT" name="setDocumentBody_4"
+    id="setDocumentBody_4" hidden class="accardion-item constRegulat__form constRegulat-form constRegulat__form_mb100">
     <div class="accardion-content constRegulat__headerDoc">
      <div class="constRegulat__container">
       <div class="section-header">
@@ -686,14 +687,14 @@
     </div>
     <div class="constRegulat-form__blockBtn constRegulat-form__blockBtn_mt3 constRegulat-form-blockBtn"><button
       class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_save"
-      formaction="/addRegulat/setDocumentBody_4" type="submit">Сохранить
+      formaction="../document/createDocument/setDocumentBody_4" type="submit">Сохранить
       раздел</button><button
       class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_tab accardion-triger">Свернуть
       раздел</button></div>
    </form>
 
-   <form action="/addRegulat/setDocumentBody_5" method="PUT" name="setDocumentBody_5" id="setDocumentBody_5" hidden
-    class="accardion-item constRegulat__form constRegulat-form constRegulat__form_mb78">
+   <form action="../document/createDocument/setDocumentBody_5" method="PUT" name="setDocumentBody_5"
+    id="setDocumentBody_5" hidden class="accardion-item constRegulat__form constRegulat-form constRegulat__form_mb78">
     <div class="accardion-content constRegulat__headerDoc">
      <div class="constRegulat__container">
       <div class="section-header">
@@ -717,18 +718,18 @@
     </div>
     <div class="constRegulat-form__blockBtn constRegulat-form__blockBtn_mt3 constRegulat-form-blockBtn"><button
       class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_save"
-      formaction="/addRegulat/setDocumentBody_5" type="submit">Сохранить
+      formaction="../document/createDocument/setDocumentBody_5" type="submit">Сохранить
       раздел</button><button
       class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_tab accardion-triger">Свернуть
       раздел</button></div>
    </form>
 
-   <form action="/addRegulat/saveDocument" method="PUT" name="saveDocument" id="saveDocument" hidden
+   <form action="../document/createDocument/saveDocument" method="PUT" name="saveDocument" id="saveDocument" hidden
     class="accardion-item constRegulat__form constRegulat-form constRegulat__form_mb78">
     <div class="constRegulat-form__blockBtn constRegulat-form__blockBtn_mt3 constRegulat-form-blockBtn">
      <button name="btnSaveDocument" id="btnSaveDocument"
       class="btn constRegulat-form-blockBtn__btn constRegulat-form-blockBtn__btn_save"
-      formaction="/addRegulat/saveDocument" type="submit">Сохранить документ</button>
+      formaction="../document/createDocument/saveDocument" type="submit">Сохранить документ</button>
     </div>
    </form>
 
@@ -736,10 +737,11 @@
     <div class="section-header">
      <h2 class="section-header__title section-header__title_ml10">Отправить на согласование </h2>
     </div>
-    <form action="/addRegulat/sendDocument" method="POST" class="send-aprev__form">
-     <input type="text" placeholder="Вставьте электронные почты через пробел" id="sendEmail" name="sendEmail"
+    <form action="../document/createDocument/sendDocument" method="POST" class="send-aprev__form">
+     <input type="hidden" class="docId" name="docId" id="docId" value="">
+     <input type="text" placeholder="Вставьте электронные почты через пробел" id="emailArray" name="emailArray"
       class="send-aprev__email">
-     <button type="submit" formaction="/addRegulat/sendDocument"
+     <button type="submit" formaction="../document/createDocument/sendDocument"
       class=" btn send-aprev__btn send-aprev__btn_send">Отправить</button>
     </form>
    </div>
