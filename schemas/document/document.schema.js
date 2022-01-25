@@ -168,7 +168,6 @@ const documentSchema = new Schema ({
       }]
     },
   },
- }
-
+},
 })
 module.exports = model('Document', documentSchema)

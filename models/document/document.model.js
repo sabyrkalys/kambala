@@ -1,4 +1,5 @@
 const Document = require('../../schemas/document/document.schema.js');
+const User = require('../../schemas/user/user.schema.js');
 const { MailService, HtmlConvertor,WordConvertor,PdfConvertor } = require('../../classes');
 const mongoose = require('mongoose');
 const mailService = new MailService(process.env.GMAIL_USER,process.env.GMAIL_PASSWORD)
@@ -301,8 +302,29 @@ exports.sendDocument = async (req) => {
   const emailArray = req.body.emailArray;
   const result = await Document.findById(docId);
   const documentLink = req.headers.host + `/commentRegulat?viewToken=${result.viewToken}`;
-  const mailInfo = await mailService.sendDocument(emailArray,documentLink);
-  return mailInfo;
+  let response = [];
+  for await (var row of emailArray) {
+    let result = await User.findOneAndUpdate(
+      {email:row.email},
+      {
+        $push:{
+          "accessDocuments.items":{
+            documentId: docId,
+          }
+        }
+      },
+    )
+
+    if (!result) {
+      response.push({email: row.email,message: 'Такого пользователя не существует'})
+    }
+    else {
+      const mailInfo = await mailService.sendDocument(row.email,documentLink);
+      response.push({email: row.email,message: 'Документ успешно отправлен'})
+    }
+  }
+
+  return response;
 }
 
 exports.confirmDocument = async (req) => {

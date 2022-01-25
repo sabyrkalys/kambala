@@ -12,7 +12,11 @@ const userSchema = new Schema ({
   profileStatus: { type: Number, required: true, default: 0  },
   accessToken: { type: String },
   refreshToken: { type: String },
-
+  accessDocuments: {
+    items:[{
+      documentId: {type: Schema.Types.ObjectId},
+    }]
+  }
 })
 
 module.exports = model('User', userSchema)
