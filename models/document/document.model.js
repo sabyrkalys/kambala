@@ -300,8 +300,7 @@ exports.saveDocument = async (req) => {
 exports.sendDocument = async (req) => {
   const docId = req.body.docId;
   const emailArray = req.body.emailArray;
-  const result = await Document.findById(docId);
-  const documentLink = req.headers.host + `/commentRegulat?viewToken=${result.viewToken}`;
+  const message = 'Вам предоставлен доступ к документу';
   let response = [];
   for await (var row of emailArray) {
     let result = await User.findOneAndUpdate(
@@ -319,7 +318,7 @@ exports.sendDocument = async (req) => {
       response.push({email: row.email,message: 'Такого пользователя не существует'})
     }
     else {
-      const mailInfo = await mailService.sendDocument(row.email,documentLink);
+      const mailInfo = await mailService.sendDocument(row.email,message);
       response.push({email: row.email,message: 'Документ успешно отправлен'})
     }
   }

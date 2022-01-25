@@ -31,13 +31,11 @@ class MailService {
     }));
   }
 
-  async sendDocument(emailArray, documentLink){
+  async sendDocument(email, message){
     await this.init();
     var response = '';
-    this.option.text = 'Ссылка на общий доступ к документу: ' + documentLink
-    for (let i = 0; i < emailArray.length; i++) {
-      this.option.to[i] = emailArray[i].email;
-    }
+    this.option.text = message;
+    this.option.to = email;
 
     try {
       await this.transporter.sendMail(this.option, function(error, info){
