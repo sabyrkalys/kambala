@@ -3,19 +3,20 @@ const {AuthService} = require('../../classes');
 const auth = new AuthService;
 
 exports.index = async (req, res) => {
+  console.log(req);
   let isLogined = await auth.check(req.session);
   if (isLogined) {
-    if (req.params.userId) {
+    // if (req.params.userId) {
       res.render('myRegulat', {
        title: 'Список документов',
        isAddRegulat: true,
 
       })
       console.log(req.session);
-    }
-    else {
-      res.redirect('/');
-    }
+    // }
+    // else {
+    //   res.redirect('/');
+    // }
   }
   else {
     res.redirect('/');

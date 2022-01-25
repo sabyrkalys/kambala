@@ -1,5 +1,5 @@
 const Router = require('express')
-const router = Router();
+const router = Router({mergeParams: true});
 
 const documentRoutes = require('./document/document.routes')
 const accountRoutes = require('./account/account.routes')

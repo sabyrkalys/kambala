@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const User = require('../../schemas/user/user.schema.js');
 
-exports.updateUser = async (req) {
-  
+exports.updateUser = async (req) => {
+
+}
+
+exports.uploadPhoto = async (req) => {
+
 }
