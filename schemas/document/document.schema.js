@@ -8,7 +8,7 @@ const documentSchema = new Schema ({
  step: { type: Number, default: 0, required: true },
  viewToken: { type: Schema.Types.ObjectId },
  commentsUsers: [{
-   ip: { type: String, required: true },
+   userId: { type: String, required: true },
    comments: [{
      selectedString: { type: String, required: true },
      comment: { type: String, required: true },

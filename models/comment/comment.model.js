@@ -1,17 +1,20 @@
 const Document = require('../../schemas/document/document.schema.js');
 const {HtmlConvertor,WordConvertor,PdfConvertor} = require('../../classes');
 
-exports.index = async (viewToken) => {
-  return await Document.findOne({viewToken:viewToken});
+exports.index = async (docId) => {
+  return await Document.findOne({_id:docId});
 }
 
 exports.setComment = async (req) => {
-  const viewToken = req.params.viewToken;
-  const ipAdress = req.ip;
+  const userId = req.params.userId;
+  const docId = req.params.docId;
 
-  let checkIp = async () => {
-    let res = await Document.findOne({viewToken: viewToken},{'commentsUsers': { "$elemMatch": { "ip": ipAdress } }});
-    if (!res.commentsUsers.length || !res.commentsUsers[0].ip) {
+  console.log(userId);
+
+  let checkUser = async () => {
+    let res = await Document.findOne({_id: docId},{'commentsUsers': { "$elemMatch": { "userId": userId } }});
+    console.log(res);
+    if (!res.commentsUsers.length || !res.commentsUsers[0].userId) {
       return false
     }
     else {
@@ -27,10 +30,10 @@ exports.setComment = async (req) => {
     new: true
   }
 
-  if (await checkIp()) {
+  if (await checkUser()) {
     filter = {
-      viewToken: viewToken,
-      'commentsUsers': { "$elemMatch": { "ip": ipAdress } }
+      _id: docId,
+      'commentsUsers': { "$elemMatch": { "userId": userId } }
     }
     update = {
       $push:{
@@ -45,13 +48,13 @@ exports.setComment = async (req) => {
   }
   else {
     filter = {
-      viewToken: viewToken,
+      _id: docId,
     }
 
     update = {
       $push:{
         'commentsUsers':{
-          ip: ipAdress,
+          userId: userId,
         },
       },
     }
@@ -59,8 +62,8 @@ exports.setComment = async (req) => {
     const res = await Document.findOneAndUpdate(filter,update,option);
     if (res) {
       filter = {
-        viewToken: viewToken,
-        'commentsUsers': { "$elemMatch": { "ip": ipAdress } }
+        _id: docId,
+        'commentsUsers': { "$elemMatch": { "userId": userId } }
       }
       update = {
         $push:{

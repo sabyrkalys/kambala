@@ -1,9 +1,9 @@
 const commentModel = require('../../models/comment/comment.model.js');
 
 exports.index = async (req, res) => {
-  if (req.query.viewToken) {
+  if (req.query.docId) {
     try {
-      const result = await commentModel.index(req.query.viewToken);
+      const result = await commentModel.index(req.query.docId);
       if (!result) {
         return res.status(404).send();
       }
