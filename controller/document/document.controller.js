@@ -5,15 +5,27 @@ const auth = new AuthService;
 
 function mapDocItems(doc) {
  return doc.items.map(c => ({
-  ...c.documentId._doc
+  ...c.documentId
  }))
 }
+function mapVersions(doc) {
+ return doc.map((c, i) => ({
+  ...c.versions
+ }))
+}
+//function mapVersion(doc) {
+// return doc.map((c,i) => ({
+//  ...c[i]._doc
+// }))
+//}
 
 exports.index = async (req, res) => {
   let isLogined = await auth.check(req.session);
   const user = await User.findById(req.params.userId).lean();
-  //const docs = await user.find().populate('documentId').lean();
-  //const documents = mapDocItems(docs.documents);
+  const userDoc = await User.findById(req.params.userId).populate('documents.items.documentId').lean();
+  const docs = await userDoc.documents
+  const documents = mapDocItems(docs);
+  const versions = mapVersions(documents);
 
   if (isLogined) {
     if (req.params.userId) {
@@ -22,6 +34,8 @@ exports.index = async (req, res) => {
        id: user._id,
        isRegulat: true,
        user,
+       //versions,
+       documents
       })
     }
     else {

@@ -53,9 +53,9 @@
      </div>
      <div class="myRegulat-container-list__block">
       <div class="myRegulat-container-list__container">
-       {{#if user.documents.items.length}}
+       {{#if documents.length}}
        <div class="myRegulat-container-list__total-regul">У вас
-        <span class="myRegulat-container-list__total-qty">{{user.documents.items.length}}</span> созданных регламента
+        <span class="myRegulat-container-list__total-qty">{{documents.length}}</span> созданных регламента
        </div>
        {{else}}
        <div class="myRegulat-container-list__total-regul">У вас
@@ -64,114 +64,24 @@
        {{/if}}
 
        <ul class="myRegulat-container-list__regulat">
+        {{#if documents.length}}
+        {{#each documents}}
         <li class="myRegulat-container-list__item myRegulat-container-list-item">
          <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
-          Наименование регламента</a>
+          {{title}}</a>
          <div class="myRegulat-container-list-item__options">
           <div class="myRegulat-container-list-item__vers">Версия <span
-            class="myRegulat-container-list-item__vers-qty">1</span></div><span
-           class="myRegulat-container-list-item__status">Черновик</span>
+            class="myRegulat-container-list-item__vers-qty">{{#each versions}}{{version}}{{/each}}</span>
+          </div><span class="myRegulat-container-list-item__status">Черновик</span>
           <div class="myRegulat-container-list-item__mode">Режим: <span
             class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
            class="myRegulat-container-list-item__file"></span>
          </div>
         </li>
-        {{!--<li class="myRegulat-container-list__item myRegulat-container-list-item">
-         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
-          Наименование регламента</a>
-         <div class="myRegulat-container-list-item__options">
-          <div class="myRegulat-container-list-item__vers">Версия <span
-            class="myRegulat-container-list-item__vers-qty">1</span></div><span
-           class="myRegulat-container-list-item__status">Черновик</span>
-          <div class="myRegulat-container-list-item__mode">Режим: <span
-            class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
-           class="myRegulat-container-list-item__file"></span>
-         </div>
-        </li>
-        <li class="myRegulat-container-list__item myRegulat-container-list-item">
-         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
-          Наименование регламента</a>
-         <div class="myRegulat-container-list-item__options">
-          <div class="myRegulat-container-list-item__vers">Версия <span
-            class="myRegulat-container-list-item__vers-qty">1</span></div><span
-           class="myRegulat-container-list-item__status">Черновик</span>
-          <div class="myRegulat-container-list-item__mode">Режим: <span
-            class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
-           class="myRegulat-container-list-item__file"></span>
-         </div>
-        </li>
-        <li class="myRegulat-container-list__item myRegulat-container-list-item">
-         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
-          Наименование регламента</a>
-         <div class="myRegulat-container-list-item__options">
-          <div class="myRegulat-container-list-item__vers">Версия <span
-            class="myRegulat-container-list-item__vers-qty">1</span></div><span
-           class="myRegulat-container-list-item__status">Черновик</span>
-          <div class="myRegulat-container-list-item__mode">Режим: <span
-            class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
-           class="myRegulat-container-list-item__file"></span>
-         </div>
-        </li>
-        <li class="myRegulat-container-list__item myRegulat-container-list-item">
-         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
-          Наименование регламента</a>
-         <div class="myRegulat-container-list-item__options">
-          <div class="myRegulat-container-list-item__vers">Версия <span
-            class="myRegulat-container-list-item__vers-qty">1</span></div><span
-           class="myRegulat-container-list-item__status">Черновик</span>
-          <div class="myRegulat-container-list-item__mode">Режим: <span
-            class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
-           class="myRegulat-container-list-item__file"></span>
-         </div>
-        </li>
-        <li class="myRegulat-container-list__item myRegulat-container-list-item">
-         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
-          Наименование регламента</a>
-         <div class="myRegulat-container-list-item__options">
-          <div class="myRegulat-container-list-item__vers">Версия <span
-            class="myRegulat-container-list-item__vers-qty">1</span></div><span
-           class="myRegulat-container-list-item__status">Черновик</span>
-          <div class="myRegulat-container-list-item__mode">Режим: <span
-            class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
-           class="myRegulat-container-list-item__file"></span>
-         </div>
-        </li>
-        <li class="myRegulat-container-list__item myRegulat-container-list-item">
-         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
-          Наименование регламента</a>
-         <div class="myRegulat-container-list-item__options">
-          <div class="myRegulat-container-list-item__vers">Версия <span
-            class="myRegulat-container-list-item__vers-qty">1</span></div><span
-           class="myRegulat-container-list-item__status">Черновик</span>
-          <div class="myRegulat-container-list-item__mode">Режим: <span
-            class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
-           class="myRegulat-container-list-item__file"></span>
-         </div>
-        </li>
-        <li class="myRegulat-container-list__item myRegulat-container-list-item">
-         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
-          Наименование регламента</a>
-         <div class="myRegulat-container-list-item__options">
-          <div class="myRegulat-container-list-item__vers">Версия <span
-            class="myRegulat-container-list-item__vers-qty">1</span></div><span
-           class="myRegulat-container-list-item__status">Черновик</span>
-          <div class="myRegulat-container-list-item__mode">Режим: <span
-            class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
-           class="myRegulat-container-list-item__file"></span>
-         </div>
-        </li>
-        <li class="myRegulat-container-list__item myRegulat-container-list-item">
-         <a href="#" class="myRegulat-container-list-item__title"><i class="myRegulat-container-list-item__docIcon"></i>
-          Наименование регламента</a>
-         <div class="myRegulat-container-list-item__options">
-          <div class="myRegulat-container-list-item__vers">Версия <span
-            class="myRegulat-container-list-item__vers-qty">1</span></div><span
-           class="myRegulat-container-list-item__status">Черновик</span>
-          <div class="myRegulat-container-list-item__mode">Режим: <span
-            class="myRegulat-container-list-item__mode-qty">комментрирование</span></div><span
-           class="myRegulat-container-list-item__file"></span>
-         </div>
-        </li>--}}
+        {{/each}}
+        {{else}}
+        <li class="myRegulat-container-list__item myRegulat-container-list-item"></li>
+        {{/if}}
        </ul>
       </div>
      </div>
