@@ -9,7 +9,7 @@ exports.loginUser = async (req) => {
     login:req.body.login, password: req.body.password
   });
   if (!user) {
-    return false;
+    return false
   }
   else {
     const {accessToken, refreshToken} = auth.sign(req.session,req.body.login,req.body.password);
