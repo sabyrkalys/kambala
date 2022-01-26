@@ -57,9 +57,14 @@ const documentSchema = new Schema ({
       }]
     },
     subRegulat_2_2:{
-      items: [{
-        fieldName: { type: String, required: true }
+     items: [ {
+      item_2_2_1 : [{
+       fieldName: { type: String, required: true }
+      }],
+      item_2_2_2 : [{
+       fieldName: { type: String, required: true }
       }]
+     }]
     },
     subRegulat_2_3:{
       items: [{
