@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const handlebars = require('express-handlebars');
 const path = require('path');
 const mongoose = require('mongoose');
+const multer = require('multer');
 
 const app = express();
 const router = require('./routes');
@@ -17,6 +18,30 @@ const hbs = handlebars.create({
  extname: 'hbs'
 });
 
+const storageConfig = multer.diskStorage({
+    destination: (req, file, cb) =>{
+        cb(null, __dirname + "/public/uploads/");
+    },
+    filename: (req, file, cb) =>{
+        cb(null, file.originalname);
+    }
+});
+
+const fileFilter = (req, file, cb) => {
+
+    if(file.mimetype === "image/png" ||
+    file.mimetype === "image/jpg"||
+    file.mimetype === "image/jpeg"){
+        cb(null, true);
+    }
+    else{
+        cb(null, false);
+    }
+ }
+
+app.use(multer({storage:storageConfig, fileFilter: fileFilter}).single("avatar"))
+
+// app.use(multer({dest:__dirname+'/public/uploads/'}).single('avatar'));
 
 app.use(session({
   secret: process.env.APP_SESSION,
