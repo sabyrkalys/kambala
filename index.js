@@ -64,11 +64,6 @@ Handlebars.registerHelper('length', function (context) {
  return Object.keys(context).length;
 });
 
-
-Handlebars.registerHelper('loud', function (aString) {
- return aString.toUpperCase()
-})
-
 const storageConfig = multer.diskStorage({
     destination: (req, file, cb) =>{
         cb(null, __dirname + "/public/uploads/");
@@ -91,6 +86,35 @@ const fileFilter = (req, file, cb) => {
  }
 
 app.use(multer({storage:storageConfig, fileFilter: fileFilter}).single("avatar"))
+
+// app.use(multer({dest:__dirname+'/public/uploads/'}).single('avatar'));
+
+Handlebars.registerHelper('loud', function (aString) {
+ return aString.toUpperCase()
+})
+
+//const storageConfig = multer.diskStorage({
+//    destination: (req, file, cb) =>{
+//        cb(null, __dirname + "/public/uploads/");
+//    },
+//    filename: (req, file, cb) =>{
+//        cb(null, file.originalname);
+//    }
+//});
+
+//const fileFilter = (req, file, cb) => {
+
+//    if(file.mimetype === "image/png" ||
+//    file.mimetype === "image/jpg"||
+//    file.mimetype === "image/jpeg"){
+//        cb(null, true);
+//    }
+//    else{
+//        cb(null, false);
+//    }
+// }
+
+//app.use(multer({storage:storageConfig, fileFilter: fileFilter}).single("avatar"))
 
 
 app.use(session({
@@ -121,7 +145,7 @@ const PORT = process.env.PORT || 3000;
 async function start() {
  try {
   const password = '';
-  //const url = `mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false`
+  const url = `mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false`
   await mongoose.connect(url, {
    useNewUrlParser: true,
   });
