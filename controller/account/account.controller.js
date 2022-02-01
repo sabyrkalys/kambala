@@ -12,6 +12,7 @@ exports.index = async (req, res) => {
  })
 }
 
+
 exports.saveAccountData = async (req, res) => {
  try {
   const result = await accountModel.saveAccountData(req);
@@ -39,5 +40,26 @@ exports.updateAccountData = async (req, res) => {
   } catch (e) {
     console.log(e);
     res.status(500).send();
+  } 
+ }
+exports.uploadPhoto = async (req, res) => {
+  let isLogined = await auth.check(req.session);
+  if (isLogined) {
+    if (req.params.userId) {
+      const result = await accountModel.uploadPhoto(req);
+      if (!result) {
+        return res.status(404).send();
+      }
+      else {
+        console.log(result);
+        return res.status(200).send({result})
+      }
+    }
+    else {
+      return res.status(400).send();
+    }
+  }
+  else {
+    res.status(401).send(isLogined);
   }
 }

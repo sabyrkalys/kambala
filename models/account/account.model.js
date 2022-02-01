@@ -1,3 +1,6 @@
+
+const mongoose = require('mongoose');
+const multer  = require('multer');
 const User = require('../../schemas/user/user.schema.js');
 
 
@@ -29,4 +32,8 @@ exports.saveAccountData = async (req) => {
 
  return await User.findOneAndUpdate(filter,update, option);
 
+}
+exports.uploadPhoto = async (req) => {
+  const imageLink = req.headers.host + '/uploads/' + req.file.originalname;
+  return await User.findOneAndUpdate({_id:req.params.userId},{profile:{imageLink: imageLink}},{ new:true });
 }

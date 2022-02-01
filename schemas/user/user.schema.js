@@ -12,7 +12,8 @@ const userSchema = new Schema ({
     NameOrganization: {type: String},
     sybDivision:{type: String},
     position: {type: String},
-    phone: {type: String}
+    phone: {type: String},
+    imageLink: { type: String },
   },
   documents: {
    items: [
@@ -24,6 +25,7 @@ const userSchema = new Schema ({
      }
     }
    ]
+   
   },
   profileStatus: { type: Number, required: true, default: 0  },
   accessToken: { type: String },

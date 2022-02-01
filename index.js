@@ -8,8 +8,8 @@ const cookieParser = require('cookie-parser');
 const handlebars = require('express-handlebars');
 const path = require('path');
 const mongoose = require('mongoose');
-const moment = require('moment')
 const {url} = require('./password');
+const multer = require('multer');
 const app = express();
 const router = require('./routes');
 const Handlebars= require("handlebars");
@@ -64,9 +64,34 @@ Handlebars.registerHelper('length', function (context) {
  return Object.keys(context).length;
 });
 
+
 Handlebars.registerHelper('loud', function (aString) {
  return aString.toUpperCase()
 })
+
+const storageConfig = multer.diskStorage({
+    destination: (req, file, cb) =>{
+        cb(null, __dirname + "/public/uploads/");
+    },
+    filename: (req, file, cb) =>{
+        cb(null, file.originalname);
+    }
+});
+
+const fileFilter = (req, file, cb) => {
+
+    if(file.mimetype === "image/png" ||
+    file.mimetype === "image/jpg"||
+    file.mimetype === "image/jpeg"){
+        cb(null, true);
+    }
+    else{
+        cb(null, false);
+    }
+ }
+
+app.use(multer({storage:storageConfig, fileFilter: fileFilter}).single("avatar"))
+
 
 app.use(session({
   secret: process.env.APP_SESSION,
