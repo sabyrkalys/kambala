@@ -159,11 +159,11 @@ if(
 const commentList = document.querySelector('.commetRegulat-correct__ul');
 const content = document.querySelectorAll('.commetRegulat-item-body__content');
 const correctTitle = document.querySelector('.commetRegulat-correct-item__title');
-const btnCommentAdd = document.querySelector('.btn-commentAdd');
 
+const btnCommentAdd = document.querySelector('.btn-commentAdd');
+const docId = document.querySelector('.create-personal-data__input_nameInputReg').dataset.id;
 let comment;
 let selection, subdata = []; 
-let num = 0;
 let k = 0;
 const html = document.documentElement;
 const body = document.body;
@@ -174,18 +174,17 @@ let initSome = function() {
  document.getElementById('add-commet').disabled = true;
  btnCommentAdd.style.display = 'none';
 
- function fixPageXYdown(e) {
-  if(e.target.classList.contains('addSpan')){
-  e.target.classList.remove('addSpan');
-  btnCommentAdd.style.left = `-10000px`;
-  }
+  function fixPageXYdown(e) {
+   if(e.target.classList.contains('addSpan')){
+   e.target.classList.remove('addSpan');
+   btnCommentAdd.style.left = `-10000px`;
+   }
   }
   function fixPageXYup(e) {
-    e.pageX = e.clientX + (html.scrollLeft || body && body.scrollLeft || 0);
-    e.pageX -= html.clientLeft || 0;
-  
-    e.pageY = e.clientY + (html.scrollTop || body && body.scrollTop || 0);
-    e.pageY -= html.clientTop || 0;
+    //e.pageX = e.clientX + (html.scrollLeft || body && body.scrollLeft || 0);
+    //e.pageX -= html.clientLeft || 0;
+    //e.pageY = e.clientY + (html.scrollTop || body && body.scrollTop || 0);
+    //e.pageY -= html.clientTop || 0;
     let x = e.pageX;
     let y = e.pageY;
     sabyrSelect(x, y);
@@ -223,20 +222,21 @@ let initSome = function() {
    //correctTitle.innerHTML = selection;
    
    renderComment();
-   numberComment();
+   //numberComment();
    window.getSelection().removeAllRanges();
    
   }
   
-  function numberComment(){
-   const childrenComment = document.querySelectorAll('.commetRegulat-correct-item');
-   childrenComment.forEach((item, i) => {
-    num = i + 1;
-   });
-  }
+  //function numberComment(){
+  // console.log('num: ', num);
+  // childrenComment.forEach((item, i) => {
+  //  num = ;
+  // });
+  //}
   
   function renderComment(){
-   //commentList.innerHTML = '';
+   const childrenComment = document.querySelectorAll('.commetRegulat-correct-item');
+   let num = childrenComment.length;
    const li = document.createElement('li');
    li.classList.add('commetRegulat-correct__item');
    li.classList.add('commetRegulat-correct-item');
@@ -258,8 +258,8 @@ let initSome = function() {
   
   function addComment(){
    const newComment = {
-    correct: titleComment[1],
-    commentHas: commentE.value
+    selectedString: titleComment[1],
+    comment: commentE.value
    }
    if(commentE.value.trim() === ''){
      commentE.style.border = '1px solid red';
@@ -271,8 +271,17 @@ let initSome = function() {
     commentE.parentNode.style.borderBottom = '1px solid #ccc';
     commentE.disabled = true;
     document.getElementById('add-commet').disabled = true;
-    subdata.push(newComment);
-    localStorage.setItem('correctComment', JSON.stringify(subdata));
+    fetch(`../comments/${docId}/setComment/${docId}`, {
+     method: 'put',
+     headers: {
+      'Content-Type': 'application/json'
+     },
+     body: JSON.stringify(newComment)
+     }).then(res => res.json()).then(res => {
+      //console.log(res);
+     })
+    //subdata.push(newComment);
+    //localStorage.setItem('correctComment', JSON.stringify(subdata));
    }
    }
   
@@ -281,44 +290,57 @@ let initSome = function() {
   document.addEventListener('selectionchange', sabyrSelect);
 }
 
-let redactView = function() {
+//let redactView = function() {
  
- function renderComment(){
-  commentList.textContent = '';
-  subdata.forEach((item,i) =>{
-   const li = document.createElement('li');
-   li.classList.add('commetRegulat-correct__item');
-   li.classList.add('commetRegulat-correct-item');
-   li.innerHTML = `<span class="commetRegulat-correct-item__title">${i +1}. ...”${item.correct}”</span><textarea name="" id="" cols="15" rows="5" class="commetRegulat-correct-item__desc">${item.commentHas}</textarea>`;
-   commentList.append(li);
-  })
-  findWord();
- }
- if (localStorage.getItem('correctComment')) {
-  subdata = JSON.parse(localStorage.getItem('correctComment'));
-  renderComment();
- }
+ //function renderComment(){
+ // commentList.textContent = '';
+ // subdata.forEach((item,i) =>{
+ //  const li = document.createElement('li');
+ //  li.classList.add('commetRegulat-correct__item');
+ //  li.classList.add('commetRegulat-correct-item');
+ //  li.innerHTML = `<span class="commetRegulat-correct-item__title">${i +1}. ...”${item.correct}”</span><textarea name="" id="" cols="15" rows="5" class="commetRegulat-correct-item__desc">${item.commentHas}</textarea>`;
+ //  commentList.append(li);
+ // })
+ // findWord();
+ //}
+ //if (localStorage.getItem('correctComment')) {
+ // subdata = JSON.parse(localStorage.getItem('correctComment'));
+ // 
+ //}
 
- function findWord(){
-  let t = 'Муниципальной услуги';
-  subdata.forEach((elem) =>{
-   content.forEach((item) => {
-    item.innerHTML = item.innerHTML.replace(`${elem.correct}`,`<a name="${elem.correct}" style='background:#BE533F;color:#fff;'>${elem.correct}</a>`);
-   })
-  })
+ //function findWord(){
+ // const $commetRegulatCorrectItemTitle = document.querySelectorAll('.commetRegulat-correct-item__title')
+ // const data = [...$commetRegulatCorrectItemTitle].map(c => {
+ //  c.textContent.replace(/(?<=\w+:\s*)'(.+?)(?:'$|'(\s*\w+:))/gm, '"$1"$2');
+ // });
+ // console.log('data: ', data);
+  //subdata.forEach((elem) =>{
+  // content.forEach((item) => {
+  //  item.innerHTML = item.innerHTML.replace(`${elem.correct}`,`<a name="${elem.correct}" style='background:#BE533F;color:#fff;'>${elem.correct}</a>`);
+  // })
+  //})
   
- }
+ //}
 
+ //findWord()
 
-}
+//}
 /*
 * запуск функций
 */
 const btnEditElem = document.getElementById('btn_edit');
 if(btnEditElem){
- redactView();
+ //redactView();
 } else if(document.querySelector('.constRegulat')){
- console.log('321');
 } else{
  initSome();
 }
+
+
+
+
+//subdata.forEach((elem) => {
+// content.forEach((item) => {
+//  item.innerHTML = item.innerHTML.replace(`${elem.correct}`, `<a name="${elem.correct}" style='background:#BE533F;color:#fff;'>${elem.correct}</a>`);
+// })
+//})

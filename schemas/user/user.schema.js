@@ -28,7 +28,16 @@ const userSchema = new Schema ({
   profileStatus: { type: Number, required: true, default: 0  },
   accessToken: { type: String },
   refreshToken: { type: String },
-
+  accessDocuments: {
+    items:[{
+      documentId: {
+       type: Schema.Types.ObjectId,
+       ref: 'Document',
+       required:true
+      },
+      
+    }]
+  }
 })
 
 userSchema.methods.addDocument = function(document) {

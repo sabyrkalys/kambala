@@ -14,18 +14,22 @@
           <div class="create-personal-data create-personal-data--pl"><label for="#"
             class="create-personal-data__name">Ваши Ф.И.О.</label><input type="text"
             class="create-personal-data__input create-personal-data__input_namePersonal"
-            placeholder="Иванов Иван Иванович"></div>
+            placeholder="Иванов Иван Иванович" data-id="{{documentAuthor._id}}"
+            value="{{documentAuthor.profile.lastName}} {{documentAuthor.profile.name}} {{documentAuthor.profile.patronymic}}">
+          </div>
          </li>
          <li class="myRegulat-container-list__item myRegulat-container-list-item">
           <div class="create-personal-data create-personal-data--pl"><label for="#"
             class="create-personal-data__name create-personal-data__name_mnull">Регламент:</label><input type="text"
-            class="create-personal-data__input create-personal-data__input_nameInputReg" value="Новый регламент 6"
-            disabled></div>
+            class="create-personal-data__input create-personal-data__input_nameInputReg" data-id="{{documentData._id}}"
+            value="{{documentData.title}}" disabled>
+          </div>
          </li>
          <li class="myRegulat-container-list__item myRegulat-container-list-item">
           <div class="create-personal-data create-personal-data--pl"><span class="create-personal-data__name">Дата
             создания:</span>
-           <div class="create-personal-data__date">02.10.2020<span class="create-personal-data__time">10:47</span></div>
+           <div class="create-personal-data__date">{{documentData.dateСreate}}
+           </div>
           </div>
          </li>
          <li class="myRegulat-container-list__item myRegulat-container-list-item">
@@ -76,124 +80,224 @@
   </div>
  </div>
 </section>
+
 <section class="commetRegulat">
  <div class="wrapper myRegulat__wrapper">
   <div class="commetRegulat__container">
-   <div class="accardion commetRegulat-item commetRegulat__item commetRegulat__item_left">
-    <div class="commetRegulat-item__header commetRegulat-item-header">
-     <div class="commetRegulat-item-header__container">
-      <div class="commetRegulat-item-header__right">
-       <p class="commetRegulat-desc commetRegulat-item-header__header-doc">Приложение 46 к протоколу комиссии по
-        повышению качества и доступности государственных и муниципальных услуг и организации межведомственного
-        взаимодействия от 10 марта 2021 г. № 8</p>
+   <div class="commentRegulat-flex-blck" style="display: flex; margin-right:2rem; flex-direction:column;width: 100%;">
+    <div class="accardion commetRegulat-item commetRegulat__item commetRegulat__item_left">
+     <div class="commetRegulat-item__header commetRegulat-item-header">
+      <div class="commetRegulat-item-header__container">
+       <div class="commetRegulat-item-header__right">
+        <p class="commetRegulat-desc commetRegulat-item-header__header-doc">
+         {{documentData.regDocument.headDOC.headerTitle}}</p>
+       </div>
+       <span class="commetRegulat-item-header__title">АДМИНИСТРАТИВНЫЙ РЕГЛАМЕНТ</span>
+       <p class="commetRegulat-item-header__desc">ПРЕДОСТАВЛЕНИЯ {{documentData.regDocument.headDOC.deliveryDoc}} УСЛУГИ
+        {{documentData.regDocument.headDOC.servicy}}</p>
       </div>
-      <span class="commetRegulat-item-header__title">АДМИНИСТРАТИВНЫЙ РЕГЛАМЕНТ</span>
-      <p class="commetRegulat-item-header__desc">предоставления администрацией Амурской области муниципальной услуги
-       "предоставление финансовой поддержки (субсидий) субъектам малого и среднего предпринимательства”</p>
+
+     </div>
+     <div class="accardion-item commetRegulat-item-body">
+      <div class="section-header section-header--mb2">
+       <h2 class="section-header__title section-header__title_fz18">1. Общие положения</h2>
+      </div>
+      <div class="accardion-content commetRegulat-item-content">
+
+       <div class="commetRegulat-item-body__content">
+        <div class="commetRegulat-item-body-title commetRegulat-item-body__title">1. Предмет регулирования
+         Административного регламента</div>
+        {{#each documentData.regDocument.regulat_1.subRegulat_1_1.items}}
+        <p class="commetRegulat-item-body__desc commetRegulat-desc">{{paragraph}} Административный регламент
+         устанавливает
+         стандарт предоставления {{nameOrgan1}} услуги {{nameService1}}, состав, последовательность и сроки выполнения
+         административных процедур по
+         предоставлению {{nameOrgan2}} услуги, {{nameService2}}.</p>
+        {{else}}
+        {{/each}}
+       </div>
+       <div class="commetRegulat-item-body__content">
+        <div class="commetRegulat-item-body-title commetRegulat-item-body__title">1.2. Круг заявителей</div>
+        <p class="commetRegulat-item-body__desc commetRegulat-desc section-header--mb2">1.2.1 Лицами, имеющими право на
+         получение Муниципальной
+         услуги, являются субъекты малого и среднего предпринимательства (далее – субъекты МСП), зарегистрированные и
+         состоящие на учете в налоговых органах на территории городского округа, осуществляющие деятельность на
+         территории городского округа, либо их уполномоченные представители, обратившиеся с запросом о предоставлении
+         Муниципальной услуги</p>
+        {{#each documentData.regDocument.regulat_1.subRegulat_1_2.items}}
+        <p class="commetRegulat-item-body__desc commetRegulat-desc section-header--mb2">{{paragraph}} {{fieldName}}</p>
+        {{else}}
+        {{/each}}
+       </div>
+       <div class="commetRegulat-item-body__content">
+        <div class="commetRegulat-item-body-title commetRegulat-item-body__title">1.3. Требования к порядку
+         информирования о предоставлении муниципальной услуги</div>
+        <p class="commetRegulat-item-body__desc commetRegulat-desc section-header--mb2">1.3.1 Порядок получения
+         информации
+         Заявителями по вопросам предоставления услуги и услуг, которые являются необходимыми и обязательными для
+         предоставления услуги, сведений о ходе предоставления указанных услуг, в том числе на официальном сайте, а
+         также в федеральной государственной информационной системе "Единый портал государственных и муниципальных
+         услуг (функций)" (www.gosuslugi.ru) (далее – Единый портал) и на Портале государственных и муниципальных
+         услуг (функций) (www.pgu..ru) (далее – Региональный портал).</p>
+        <p class="commetRegulat-item-body__desc commetRegulat-desc section-header--mb2">1.3.2 Порядок, форма, место
+         размещения и
+         способы получения справочной информации, в том числе на стендах в местах предоставления муниципальной
+         услуги и услуг, которые являются необходимыми и обязательными для предоставления муниципальной услуги, и в
+         государственном автономном учреждении "Многофункциональный центр предоставления государственных и
+         муниципальных услуг" (далее – МФЦ).</p>
+        {{#each documentData.regDocument.regulat_1.subRegulat_1_3.items}}
+        <p class="commetRegulat-item-body__desc commetRegulat-desc section-header--mb2">{{paragraph}} {{fieldName}}</p>
+        {{else}}
+        {{/each}}
+       </div>
+
+      </div>
+      <div class="constRegulat-form-blockBtn commetRegulat-item-body__center">
+       <!--<button id="btn_open" class="btn constRegulat-form-blockBtn__btn commetRegulat-item-body__btn_open">Развернуть раздел</button>-->
+       <button id="btn_close"
+        class="btn constRegulat-form-blockBtn__btn commetRegulat-item-body__btn_close accardion-triger">Свернуть
+        раздел</button>
+      </div>
+     </div>
+     <div class="accardion-item commetRegulat-item-body">
+      <div class="section-header section-header--mb2">
+
+       <h2 class="section-header__title section-header__title_fz18">2. Стандарт предоставления муниципальной услуги</h2>
+      </div>
+      <div class="accardion-content commetRegulat-item-content">
+       <div class="commetRegulat-item-body__content">
+        {{#if documentData.regDocument.regulat_2.subRegulat_2_1.items.length}}
+        {{#list documentData.regDocument.regulat_2.subRegulat_2_1.items}}
+        {{#if fieldName}}
+        <div class="commetRegulat-item-body-title commetRegulat-item-body__title">2.1. Наименование муниципальной услуги
+        </div>
+        {{/if}}
+        {{/list}}
+        {{/if}}
+        {{#each documentData.regDocument.regulat_2.subRegulat_2_1.items}}
+        <p class="commetRegulat-item-body__desc commetRegulat-desc">{{paragraph}} {{fieldName}}.</p>
+        {{else}}
+        {{/each}}
+       </div>
+       <div class="commetRegulat-item-body__content">
+        <div class="commetRegulat-item-body-title commetRegulat-item-body__title">2.2. Наименование органа,
+         предоставляющего муниципальную услугу</div>
+        {{#each documentData.regDocument.regulat_2.subRegulat_2_2.items}}
+        {{#each item_2_2_1}}
+        <p class="commetRegulat-item-body__desc commetRegulat-desc">{{paragraph}} Предоставление муниципальной услуги
+         осуществляется администрацией {{fieldName}}</p>
+        {{else}}
+        {{/each}}
+        {{#each item_2_2_2}}
+        <p class="commetRegulat-item-body__desc commetRegulat-desc">{{paragraph}} При предоставлении муниципальной
+         услуги
+         Уполномоченным органом осуществляет взаимодействие с: {{fieldName}}</p>
+        {{else}}
+        {{/each}}
+        {{/each}}
+       </div>
+       <div class="commetRegulat-item-body__content">
+        {{#if documentData.regDocument.regulat_2.subRegulat_2_3.items.length}}
+        {{#list documentData.regDocument.regulat_2.subRegulat_2_3.items}}
+        {{#if fieldName}}
+        <div class="commetRegulat-item-body-title commetRegulat-item-body__title">2.3. Описание результата
+         предоставления
+         муниципальной услуги</div>
+        {{/if}}{{/list}}
+        {{/if}}
+        {{#each documentData.regDocument.regulat_2.subRegulat_2_3.items}}
+        <p class="commetRegulat-item-body__desc commetRegulat-desc">{{paragraph}} {{fieldName}}.</p>
+        {{else}}
+        {{/each}}
+       </div>
+       <div class="commetRegulat-item-body__content">
+        {{#if documentData.regDocument.regulat_2.subRegulat_2_4.items.length}}
+        {{#list documentData.regDocument.regulat_2.subRegulat_2_4.items}}
+        {{#if fieldName}}
+        <div class="commetRegulat-item-body-title commetRegulat-item-body__title">2.4. Срок предоставления муниципальной
+         услуги, в том числе с учетом необходимости обращения в организации, участвующие в предоставлении муниципальной
+         услуги, срок приостановления предоставления муниципальной услуги в случае, если возможность приостановления
+         предусмотрена законодательством Российской Федерации, срок выдачи (направления) документов, являющихся
+         результатом предоставления муниципальной услуги
+        </div>
+        {{/if}}
+        {{/list}}
+        {{/if}}
+        {{#each documentData.regDocument.regulat_2.subRegulat_2_4.items}}
+        <p class="commetRegulat-item-body__desc commetRegulat-desc">{{paragraph}} {{fieldName}}.</p>
+        {{else}}
+        {{/each}}
+       </div>
+       <div class="commetRegulat-item-body__content">
+        {{#if documentData.regDocument.regulat_2.subRegulat_2_6.items.length}}
+        {{#list documentData.regDocument.regulat_2.subRegulat_2_5.items}}
+        {{#if fieldName}}
+        <div class="commetRegulat-item-body-title commetRegulat-item-body__title">2.5. Нормативные правовые акты,
+         регулирующие предоставление муниципальной услуги
+        </div>
+        {{/if}}
+        {{/list}}
+        {{/if}}
+        {{#each documentData.regDocument.regulat_2.subRegulat_2_5.items}}
+        <p class="commetRegulat-item-body__desc commetRegulat-desc">{{paragraph}} {{fieldName}}.</p>
+        {{else}}
+        {{/each}}
+       </div>
+       <div class="commetRegulat-item-body__content">
+        {{#if documentData.regDocument.regulat_2.subRegulat_2_6.items.length}}
+        {{#list documentData.regDocument.regulat_2.subRegulat_2_6.items}}
+        {{#if fieldName}}
+        <div class="commetRegulat-item-body-title commetRegulat-item-body__title">2.6. Нормативные правовые акты,
+         регулирующие предоставление муниципальной услуги
+        </div>
+        {{/if}}
+        {{/list}}
+        {{/if}}
+        {{#each documentData.regDocument.regulat_2.subRegulat_2_6.items}}
+        <p class="commetRegulat-item-body__desc commetRegulat-desc">{{paragraph}} {{fieldName}}.</p>
+        {{else}}
+        {{/each}}
+       </div>
+      </div>
+      <div class="constRegulat-form-blockBtn commetRegulat-item-body__center">
+       <!--<button id="btn_open" class="btn constRegulat-form-blockBtn__btn commetRegulat-item-body__btn_open">Развернуть раздел</button>-->
+       <button id="btn_close"
+        class="btn constRegulat-form-blockBtn__btn commetRegulat-item-body__btn_close accardion-triger">Свернуть
+        раздел</button>
+
+
+      </div>
+
      </div>
 
     </div>
-    <div class="accardion-item commetRegulat-item-body">
-     <div class="section-header section-header--mb2">
-      <h2 class="section-header__title section-header__title_fz18">1. Общие положения</h2>
-     </div>
-     <div class="accardion-content commetRegulat-item-content">
-      <div class="commetRegulat-item-body__content">
-       <div class="commetRegulat-item-body-title commetRegulat-item-body__title">1. Предмет регулирования
-        Административного регламента</div>
-       <p class="commetRegulat-item-body__desc commetRegulat-desc">1.1. Административный регламент устанавливает
-        стандарт предоставления муниципальной услуги «Предоставление финансовой поддержки (субсидий) субъектам малого
-        и среднего предпринимательства, состав, последовательность и сроки выполнения административных процедур по
-        предоставлению Муниципальной услуги, требования к порядку их выполнения, в том числе особенности выполнения
-        административных процедур в электронной форме, формы контроля за исполнением Административного регламента,
-        досудебный (внесудебный) порядок обжалования решений и действий (бездействий) Администрации городского
-        округа, должностных лиц.</p>
-       <p class="commetRegulat-item-body__desc commetRegulat-desc">1.2. Действие настоящего Административного
-        регламента распространяется на субсидии, предоставляемые на территории городского округа в рамках подпрограммы
-
-       </p>
-      </div>
-      <div class="commetRegulat-item-body__content">
-       <div class="commetRegulat-item-body-title commetRegulat-item-body__title">1.2. Круг заявителей</div>
-       <p class="commetRegulat-item-body__desc commetRegulat-desc section-header--mb2">1.2 Лицами, имеющими право на
-        получение Муниципальной
-        услуги, являются субъекты малого и среднего предпринимательства (далее – субъекты МСП), зарегистрированные и
-        состоящие на учете в налоговых органах на территории городского округа, осуществляющие деятельность на
-        территории городского округа, либо их уполномоченные представители, обратившиеся с запросом о предоставлении
-        Муниципальной услуги</p>
-      </div>
-      <div class="commetRegulat-item-body__content">
-       <div class="commetRegulat-item-body-title commetRegulat-item-body__title">1.3. Требования к порядку
-        информирования о предоставлении муниципальной услуги</div>
-       <p class="commetRegulat-item-body__desc commetRegulat-desc section-header--mb2">1.3. На официальном сайте
-        Администрации в сети «Интернет», в Государственной информационной системе «Реестр государственных и
-        муниципальных услуг (функций) » (далее – РГУ) и в государственной информационной системе «Портал
-        государственных и муниципальных услуг (функций) » (далее – РПГУ) обязательному размещению подлежит следующая
-        справочная информация:
-        место нахождения и график работы Администрации, ее структурных подразделений,
-        предоставляющих Муниципальную услугу;</p>
-      </div>
-     </div>
-     <div class="constRegulat-form-blockBtn commetRegulat-item-body__center">
-      <!--<button id="btn_open" class="btn constRegulat-form-blockBtn__btn commetRegulat-item-body__btn_open">Развернуть раздел</button>-->
-      <button id="btn_close"
-       class="btn constRegulat-form-blockBtn__btn commetRegulat-item-body__btn_close accardion-triger">Свернуть
-       раздел</button>
-     </div>
-    </div>
-    <div class="accardion-item commetRegulat-item-body">
-     <div class="section-header section-header--mb2">
-      <h2 class="section-header__title section-header__title_fz18">2. Стандарт предоставления муниципальной услуги</h2>
-     </div>
-     <div class="accardion-content commetRegulat-item-content">
-      <div class="commetRegulat-item-body__content">
-       <div class="commetRegulat-item-body-title commetRegulat-item-body__title">1. Предмет регулирования
-        Административного регламента</div>
-       <p class="commetRegulat-item-body__desc commetRegulat-desc">1.1. Административный регламент устанавливает
-        стандарт предоставления муниципальной услуги «Предоставление финансовой поддержки (субсидий) субъектам малого
-        и среднего предпринимательства, состав, последовательность и сроки выполнения административных процедур по
-        предоставлению Муниципальной услуги, требования к порядку их выполнения, в том числе особенности выполнения
-        административных процедур в электронной форме, формы контроля за исполнением Административного регламента,
-        досудебный (внесудебный) порядок обжалования решений и действий (бездействий) Администрации городского
-        округа, должностных лиц.</p>
-       <p class="commetRegulat-item-body__desc commetRegulat-desc">1.2. Действие настоящего Административного
-        регламента распространяется на субсидии, предоставляемые на территории городского округа в рамках подпрограммы
-       </p>
-      </div>
-      <div class="commetRegulat-item-body__content">
-       <div class="commetRegulat-item-body-title commetRegulat-item-body__title">1.2. Круг заявителей</div>
-       <p class="commetRegulat-item-body__desc commetRegulat-desc section-header--mb2">1.2 Лицами, имеющими право на
-        получение Муниципальной
-        услуги, являются субъекты малого и среднего предпринимательства (далее – субъекты МСП), зарегистрированные и
-        состоящие на учете в налоговых органах на территории городского округа, осуществляющие деятельность на
-        территории городского округа, либо их уполномоченные представители, обратившиеся с запросом о предоставлении
-        Муниципальной услуги</p>
-      </div>
-      <div class="commetRegulat-item-body__content">
-       <div class="commetRegulat-item-body-title commetRegulat-item-body__title">1.3. Требования к порядку
-        информирования о предоставлении муниципальной услуги</div>
-       <p class="commetRegulat-item-body__desc commetRegulat-desc section-header--mb2">1.3. На официальном сайте
-        Администрации в сети «Интернет», в Государственной информационной системе «Реестр государственных и
-        муниципальных услуг (функций) » (далее – РГУ) и в государственной информационной системе «Портал
-        государственных и муниципальных услуг (функций) » (далее – РПГУ) обязательному размещению подлежит следующая
-        справочная информация:
-        место нахождения и график работы Администрации, ее структурных подразделений,
-        предоставляющих Муниципальную услугу;</p>
-      </div>
-     </div>
-     <div class="constRegulat-form-blockBtn commetRegulat-item-body__center">
-      <!--<button id="btn_open" class="btn constRegulat-form-blockBtn__btn commetRegulat-item-body__btn_open">Развернуть раздел</button>-->
-      <button id="btn_close"
-       class="btn constRegulat-form-blockBtn__btn commetRegulat-item-body__btn_close accardion-triger">Свернуть
-       раздел</button>
-     </div>
+    <div class="constRegulat-form-blockBtn commetRegulat-item-body__center">
+     <a href="../document/editDocument/{{documentData._id}}/confirmDocument"
+      class="btn constRegulat-form-blockBtn__btn">Создать
+      документ Pdf
+      Word</a>
+     <a href="../document/editDocument/{{documentData._id}}"
+      class="btn constRegulat-form-blockBtn__btn">Редактировать</a>
     </div>
    </div>
+
    <div class="commetRegulat__item commetRegulat-correct">
     <div class="commetRegulat-correct__container">
      <ul class="commetRegulat-correct__ul">
-      <!--<li class="commetRegulat-correct__item commetRegulat-correct-item"><span class="commetRegulat-correct-item__title">1. ...”городского округа”</span><textarea name="" id="" cols="15" rows="5" class="commetRegulat-correct-item__desc"></textarea></li>
- <li class="commetRegulat-correct__item commetRegulat-correct-item"><span class="commetRegulat-correct-item__title">2. ...”Государственной информационной системе”</span><textarea name="" id="" cols="15" rows="5" class="commetRegulat-correct-item__desc"></textarea></li>-->
+      {{#each commentsUser}}
+      {{#each comments}}
+      <span class="authorComments">{{../lastName}} {{../name}}</span>
+      <li class="commetRegulat-correct__item commetRegulat-correct-item">
+       <div class="commentRegulat-correct-item__block">
+        <span class="commetRegulat-correct-item__point">{{sum @index}}. ...”</span><span
+         class="commetRegulat-correct-item__title">{{selectedString}}</span><span
+         class="commetRegulat-correct-item__point">”</span>
+       </div>
+       <textarea name="" id="" cols="15" rows="5" class="commetRegulat-correct-item__desc" disabled>{{comment}}
+        </textarea>
+      </li>
+      {{/each}}
+      {{/each}}
      </ul>
      <div class="constRegulat-form-blockBtn">
       <button id="add-commet" class="btn constRegulat-form-blockBtn__btn commetRegulat-correct__addcommet">Добавить
@@ -204,4 +308,21 @@
   </div>
  </div>
 </section>
-<div class="btn-commentAdd"><a href="#" class="btn btn-commentAdd__link">Добавить комментарий</a></div>
+
+{{#if isCommentRegulat}}
+
+<script>
+ const toDate = date => {
+  return new Intl.DateTimeFormat('ru-RU', {
+   day: '2-digit',
+   month: '2-digit',
+   year: 'numeric',
+   hour: '2-digit',
+   minute: '2-digit'
+  }).format(new Date(date))
+ }
+ document.querySelectorAll('.create-personal-data__date').forEach(item => {
+  item.textContent = toDate(item.textContent)
+ })
+</script>
+{{/if}}

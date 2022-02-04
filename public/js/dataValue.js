@@ -6,6 +6,7 @@ export function valueSubRegulat_1(){
   const subRegulat_1_1 = document.querySelectorAll('.subRegulat_1_1');
   [...subRegulat_1_1].forEach(item => {
    let data = {
+    paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
     nameOrgan1: item.querySelector('#nameOrgan1').value,
    nameOrgan2: item.querySelector('#nameOrgan2').value,
    nameService1: item.querySelector('#nameService1').value,
@@ -21,6 +22,7 @@ export function valueSubRegulat_1(){
   [...subRegulat_1_2].forEach(item => {
    if(item.querySelector('#field_1_2')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_1_2').value,
     }
     items.push(data);
@@ -36,6 +38,7 @@ export function valueSubRegulat_1(){
   [...subRegulat_1_3].forEach(item => {
    if(item.querySelector('#field_1_3')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_1_3').value,
     }
     items.push(data);
@@ -62,6 +65,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_1].forEach(item => {
    if(item.querySelector('#field_2_1')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_1').value,
     }
     items.push(data);
@@ -77,6 +81,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_2_1].forEach(item => {
    if(item.querySelector('#field_2_2_1')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_2_1').value,
     }
     item_2_2_1.push(data);
@@ -86,6 +91,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_2_2].forEach(item => {
    if(item.querySelector('#field_2_2_2')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_2_2').value,
     }
     item_2_2_2.push(data);
@@ -99,6 +105,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_3].forEach(item => {
    if(item.querySelector('#field_2_3')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_3').value,
     }
     items.push(data);
@@ -112,6 +119,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_4].forEach(item => {
    if(item.querySelector('#field_2_4')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_4').value,
     }
     items.push(data);
@@ -126,6 +134,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_5].forEach(item => {
    if(item.querySelector('#field_2_5')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_5').value,
     }
     items.push(data);
@@ -139,6 +148,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_6].forEach(item => {
    if(item.querySelector('#field_2_6')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_6').value,
     }
     items.push(data);
@@ -152,6 +162,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_7].forEach(item => {
    if(item.querySelector('#field_2_7')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_7').value,
     }
     items.push(data);
@@ -165,6 +176,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_8].forEach(item => {
    if(item.querySelector('#field_2_8')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_8').value,
     }
     items.push(data);
@@ -178,6 +190,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_9].forEach(item => {
    if(item.querySelector('#field_2_9')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_9').value,
     }
     items.push(data);
@@ -191,6 +204,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_10].forEach(item => {
    if(item.querySelector('#field_2_10')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_10').value,
     }
     items.push(data);
@@ -204,6 +218,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_11].forEach(item => {
    if(item.querySelector('#field_2_11')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_11').value,
     }
     items.push(data);
@@ -218,6 +233,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_12].forEach(item => {
    if(item.querySelector('#field_2_12')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_12').value,
     }
     items.push(data);
@@ -232,6 +248,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_13].forEach(item => {
    if(item.querySelector('#field_2_13')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_13').value,
     }
     items.push(data);
@@ -246,6 +263,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_14].forEach(item => {
    if(item.querySelector('#field_2_14')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_14').value,
     }
     items.push(data);
@@ -260,6 +278,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_15].forEach(item => {
    if(item.querySelector('#field_2_15')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_15').value,
     }
     items.push(data);
@@ -274,6 +293,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_16].forEach(item => {
    if(item.querySelector('#field_2_16')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_16').value,
     }
     items.push(data);
@@ -288,6 +308,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_17].forEach(item => {
    if(item.querySelector('#field_2_17')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_17').value,
     }
     items.push(data);
@@ -302,6 +323,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_18].forEach(item => {
    if(item.querySelector('#field_2_18')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_18').value,
     }
     items.push(data);
@@ -316,6 +338,7 @@ export function valueSubRegulat_2(){
   [...subRegulat_2_19].forEach(item => {
    if(item.querySelector('#field_2_19')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_2_19').value,
     }
     items.push(data);
@@ -361,6 +384,7 @@ export function valueSubRegulat_3(){
   [...subRegulat_3_1].forEach(item => {
    if(item.querySelector('#field_3_1')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_3_1').value,
     }
     items.push(data);
@@ -384,6 +408,7 @@ export function valueSubRegulat_4(){
   [...subRegulat_4_1].forEach(item => {
    if(item.querySelector('#field_4_1')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_4_1').value,
     }
     items.push(data);
@@ -407,6 +432,7 @@ export function valueSubRegulat_5(){
   [...subRegulat_5_1].forEach(item => {
    if(item.querySelector('#field_5_1')){
     let data = {
+     paragraph: item.querySelector('.constRegulat-form-headerDoc-string__paragraph').textContent,
      fieldName: item.querySelector('#field_5_1').value,
     }
     items.push(data);

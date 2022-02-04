@@ -6,7 +6,12 @@
     <a href="#" class="header-top-item__link"></a>
    </div>
    <div class="logo header-top-item__block">
+
+    {{#if isEditRegulat}}
+    <img src="/style/img/logo.svg" alt="" class="logo__img footer-container__img">
+    {{else}}
     <img src="../../../style/img/logo.svg" alt="" class="logo__img header-top-item__img">
+    {{/if}}
     <h1 class="header-top-item__title">АИС КАМБАЛА</h1>
     <a href="/" class="logo__link header-top-item__link"></a>
    </div>
@@ -19,6 +24,8 @@
     <a href="./document" class="header-top-item-block__link">Мои документы</a>
     {{else if isAddRegulat}}
     <a href="../document" class="header-top-item-block__link">Мои документы</a>
+    {{else if isEditRegulat}}
+    <a href="../../document" class="header-top-item-block__link">Мои документы</a>
     {{else if isLogin}}
     <a href="#" class="header-top-item-block__link"></a>
     {{else}}
@@ -42,6 +49,8 @@
     {{/if}}
     {{#if isAddRegulat}}
     <a href="../account" class="header-top-item__link"></a>
+    {{else if isEditRegulat}}
+    <a href="../../account" class="header-top-item__link"></a>
     {{else if isLogin}}
     {{!--<a href="#" class="header-top-item__link"></a>--}}
     {{else}}

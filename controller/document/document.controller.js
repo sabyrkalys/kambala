@@ -8,25 +8,20 @@ function mapDocItems(doc) {
   ...c.documentId
  }))
 }
-function mapVersions(doc) {
- return doc.map((c, i) => ({
-  ...c.versions
- }))
-}
-//function mapVersion(doc) {
-// return doc.map((c,i) => ({
-//  ...c[i]._doc
-// }))
-//}
 
 exports.index = async (req, res) => {
   let isLogined = await auth.check(req.session);
+  // определяем пользователя 
   const user = await User.findById(req.params.userId).lean();
+  // определяем документы созданные пользователем
   const userDoc = await User.findById(req.params.userId).populate('documents.items.documentId').lean();
   const docs = await userDoc.documents
   const documents = mapDocItems(docs);
-  const versions = mapVersions(documents);
-
+  const findStatus = documents.filter(c => c.status == 2);
+  // определеяем документы которые необходимо проверить пользователю
+  const docsW = await User.findById(req.params.userId).populate('accessDocuments.items.documentId').lean();
+  const docWatch = mapDocItems(docsW.accessDocuments);
+  
   if (isLogined) {
     if (req.params.userId) {
       res.render('myDocument', {
@@ -34,8 +29,9 @@ exports.index = async (req, res) => {
        id: user._id,
        isRegulat: true,
        user,
-       //versions,
-       documents
+       documents,
+       docWatch,
+       findStatus
       })
     }
     else {
@@ -84,18 +80,22 @@ exports.createDocument = async (req, res) => {
 }
 
 exports.editDocument = async (req, res) => {
+ const user = await User.findById(req.params.userId).lean();
   if (req.params.docId) {
     const docId = req.params.docId;
     try {
       const result = await documentModel.index(docId);
+      const authorId = await User.findById(result.authorId).lean();
       if (!result) {
         return res.status(404).send();
       }
       else {
         res.render('addDocument', {
-         title: 'Создать регламент',
-         isAddRegulat: true,
+         title: 'Редактировать документ',
+         isEditRegulat: true,
          documentData: result,
+         user,
+         authorId
         })
       }
     } catch (e) {
@@ -106,7 +106,8 @@ exports.editDocument = async (req, res) => {
   else {
     res.render('addDocument', {
      title: 'Создать регламент',
-     isAddRegulat: true
+     isAddRegulat: true,
+     user
     })
   }
 }
@@ -144,6 +145,7 @@ exports.updateDocumentHeader = async function (req, res) {
   let isLogined = await auth.check(req.session);
   if (isLogined) {
     if (req.query.action === 'edit') {
+
       try {
         const result = await documentModel.updateDocumentHeader(req);
         if (!result) {
@@ -362,7 +364,7 @@ exports.confirmDocument = async (req,res) => {
         return res.status(404).send();
       }
       else {
-        return res.status(200).send({result})
+        return res.status(200).redirect('/')
       }
     } catch (e) {
       console.log(e);

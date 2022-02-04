@@ -2,7 +2,11 @@
  <div class="wrapper">
   <div class="footer__container footer-container">
    <div class="logo footer-container__logo">
+    {{#if isEditRegulat}}
+    <img src="/style/img/logo-footer.png" alt="" class="logo__img footer-container__img">
+    {{else}}
     <img src="../../../style/img/logo-footer.png" alt="" class="logo__img footer-container__img">
+    {{/if}}
     <a href="#" class="logo__link"></a>
    </div>
    <div class="footer-container__item footer-container-item">
@@ -28,9 +32,42 @@
   </div>
  </div>
 </footer>
+
 {{#if isAccount}}
 <script type="module" src="../../../js/ajaxAccount.js"></script>
 {{/if}}
 {{#if isAddRegulat}}
 <script type="module" src="../../../js/script.js"></script>
 {{/if}}
+{{#if isEditRegulat}}
+<script type="module" src="/js/script.js"></script>
+{{/if}}
+{{#if isCommentRegulat}}
+<div class="btn-commentAdd"><a href="#" class="btn btn-commentAdd__link">Добавить комментарий</a></div>
+<script type="module" src="../../../js/script.js"></script>
+
+{{#if commentsUser.[0].comments.length}}
+<script>
+
+
+ let redactView = function () {
+
+  function findWord() {
+   const content = document.querySelectorAll('.commetRegulat-item-body__content');
+   const $commetRegulatCorrectItemTitle = document.querySelectorAll('.commetRegulat-correct-item__title')
+   const data = [...$commetRegulatCorrectItemTitle].map(c => c.textContent.trim());
+
+   data.forEach((elem) => {
+    content.forEach((item) => {
+     item.innerHTML = item.innerHTML.replace(`${elem}`, `<a name="${elem}" style='background:#BE533F;color:#fff;'>${elem}</a>`);
+    })
+   })
+  }
+  findWord()
+
+ }
+
+ redactView();
+</script>
+{{/if}}
+{{/if}} isCommentRegulat

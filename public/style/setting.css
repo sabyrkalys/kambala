@@ -148,3 +148,9 @@ main {
   text-align: center !important;
   margin-bottom: 2rem;
 }
+.regulat-date {
+  font-size: 1.4em !important;
+  line-height: 1.6rem !important;
+  color: var(--BlackColorText) !important;
+  margin-left: 2.5rem;
+}

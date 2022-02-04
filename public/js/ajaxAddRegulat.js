@@ -6,6 +6,16 @@ export function saveDate(target) {
  const triger = target;
  const item = (triger.parentNode).parentNode;
  const constRegulat = document.querySelector('.constRegulat');
+ const constRegulatEdit = document.querySelector('.constRegulat-edit');
+ let docId;
+ if(constRegulatEdit){
+  docId = document.getElementById('title').dataset.id;
+ } else {
+  if(constRegulat.dataset.id){
+   docId = constRegulat.dataset.id;
+  }
+ }
+ 
  if(item.querySelector('#headerText')){
   saveDocumentHeader()
  }
@@ -43,52 +53,82 @@ export function saveDate(target) {
   const DOC = {
    authorId: document.querySelector('#authorId').dataset.id,
     title: document.querySelector('#title').value,
+    date: `${document.querySelector('.create-personal-data__date').textContent} ${document.querySelector('.create-personal-data__time').textContent}`,
    headDOC: {
     headerTitle: headerText.value,
    deliveryDoc: nameOrg.value,
    servicy: nameService.value
   },
   }
- fetch('../document/createDocument/setDocumentHeader?action=create', {
- method: 'post',
- headers: {
-  'Content-Type': 'application/json'
- },
- body: JSON.stringify(DOC)
- }).then(res => res.json()).then(regul => {
-  if(regul.result._id){
-   constRegulat.setAttribute('data-id', regul.result._id)
-   document.getElementById('setDocumentBody_1').removeAttribute('hidden');
-   document.getElementById('sectionTitleDocument').style.display = 'block';
-   constRegulat.style.marginBottom = '0rem'; 
+  if(constRegulatEdit){
+   fetch(`../../document/editDocument/${docId}/setDocumentHeader?action=edit`, {
+    method: 'put',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(DOC)
+    }).then(res => res.json()).then(regul => {
+     if(regul.result._id){
+      constRegulat.setAttribute('data-id', regul.result._id)
+     }
+    })
+  } else {
+   fetch('../document/createDocument/setDocumentHeader?action=create', {
+    method: 'post',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(DOC)
+    }).then(res => res.json()).then(regul => {
+     if(regul.result._id){
+      constRegulat.setAttribute('data-id', regul.result._id)
+      document.getElementById('setDocumentBody_1').removeAttribute('hidden');
+      document.getElementById('sectionTitleDocument').style.display = 'block';
+      constRegulat.style.marginBottom = '0rem';
+      console.log(`${document.querySelector('.create-personal-data__date').textContent} ${document.querySelector('.create-personal-data__time').textContent}`);
+     }
+    })
   }
- })
+ 
  }
  
  function saveDocumentBody_1(){
-  const subRegulat = {
-   id: constRegulat.dataset.id,
-   row_1_1: items.subRegulat_1_1,
-   row_1_2: items.subRegulat_1_2,
-   row_1_3: items.subRegulat_1_3
+   const subRegulat = {
+    id: docId,
+    row_1_1: items.subRegulat_1_1,
+    row_1_2: items.subRegulat_1_2,
+    row_1_3: items.subRegulat_1_3
+   }
+
+  if(constRegulatEdit){
+   fetch(`../../document/editDocument/${docId}/setDocumentBody_1?action=edit`, {
+    method: 'put',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(subRegulat)
+    }).then(res => res.json()).then(regul => {
+     
+    })
+  } else {
+   fetch('../document/createDocument/setDocumentBody_1?action=create', {
+    method: 'put',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(subRegulat)
+    }).then(res => res.json()).then(regul => {
+     if(regul.result.step === 1){
+      document.getElementById('setDocumentBody_2').removeAttribute('hidden');
+      
+     }
+     })
   }
- fetch('../document/createDocument/setDocumentBody_1?action=create', {
- method: 'put',
- headers: {
-  'Content-Type': 'application/json'
- },
- body: JSON.stringify(subRegulat)
- }).then(res => res.json()).then(regul => {
-  if(regul.result.step === 1){
-   document.getElementById('setDocumentBody_2').removeAttribute('hidden');
-   
-  }
-  })
  }
 
  function saveDocumentBody_2(){
   const subRegulat = {
-   id: constRegulat.dataset.id,
+   id: docId,
    row_2_1: items.subRegulat_2_1,
    row_2_2: {
     item_2_2_1:items.subRegulat_2_2.row_2_2_1,
@@ -113,93 +153,142 @@ export function saveDate(target) {
    row_2_19: items.subRegulat_2_19,
 
   }
- fetch('../document/createDocument/setDocumentBody_2?action=create', {
- method: 'put',
- headers: {
-  'Content-Type': 'application/json'
- },
- body: JSON.stringify(subRegulat)
- }).then(res => res.json()).then(regul => {
-  if(regul.result.step === 2){
-   document.getElementById('setDocumentBody_3').removeAttribute('hidden');
+  if(constRegulatEdit){
+   fetch(`../../document/editDocument/${docId}/setDocumentBody_2?action=edit`, {
+    method: 'put',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(subRegulat)
+    }).then(res => res.json()).then(regul => {
+     })
+  } else {
+   fetch('../document/createDocument/setDocumentBody_2?action=create', {
+    method: 'put',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(subRegulat)
+    }).then(res => res.json()).then(regul => {
+     if(regul.result.step === 2){
+      document.getElementById('setDocumentBody_3').removeAttribute('hidden');
+     }
+     })
   }
-  })
+ 
  }
 
  function saveDocumentBody_3(){
   const subRegulat = {
-   id: constRegulat.dataset.id,
+   id: docId,
    row_3_1: items.subRegulat_3_1
   }
- fetch('../document/createDocument/setDocumentBody_3?action=create', {
- method: 'put',
- headers: {
-  'Content-Type': 'application/json'
- },
- body: JSON.stringify(subRegulat)
- }).then(res => res.json()).then(regul => {
-  if(regul.result.step === 3){
-   document.getElementById('setDocumentBody_4').removeAttribute('hidden');
+  if(constRegulatEdit){
+   fetch(`../../document/editDocument/${docId}/setDocumentBody_3?action=edit`, {
+    method: 'put',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(subRegulat)
+    }).then(res => res.json()).then(regul => {
+     })
+  } else {
+   fetch('../document/createDocument/setDocumentBody_3?action=create', {
+    method: 'put',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(subRegulat)
+    }).then(res => res.json()).then(regul => {
+     if(regul.result.step === 3){
+      document.getElementById('setDocumentBody_4').removeAttribute('hidden');
+     }
+     })
   }
-  })
+
  }
 
  function saveDocumentBody_4(){
   const subRegulat = {
-   id: constRegulat.dataset.id,
+   id: docId,
    row_4_1: items.subRegulat_4_1
   }
- fetch('../document/createDocument/setDocumentBody_4?action=create', {
- method: 'put',
- headers: {
-  'Content-Type': 'application/json'
- },
- body: JSON.stringify(subRegulat)
- }).then(res => res.json()).then(regul => {
-  if(regul.result.step === 4){
-   document.getElementById('setDocumentBody_5').removeAttribute('hidden');
+  if(constRegulatEdit){
+   fetch(`../../document/editDocument/${docId}/setDocumentBody_4?action=edit`, {
+    method: 'put',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(subRegulat)
+    }).then(res => res.json()).then(regul => {
+     })
+  } else {
+   fetch('../document/createDocument/setDocumentBody_4?action=create', {
+    method: 'put',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(subRegulat)
+    }).then(res => res.json()).then(regul => {
+     if(regul.result.step === 4){
+      document.getElementById('setDocumentBody_5').removeAttribute('hidden');
+     }
+     })
   }
-  })
+ 
  }
 
  function saveDocumentBody_5(){
   const subRegulat = {
-   id: constRegulat.dataset.id,
+   id: docId,
    row_5_1: items.subRegulat_5_1
   }
- fetch('../document/createDocument/setDocumentBody_5?action=create', {
- method: 'put',
- headers: {
-  'Content-Type': 'application/json'
- },
- body: JSON.stringify(subRegulat)
- }).then(res => res.json()).then(regul => {
- if(regul.result.step === 5){
-  document.getElementById('saveDocument').removeAttribute('hidden');
-  document.getElementById('sendAprev').removeAttribute('hidden');
- }
- })
+  if(constRegulatEdit){
+   fetch(`../../document/editDocument/${docId}/setDocumentBody_5?action=edit`, {
+    method: 'put',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(subRegulat)
+    }).then(res => res.json()).then(regul => {
+     })
+  } else {
+   fetch('../document/createDocument/setDocumentBody_5?action=create', {
+    method: 'put',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(subRegulat)
+    }).then(res => res.json()).then(regul => {
+    if(regul.result.step === 5){
+     document.getElementById('saveDocument').removeAttribute('hidden');
+     document.getElementById('sendAprev').removeAttribute('hidden');
+    }
+    })
+  }
+ 
  }
 
  function saveDocumentBody(){
   const subRegulat = {
-   id: constRegulat.dataset.id
+   id: docId
   }
- fetch('../document/createDocument/saveDocument?action=create', {
- method: 'put',
- headers: {
-  'Content-Type': 'application/json'
- },
- body: JSON.stringify(subRegulat)
- }).then(res => res.json()).then(res => {
-  document.getElementById('docId').value = res.result.authorId
-  
- })
+   fetch('../document/createDocument/saveDocument?action=create', {
+    method: 'put',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(subRegulat)
+    }).then(res => res.json()).then(res => {
+     document.getElementById('docId').value = res.result.authorId
+     
+    })
+ 
  }
 
  function sendDocumentBody(){
   const subRegulat = {
-   docId: constRegulat.dataset.id,
+   docId: docId,
    emailArray: [{
     email:item.querySelector('#emailArray').value
    }]

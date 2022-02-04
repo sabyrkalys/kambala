@@ -190,21 +190,37 @@
  }
 }
 
+.commentRegulat-correct-item__block {
+ display: flex;
+}
+
 .commetRegulat-correct-item {
+
  &__title {
-  font-size: 1.6em;
+  font-size: 1.6rem;
   line-height: 1.9rem;
   color: var(--BlackColorText);
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
-  display: block;
+  display: inline;
   margin-bottom: 1rem;
+ }
+
+ &__point {
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  color: var(--BlackColorText);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  display: inline;
+  margin-bottom: 1rem;
+  white-space: nowrap;
  }
 
  &__desc {
   border: .3px solid #000000;
   box-sizing: border-box;
-  font-size: 1.6em;
+  font-size: 1.6rem;
   line-height: 1.9rem;
   color: var(--BlackColorText);
  }

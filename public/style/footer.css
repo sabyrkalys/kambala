@@ -275,19 +275,32 @@ main {
 .commetRegulat-correct__addcommet:hover {
   color: #fff;
 }
+.commentRegulat-correct-item__block {
+  display: flex;
+}
 .commetRegulat-correct-item__title {
-  font-size: 1.6em;
+  font-size: 1.6rem;
   line-height: 1.9rem;
   color: var(--BlackColorText);
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
-  display: block;
+  display: inline;
   margin-bottom: 1rem;
+}
+.commetRegulat-correct-item__point {
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  color: var(--BlackColorText);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  display: inline;
+  margin-bottom: 1rem;
+  white-space: nowrap;
 }
 .commetRegulat-correct-item__desc {
   border: 0.3px solid #000000;
   box-sizing: border-box;
-  font-size: 1.6em;
+  font-size: 1.6rem;
   line-height: 1.9rem;
   color: var(--BlackColorText);
 }

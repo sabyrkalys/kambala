@@ -1,17 +1,18 @@
 const Document = require('../../schemas/document/document.schema.js');
+const User = require('../../schemas/user/user.schema')
 const { MailService, HtmlConvertor,WordConvertor,PdfConvertor } = require('../../classes');
 const mongoose = require('mongoose');
 const mailService = new MailService(process.env.GMAIL_USER,process.env.GMAIL_PASSWORD)
 
 exports.index = async (docId) => {
-  return await Document.findById(docId)
+  return await Document.findById(docId).lean();
 }
 
 exports.setDocumentHeader = async (req) => {
   const regulat = new Document({
     authorId: req.body.authorId,
     title: req.body.title,
-    date: req.body.dateCreation,
+    date: req.body.date,
     status: req.body.status,
     versions: {
      $push:{}
@@ -36,13 +37,11 @@ exports.updateDocumentHeader = async (req) => {
   }
 
   const update = {
+   $set:{
     title: req.body.title,
-    regDocument:{
-     headDOC:{
-       headerTitle: req.body.headDOC.headerTitle,
-       deliveryDoc: req.body.headDOC.deliveryDoc,
-       servicy: req.body.headDOC.servicy
-     }
+    "regDocument.headDOC.headerTitle":req.body.headDOC.headerTitle, 
+    "regDocument.headDOC.deliveryDoc": req.body.headDOC.deliveryDoc, 
+    "regDocument.headDOC.servicy":req.body.headDOC.servicy, 
    }
   }
 
@@ -297,12 +296,32 @@ exports.saveDocument = async (req) => {
 }
 
 exports.sendDocument = async (req) => {
-  const docId = req.body.docId;
-  const emailArray = req.body.emailArray
-  const result = await Document.findById(docId);
-  const documentLink = req.headers.host + `/commentRegulat?viewToken=${result.viewToken}`;
-  const mailInfo = await mailService.sendDocument(emailArray,documentLink);
-  return mailInfo;
+ const docId = req.body.docId;
+ const emailArray = req.body.emailArray;
+ const message = 'Вам предоставлен доступ к документу';
+ let response = [];
+ for await (let row of emailArray) {
+   let result = await User.findOneAndUpdate(
+     {email:row.email},
+     {
+       $push:{
+         "accessDocuments.items":{
+           documentId: docId,
+         }
+       }
+     },
+   )
+
+   if (!result) {
+     response.push({email: row.email,message: 'Такого пользователя не существует'})
+   }
+   else {
+     const mailInfo = await mailService.sendDocument(row.email,message);
+     response.push({email: row.email,message: 'Документ успешно отправлен'})
+   }
+ }
+
+ return response;
 }
 
 exports.confirmDocument = async (req) => {

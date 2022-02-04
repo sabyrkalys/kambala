@@ -319,7 +319,7 @@
   line-height: 1.9rem;
   color: var(--WhiteColorText);
   display: block;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1.5rem;
   border-radius: 20px;
   background-color: var(--bgRed1);
   margin-left: 3.9rem;
@@ -333,6 +333,9 @@
   font-weight: 600;
 }
 .myRegulat-container-list-item__mode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1.4em;
   line-height: 1.6rem;
   color: var(--BlackColorText);
@@ -342,11 +345,19 @@
   width: 29px;
   height: 35px;
   display: inline-block;
-  background-image: url(img/pdfSVG.svg);
-  background-size: 29px 35px;
+  margin-left: 3rem;
+}
+.myRegulat-container-list-item .myRegulat-pdf {
+  background-image: url(img/pdf.png);
+  background-size: 33px 35px;
   background-repeat: no-repeat;
   background-position: center;
-  margin-left: 3rem;
+}
+.myRegulat-container-list-item .myRegulat-word {
+  background-image: url(img/doc.png);
+  background-size: 33px 35px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .create-personal-data {
   display: flex;
@@ -373,7 +384,7 @@
   color: var(--BlackColorText);
 }
 .create-personal-data__input_nameInputReg {
-  width: 310px;
+  width: 610px;
   background-color: #eeeeee;
   border: none;
   border-radius: none;
