@@ -3,13 +3,8 @@ if($myAccount){
  const formInput = $myAccount.querySelectorAll('.myAccaunt-form__input');
  if($myAccount.querySelector('.myAccaunt-form__btn-save')){
   checkInput()
-  $myAccount.querySelector('.myAccaunt-form__btn-save').addEventListener('click', saveProfile);
+  //$myAccount.querySelector('.myAccaunt-form__btn-save').addEventListener('click', saveProfile);
  }
-
-
-let isNumber = function (n) {
- return !isNaN(parseFloat(n)) && isFinite(n);
-}
 
 function validatePhone(phone){
  let regex = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
@@ -32,7 +27,7 @@ let account = {
   NameOrganization: targetForm.querySelector('#NameOrganization').value,
   sybDivision: targetForm.querySelector('#sybDivision').value,
   position: targetForm.querySelector('#position').value,
-  phone: targetForm.querySelector('#phone').value,
+  phone: targetForm.querySelector('#phone').value
  }
 }
 fetch('./account/saveAccountData', {
@@ -80,7 +75,7 @@ function checkValue(){
 
 
 if($myAccount.querySelector('.myAccaunt-form__btn-edit')){
- $myAccount.querySelector('.myAccaunt-form__btn-edit').addEventListener('click', editProfile);
+ //$myAccount.querySelector('.myAccaunt-form__btn-edit').addEventListener('click', editProfile);
 }
 
 function editProfile(e) {

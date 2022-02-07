@@ -25,10 +25,12 @@ router.put('/:userId/document/editDocument/:docId/setDocumentBody_2', documentCo
 router.put('/:userId/document/editDocument/:docId/setDocumentBody_3', documentController.setDocumentBody_3);
 router.put('/:userId/document/editDocument/:docId/setDocumentBody_4', documentController.setDocumentBody_4);
 router.put('/:userId/document/editDocument/:docId/setDocumentBody_5', documentController.setDocumentBody_5);
+router.put('/:userId/document/editDocument/:docId/saveDocument', documentController.saveDocument);
+router.post('/:userId/document/editDocument/:docId/sendDocument', documentController.sendDocument);
 
 router.get('/:userId/document/editDocument/:docId/confirmDocument', documentController.confirmDocument);
-router.put('/createWord/:docId', documentController.createWord);
-router.put('/createPdf/:docId', documentController.createPdf);
+router.get('/:userId/document/createWord/:docId', documentController.createWord);
+router.get('/:userId/document/createPdf/:docId', documentController.createPdf);
 
 
 

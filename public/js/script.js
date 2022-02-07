@@ -79,7 +79,6 @@ if(r){
  } else{
   parentItemNpar.splice(2, 1, i+=1);
  }
- //parentItemNpar.splice(2, 1, i+=1);
  p.textContent = parentItemNpar.join('.');
  });
 } else {
@@ -181,10 +180,6 @@ let initSome = function() {
    }
   }
   function fixPageXYup(e) {
-    //e.pageX = e.clientX + (html.scrollLeft || body && body.scrollLeft || 0);
-    //e.pageX -= html.clientLeft || 0;
-    //e.pageY = e.clientY + (html.scrollTop || body && body.scrollTop || 0);
-    //e.pageY -= html.clientTop || 0;
     let x = e.pageX;
     let y = e.pageY;
     sabyrSelect(x, y);
@@ -219,20 +214,12 @@ let initSome = function() {
     rng.surroundContents(span);
    }
    btnCommentAdd.style.left = `-10000px`;
-   //correctTitle.innerHTML = selection;
    
    renderComment();
-   //numberComment();
    window.getSelection().removeAllRanges();
    
   }
   
-  //function numberComment(){
-  // console.log('num: ', num);
-  // childrenComment.forEach((item, i) => {
-  //  num = ;
-  // });
-  //}
   
   function renderComment(){
    const childrenComment = document.querySelectorAll('.commetRegulat-correct-item');
@@ -278,10 +265,7 @@ let initSome = function() {
      },
      body: JSON.stringify(newComment)
      }).then(res => res.json()).then(res => {
-      //console.log(res);
      })
-    //subdata.push(newComment);
-    //localStorage.setItem('correctComment', JSON.stringify(subdata));
    }
    }
   
@@ -290,57 +274,14 @@ let initSome = function() {
   document.addEventListener('selectionchange', sabyrSelect);
 }
 
-//let redactView = function() {
- 
- //function renderComment(){
- // commentList.textContent = '';
- // subdata.forEach((item,i) =>{
- //  const li = document.createElement('li');
- //  li.classList.add('commetRegulat-correct__item');
- //  li.classList.add('commetRegulat-correct-item');
- //  li.innerHTML = `<span class="commetRegulat-correct-item__title">${i +1}. ...”${item.correct}”</span><textarea name="" id="" cols="15" rows="5" class="commetRegulat-correct-item__desc">${item.commentHas}</textarea>`;
- //  commentList.append(li);
- // })
- // findWord();
- //}
- //if (localStorage.getItem('correctComment')) {
- // subdata = JSON.parse(localStorage.getItem('correctComment'));
- // 
- //}
-
- //function findWord(){
- // const $commetRegulatCorrectItemTitle = document.querySelectorAll('.commetRegulat-correct-item__title')
- // const data = [...$commetRegulatCorrectItemTitle].map(c => {
- //  c.textContent.replace(/(?<=\w+:\s*)'(.+?)(?:'$|'(\s*\w+:))/gm, '"$1"$2');
- // });
- // console.log('data: ', data);
-  //subdata.forEach((elem) =>{
-  // content.forEach((item) => {
-  //  item.innerHTML = item.innerHTML.replace(`${elem.correct}`,`<a name="${elem.correct}" style='background:#BE533F;color:#fff;'>${elem.correct}</a>`);
-  // })
-  //})
-  
- //}
-
- //findWord()
-
-//}
 /*
 * запуск функций
 */
 const btnEditElem = document.getElementById('btn_edit');
 if(btnEditElem){
- //redactView();
 } else if(document.querySelector('.constRegulat')){
 } else{
  initSome();
 }
 
 
-
-
-//subdata.forEach((elem) => {
-// content.forEach((item) => {
-//  item.innerHTML = item.innerHTML.replace(`${elem.correct}`, `<a name="${elem.correct}" style='background:#BE533F;color:#fff;'>${elem.correct}</a>`);
-// })
-//})

@@ -4,9 +4,14 @@
    <div class="myRegulat-container__item myRegulat-container__item_mr">
     <div class="myRegulat-container__personalCard">
      <div class="myRegulat-container__block">
-      <div class="myRegulat-container__avatar"><img
-        src="/style/img/png-clipart-indian-elephant-drawing-animal-locomotion-blue-mammal.png" alt=""
-        class="myRegulat-container__img"></div>
+      <div class="myRegulat-container__avatar">
+       {{#if user.profile.imageLink}}
+       <img src="{{user.profile.imageLink}}" alt="" class="myRegulat-container__img">
+       {{else}}
+       <img src="/style/img/png-clipart-indian-elephant-drawing-animal-locomotion-blue-mammal.png" alt=""
+        class="myRegulat-container__img">
+       {{/if}}
+      </div>
      </div>
      <div class="myRegulat-container__personalData">
       <span class="myRegulat-container__name">{{user.profile.lastName}} {{user.profile.name}}
@@ -25,7 +30,7 @@
       </div>
       <div class="myRegulat-container-createRegulat__item">
        <span class="myRegulat-container-createRegulat__title">Согласованно регламентов</span><span
-        class="myRegulat-container-createRegulat__qty">0</span>
+        class="myRegulat-container-createRegulat__qty">{{findStatus.length}}</span>
       </div>
      </div>
     </div>
@@ -73,12 +78,11 @@
           {{wordSlice title}}</a>
          <div class="myRegulat-container-list-item__options">
           <div class="myRegulat-container-list-item__vers">Версия <span
-            class="myRegulat-container-list-item__vers-qty">{{#each versions}}{{version}}{{/each}}</span>
+            class="myRegulat-container-list-item__vers-qty">{{versions.0.version}}</span>
           </div><span class="create-personal-data__date regulat-date">{{dateСreate}}</span>
           <div class="myRegulat-container-list-item__mode">Режим: <span
             class="myRegulat-container-list-item__status">Черновик</span></div>
-          <a href="#" class="myRegulat-container-list-item__file myRegulat-pdf"></a>
-          <a href="#" class="myRegulat-container-list-item__file myRegulat-word"></a>
+
          </div>
         </li>
         {{/each}}
@@ -144,6 +148,8 @@
           {{wordSlice title}}</a>
          <span
           class="myRegulat-container-list-item__status myRegulat-container-list-item__status_reg">Согласовано</span>
+         <a href="./document/createPdf/{{_id}}" class="myRegulat-container-list-item__file myRegulat-pdf"></a>
+         <a href="./document/createWord/{{_id}}" class="myRegulat-container-list-item__file myRegulat-word"></a>
         </li>
         {{else}}
         <p class="myRegulat-container-list__total-regul">У вас пока нет согласованных регламентов</p>
@@ -188,12 +194,20 @@
   }
   return five;
  }
-
+ let isNumber = function (n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+ }
  const num1 = document.querySelectorAll('.myRegulat-container-list__total-qty')[0].textContent;
- const word1 = getNoun(+num1, 'созданный регламент', 'созданных регламента', 'созданных регламентов');
- document.querySelectorAll('.sclan')[0].innerHTML = word1;
+ if (isNumber(num1)) {
+  const word1 = getNoun(+num1, 'созданный регламент', 'созданных регламента', 'созданных регламентов');
+  document.querySelectorAll('.sclan')[0].innerHTML = word1;
+
+ }
+
  const num2 = document.querySelectorAll('.myRegulat-container-list__total-qty')[1].textContent;
- const word2 = getNoun(+num2, 'документ', 'документа', 'документов');
- document.querySelectorAll('.sclan')[1].innerHTML = word2;
+ if (isNumber(num2)) {
+  const word2 = getNoun(+num2, 'документ', 'документа', 'документов');
+  document.querySelectorAll('.sclan')[1].innerHTML = word2;
+ }
 </script>
 {{/if}}

@@ -44,7 +44,7 @@ class HtmlConvertor {
         <p class="commetRegulat-desc commetRegulat-item-header__header-doc">${this.documentData.headDOC.headerTitle}</p>
       </div>
       <span class="commetRegulat-item-header__title">АДМИНИСТРАТИВНЫЙ РЕГЛАМЕНТ</span>
-      <p class="commetRegulat-item-header__desc">Предоставления ${this.documentData.headDOC.deliveryDoc} услуги "${this.documentData.headDOC.servicy}"</p>
+      <p class="commetRegulat-item-header__desc">ПРЕОДОСТАВЛЕНИЯ ${this.documentData.headDOC.deliveryDoc} УСЛУГИ "${this.documentData.headDOC.servicy}"</p>
     `
 
     this.body += `
@@ -63,6 +63,10 @@ class HtmlConvertor {
           <div class="commetRegulat-item-body__content">
             <div class="commetRegulat-item-body-title commetRegulat-item-body__title">1. Предмет регулирования Административного регламента</div>
     `;
+      this.documentData.regDocument.regulat_1.subRegulat_1_1.items.map(c => {
+       `<p class="commetRegulat-item-body__desc commetRegulat-desc">${c.paragraph} Административный регламент устанавливает стандарт предоставления ${c.nameOrgan1} услуги ${c.nameService1}, состав, последовательность и сроки выполнения административных процедур по предоставлению ${c.nameOrgan2} услуги, ${nameService2}.</p>`
+    })
+            
     
     this.body += `
           </div>

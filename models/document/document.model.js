@@ -35,8 +35,13 @@ exports.updateDocumentHeader = async (req) => {
   const filter = {
     _id: docId
   }
-
+  
   const update = {
+   $push:{
+    'versions':{
+     version: 1,
+    },
+  },
    $set:{
     title: req.body.title,
     "regDocument.headDOC.headerTitle":req.body.headDOC.headerTitle, 
@@ -276,6 +281,7 @@ exports.saveDocument = async (req) => {
   const filter = {
     _id: docId
   }
+let update = {};
 
   if (action === 'create') {
 
@@ -286,6 +292,12 @@ exports.saveDocument = async (req) => {
       }
     }
 
+  } else if(action === 'edit'){
+   update = {
+    $set:{
+      status: 1
+    }
+  }
   }
 
   const option = {
@@ -327,6 +339,19 @@ exports.sendDocument = async (req) => {
 exports.confirmDocument = async (req) => {
   const docId = req.params.docId;
   const documentData = await Document.findById(docId);
+  const filter = {
+   _id: docId
+ }
+  let update = {
+   $set:{
+    status: 2
+   }
+  }
+  const option = {
+   new: true
+ }
+ await Document.findOneAndUpdate(filter,update, option);
+
   const htmlConvertor = new HtmlConvertor(docId,documentData.regDocument);
   return await htmlConvertor.createDocument();
 }

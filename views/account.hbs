@@ -10,8 +10,8 @@
   </div>
 
   <div class="myAccaunt__block">
-   <form action="{{#if user.profile}}./account/updateAccountData{{else}}./account/saveAccountData{{/if}}" method="{{#if user.profile}}PUT{{else}}
-   POST{{/if}}" class="myAccaunt-form myAccaunt__form">
+   <form action="{{#if user.profile}}./account/updateAccountData{{else}}./account/saveAccountData{{/if}}" method="POST"
+    enctype="multipart/form-data" class="myAccaunt-form myAccaunt__form">
     <div class="myAccaunt-form__column">
      <div class="myAccaunt-form__mainItem">
       <div class="myAccaunt-form__item">
@@ -61,9 +61,18 @@
       <div class="myAccaunt-form__item myAccaunt-form__item_mb">
        <h3 class="myAccaunt-form__title myAccaunt-form__title_mb">Фото профиля</h3>
        <div class="myAccaunt-form__blockImg">
+        {{#if user.profile.imageLink}}
+        <img src="{{user.profile.imageLink}}" alt="Фото профиля" class="myAccaunt-form__img">
+        {{else}}
         <img src="/style/img/png-clipart-indian-elephant-drawing-animal-locomotion-blue-mammal.png" alt="Фото профиля"
          class="myAccaunt-form__img">
+        {{/if}}
+
        </div>
+       {{#if user.profile.imageLink}}
+       {{else}}
+       <input type="file" name="avatar" id="avatar" class="myAccaunt-form__input">
+       {{/if}}
       </div>
       <div class="myAccaunt-form__item">
        <h3 class="myAccaunt-form__title">Контактная информация</h3>
@@ -83,9 +92,6 @@
      <button type="submit" formaction="./account/updateAccountData"
       class="btn myAccaunt-form__btn myAccaunt-form__btn-edit myAccaunt-form__btn_red">Редактировать</button>
      {{else}}
-     {{!--<button type="submit" formaction="./account/updateAccountData"
-      class="btn myAccaunt-form__btn myAccaunt-form__btn-edit myAccaunt-form__btn_red"
-      style="display: none;">Редактировать</button>--}}
      <button type="submit" formaction="./account/saveAccountData"
       class="btn myAccaunt-form__btn myAccaunt-form__btn-save myAccaunt-form__btn_blue">Сохранить</button>
      {{/if}}

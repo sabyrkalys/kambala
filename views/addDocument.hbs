@@ -41,7 +41,7 @@
              class="create-personal-data__time">{{getHours}}</span>
            </div>
            {{else}}
-           <div class="create-personal-data__date">{{documentData.dateСreate}}
+           <div class="create-personal-data__date convertDate">{{documentData.dateСreate}}
            </div>
            {{/if}}
           </div>
@@ -70,19 +70,12 @@
            <span class="prev-vers__subtitle">Дата изменения</span>
           </div>
           <ul class="prev-vers__ul">
+           {{#each documentData.versions}}
            <li class="prev-vers__point">
-            <span class="prev-vers__ver">1</span>
-            <div class="prev-vers__date">03.10.2020 12:50</div>
+            <span class="prev-vers__ver">{{version}}</span>
+            <div class="prev-vers__date convertDate">{{dateUpdate}}</div>
            </li>
-           <li class="prev-vers__point">
-            <span class="prev-vers__ver">1</span>
-            <div class="prev-vers__date">03.10.2020 12:50</div>
-           </li>
-           <li class="prev-vers__point">
-            <span class="prev-vers__ver">1</span>
-            <div class="prev-vers__date">03.10.2020 12:50</div>
-           </li>
-
+           {{/each}}
           </ul>
          </div>
         </div>
@@ -1941,7 +1934,7 @@
     </div>
    </form>--}}
 
-   {{!--<div class="send-aprev" id="sendAprev" name="sendAprev" hidden>
+   {{!--<div class="send-aprev" id="sendAprev" name="sendAprev">
     <div class="section-header">
      <h2 class="section-header__title section-header__title_ml10">Отправить на согласование </h2>
     </div>
@@ -1970,7 +1963,7 @@
    minute: '2-digit'
   }).format(new Date(date))
  }
- document.querySelectorAll('.create-personal-data__date').forEach(item => {
+ document.querySelectorAll('.convertDate').forEach(item => {
   item.textContent = toDate(item.textContent)
  })
 </script>

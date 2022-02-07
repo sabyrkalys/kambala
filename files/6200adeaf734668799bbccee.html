@@ -1,3 +1,16 @@
+<!doctype html>
+<html lang="ru" dir="ltr">
+<head>
+<title>Документ</title>
+<meta charset="utf-8">
+
+
+
+
+</head>
+<body>
+
+      <style>/* raleway-regular - latin_cyrillic */
 @font-face {
   font-family: 'Raleway';
   font-style: normal;
@@ -148,11 +161,134 @@ main {
   text-align: center !important;
   margin-bottom: 2rem;
 }
-.regulat-date {
-  font-size: 1.4em !important;
-  line-height: 1.6rem !important;
-  color: var(--BlackColorText) !important;
-  margin-left: 2.5rem;
+.header-top {
+  background-color: var(--bgHeaderFooter);
+}
+.header-top__main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-top__item {
+  height: 7.4rem;
+}
+.header-top-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-top-item__block {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.header-top-item__block_margin {
+  margin-right: 4rem;
+}
+.header-top-item__link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.header-top-item__title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 3em;
+  margin-left: 1rem;
+  color: var(--WhiteColorText);
+}
+.header-top-item__notification {
+  position: relative;
+  display: block;
+  width: 27px;
+  height: 32px;
+  background-image: url(img/kolokol.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding: 0 2.3rem;
+}
+.header-top-item__qty {
+  position: absolute;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 1em;
+  color: var(--bgRed1);
+  top: 4px;
+  left: 57%;
+}
+.menu {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.menu__humburger {
+  display: block;
+  width: 3rem;
+  height: 0.2rem;
+  position: relative;
+  background-color: var(--bgFound);
+}
+.menu__humburger::before {
+  content: '';
+  display: block;
+  width: 3rem;
+  height: 0.2rem;
+  position: absolute;
+  left: 0;
+  top: -9px;
+  background-color: var(--bgFound);
+}
+.menu__humburger::after {
+  content: '';
+  display: block;
+  width: 3rem;
+  height: 0.2rem;
+  position: absolute;
+  left: 0;
+  top: 9px;
+  background-color: var(--bgFound);
+}
+.logo {
+  position: relative;
+}
+.logo__img {
+  display: block;
+}
+.logo__link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.header-top-item-block__img {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: var(--bgFound);
+  overflow: hidden;
+}
+.header-top-item-block__link {
+  color: var(--WhiteColorText);
+  font-size: 2em;
+  padding-right: 2rem;
+}
+.header-top-item-block--separater::after {
+  content: '';
+  display: inline-block;
+  width: 1px;
+  height: 2.2rem;
+  background-color: var(--bgFound);
+}
+.header-top-item-block--ml {
+  margin-left: 2rem;
+  margin-right: 3rem;
 }
 .footer {
   background-color: var(--bgHeaderFooter);
@@ -281,37 +417,25 @@ main {
 .commetRegulat-correct__addcommet:hover {
   color: #fff;
 }
-.commentRegulat-correct-item__block {
-  display: flex;
-}
 .commetRegulat-correct-item__title {
-  font-size: 1.6rem;
+  font-size: 1.6em;
   line-height: 1.9rem;
   color: var(--BlackColorText);
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
-  display: inline;
+  display: block;
   margin-bottom: 1rem;
-}
-.commetRegulat-correct-item__point {
-  font-size: 1.6rem;
-  line-height: 1.9rem;
-  color: var(--BlackColorText);
-  font-family: 'Raleway', sans-serif;
-  font-weight: 600;
-  display: inline;
-  margin-bottom: 1rem;
-  white-space: nowrap;
 }
 .commetRegulat-correct-item__desc {
   border: 0.3px solid #000000;
   box-sizing: border-box;
-  font-size: 1.6rem;
+  font-size: 1.6em;
   line-height: 1.9rem;
   color: var(--BlackColorText);
 }
 .commetRegulat-item-body__content {
   background-color: rgba(238, 238, 238, 0.65);
+  padding: 1rem 2.8rem 2rem 3.2rem;
 }
 .commetRegulat-item-body__title {
   font-family: 'Raleway', sans-serif;
@@ -353,31 +477,43 @@ main {
 .commetRegulat-item-body__desc {
   position: relative;
 }
-.btn-commentAdd {
-  position: absolute;
-  top: 50px;
-  left: 0;
-}
-.btn-commentAdd__link {
-  position: relative;
-  padding: 0.5rem 2rem;
-  background-color: #CACBCD;
-  color: var(--BlackColorText);
-  font-size: 14px;
-  border-radius: 5px;
-}
-.btn-commentAdd__link:before {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: calc(50% - 5px);
-  display: block;
-  width: 0;
-  height: 0;
-  border-width: 5px 5px 0 5px;
-  border-color: #CACBCD transparent transparent transparent;
-  border-style: solid;
-}
-.btn-commentAdd__link:hover {
-  background-color: #CACBCD;
-}
+</style>
+    
+      <main class="main">
+        <section class="commetRegulat">
+          <div class="wrapper myRegulat__wrapper">
+            <div class="commetRegulat__container">
+              <div class="accardion commetRegulat-item commetRegulat__item commetRegulat__item_left">
+      <div class="commetRegulat-item__header commetRegulat-item-header">
+        <div class="commetRegulat-item-header__container">
+    
+      <div class="commetRegulat-item-header__right">
+        <p class="commetRegulat-desc commetRegulat-item-header__header-doc">vsdfvsdfvsdfvsf</p>
+      </div>
+      <span class="commetRegulat-item-header__title">АДМИНИСТРАТИВНЫЙ РЕГЛАМЕНТ</span>
+      <p class="commetRegulat-item-header__desc">Предоставления nbljfdksbnslnbldj услуги "jbfdlbndjgbldgjb"</p>
+    
+        </div>
+      </div>
+    
+      <div class="accardion-item commetRegulat-item-body">
+        <div class="section-header section-header--mb2">
+          <h2 class="section-header__title section-header__title_fz18">1. Общие положения</h2>
+        </div>
+        <div class="accardion-content commetRegulat-item-content">
+          <div class="commetRegulat-item-body__content">
+            <div class="commetRegulat-item-body-title commetRegulat-item-body__title">1. Предмет регулирования Административного регламента</div>
+    
+          </div>
+        </div>
+      </div>
+    
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    
+
+</body>
+</html>

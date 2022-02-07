@@ -53,12 +53,11 @@ export function saveDate(target) {
   const DOC = {
    authorId: document.querySelector('#authorId').dataset.id,
     title: document.querySelector('#title').value,
-    date: `${document.querySelector('.create-personal-data__date').textContent} ${document.querySelector('.create-personal-data__time').textContent}`,
    headDOC: {
     headerTitle: headerText.value,
    deliveryDoc: nameOrg.value,
    servicy: nameService.value
-  },
+  }
   }
   if(constRegulatEdit){
    fetch(`../../document/editDocument/${docId}/setDocumentHeader?action=edit`, {
@@ -68,9 +67,6 @@ export function saveDate(target) {
     },
     body: JSON.stringify(DOC)
     }).then(res => res.json()).then(regul => {
-     if(regul.result._id){
-      constRegulat.setAttribute('data-id', regul.result._id)
-     }
     })
   } else {
    fetch('../document/createDocument/setDocumentHeader?action=create', {
@@ -85,7 +81,6 @@ export function saveDate(target) {
       document.getElementById('setDocumentBody_1').removeAttribute('hidden');
       document.getElementById('sectionTitleDocument').style.display = 'block';
       constRegulat.style.marginBottom = '0rem';
-      console.log(`${document.querySelector('.create-personal-data__date').textContent} ${document.querySelector('.create-personal-data__time').textContent}`);
      }
     })
   }
@@ -273,6 +268,18 @@ export function saveDate(target) {
   const subRegulat = {
    id: docId
   }
+  if(constRegulatEdit){
+   fetch(`../../document/editDocument/${docId}/saveDocument?action=edit`, {
+    method: 'put',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(subRegulat)
+    }).then(res => res.json()).then(res => {
+     document.getElementById('docId').value = res.result.authorId
+     
+    })
+  } else {
    fetch('../document/createDocument/saveDocument?action=create', {
     method: 'put',
     headers: {
@@ -283,6 +290,8 @@ export function saveDate(target) {
      document.getElementById('docId').value = res.result.authorId
      
     })
+  }
+
  
  }
 
@@ -293,18 +302,31 @@ export function saveDate(target) {
     email:item.querySelector('#emailArray').value
    }]
   }
- fetch('../document/createDocument/sendDocument', {
- method: 'post',
- headers: {
-  'Content-Type': 'application/json'
- },
- body: JSON.stringify(subRegulat)
- }).then(res => res.json()).then(res => {
-  console.log('res: ', res);
-
-  if(res.result){
-   window.location.href = `http://localhost:3000/user/${document.getElementById('docId').value}/document`
+  if(constRegulatEdit){
+   fetch(`../../document/editDocument/${docId}/sendDocument?action=edit`, {
+    method: 'post',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(subRegulat)
+    }).then(res => res.json()).then(res => {
+     if(res.result){
+      window.location.href = `http://localhost:3000/user/${document.getElementById('docId').value}/document`
+     }
+    })
+  } else {
+   fetch('../document/createDocument/sendDocument', {
+    method: 'post',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(subRegulat)
+    }).then(res => res.json()).then(res => {
+     if(res.result){
+      window.location.href = `http://localhost:3000/user/${document.getElementById('docId').value}/document`
+     }
+    })
   }
- })
+
  }
 }

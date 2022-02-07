@@ -145,7 +145,6 @@ exports.updateDocumentHeader = async function (req, res) {
   let isLogined = await auth.check(req.session);
   if (isLogined) {
     if (req.query.action === 'edit') {
-
       try {
         const result = await documentModel.updateDocumentHeader(req);
         if (!result) {
@@ -364,7 +363,7 @@ exports.confirmDocument = async (req,res) => {
         return res.status(404).send();
       }
       else {
-        return res.status(200).redirect('/')
+        return res.status(200).redirect(`/user/${req.params.userId}/document`)
       }
     } catch (e) {
       console.log(e);

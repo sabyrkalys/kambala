@@ -1,10 +1,10 @@
 <div class="wrapper">
  <div class="header-top__main">
   <div class="header-top__item header-top-item">
-   <div class="menu header-top-item__block header-top-item__block_margin">
+   {{!--<div class="menu header-top-item__block header-top-item__block_margin">
     <span class="menu__humburger header-top-item__humburger"></span>
     <a href="#" class="header-top-item__link"></a>
-   </div>
+   </div>--}}
    <div class="logo header-top-item__block">
 
     {{#if isEditRegulat}}
@@ -44,8 +44,13 @@
    <div class="header-top-item__block header-top-item-block header-top-item-block--ml">
     {{#if isLogin}}
     {{else}}
+    {{#if user.profile.imageLink}}
+    <img src="{{user.profile.imageLink}}" alt="" class="header-top-item-block__img ">
+    {{else}}
     <img src="/style/img/png-clipart-indian-elephant-drawing-animal-locomotion-blue-mammal.png" alt=""
      class="header-top-item-block__img ">
+    {{/if}}
+
     {{/if}}
     {{#if isAddRegulat}}
     <a href="../account" class="header-top-item__link"></a>
