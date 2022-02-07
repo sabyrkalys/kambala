@@ -104,7 +104,7 @@ this.body += `</div>
                   <div class="accardion-content commetRegulat-item-content">
                   <div class="commetRegulat-item-body__content" style="padding: 1rem 2.8rem 2rem 3.2rem;"><div class="commetRegulat-item-body-title commetRegulat-item-body__title">2.1. Наименование муниципальной услуги
                   </div>`
-                  
+
                    const subRegulat_2_1 = this.documentData.regulat_2.subRegulat_2_1.items;
                    for (let c in subRegulat_2_1) {
                     this.body += `<p class="commetRegulat-item-body__desc commetRegulat-desc">${subRegulat_2_1[c].paragraph} ${subRegulat_2_1[c].fieldName}</p>`
@@ -114,11 +114,11 @@ this.body += `</div>
                   <div class="commetRegulat-item-body-title commetRegulat-item-body__title">2.2. Наименование органа,
                    предоставляющего муниципальную услугу</div>
                   `
-                  const subRegulat_2_2_1 = this.documentData.regulat_2.subRegulat_2_1.items.item_2_2_1;
-                   for (let c in subRegulat_2_2_1) {
-                    this.body += `<p class="commetRegulat-item-body__desc commetRegulat-desc">${subRegulat_2_2_1[c].paragraph} ${subRegulat_2_2_1[c].fieldName}</p>`
+                  const item_2_2_1 = this.documentData.regulat_2.subRegulat_2_2.items.item_2_2_1;
+                   for (let c in item_2_2_1) {
+                    this.body += `<p class="commetRegulat-item-body__desc commetRegulat-desc">${item_2_2_1[c].paragraph} ${item_2_2_1[c].fieldName}</p>`
                    }
-                   const item_2_2_2 = this.documentData.regulat_2.subRegulat_2_1.items.item_2_2_2;
+                   const item_2_2_2 = this.documentData.regulat_2.subRegulat_2_2.items.item_2_2_2;
                    for (let c in item_2_2_2) {
                     this.body += `<p class="commetRegulat-item-body__desc commetRegulat-desc">${item_2_2_2[c].paragraph} ${item_2_2_2[c].fieldName}</p>`
                    }
