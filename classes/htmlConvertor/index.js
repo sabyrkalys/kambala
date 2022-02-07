@@ -101,12 +101,10 @@ this.body += `</div>
                   <div class="section-header section-header--mb2">
                    <h2 class="section-header__title section-header__title_fz18">2. Стандарт предоставления муниципальной услуги</h2>
                   </div>
-                 <div class="accardion-content commetRegulat-item-content">`
-                 const subRegulat_2_1 = this.documentData.regulat_2.subRegulat_2_1.items[0].fieldName;
-                 if(subRegulat_2_1){
-                  this.body += `<div class="commetRegulat-item-body__content" style="padding: 1rem 2.8rem 2rem 3.2rem;"><div class="commetRegulat-item-body-title commetRegulat-item-body__title">2.1. Наименование муниципальной услуги
+                  <div class="accardion-content commetRegulat-item-content">
+                  <div class="commetRegulat-item-body__content" style="padding: 1rem 2.8rem 2rem 3.2rem;"><div class="commetRegulat-item-body-title commetRegulat-item-body__title">2.1. Наименование муниципальной услуги
                   </div>`
-                 }
+                  
                    const subRegulat_2_1 = this.documentData.regulat_2.subRegulat_2_1.items;
                    for (let c in subRegulat_2_1) {
                     this.body += `<p class="commetRegulat-item-body__desc commetRegulat-desc">${subRegulat_2_1[c].paragraph} ${subRegulat_2_1[c].fieldName}</p>`
